@@ -94,8 +94,9 @@
 .mini-card > span:nth-child(2) { min-width: 0; flex: 1; }
 .mini-card__chev { width: 20px; height: 20px; flex: none; color: var(--color-orange-700); transition: transform var(--duration-fast) var(--easing-standard); }
 .mini-card:hover .mini-card__chev { transform: translateX(var(--distance-arrow-nudge)); }
-@media (min-width: 768px) { .mini-grid--3, .mini-grid--city { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mini-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 1024px) { .mini-grid--city { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); } }
+/* related services (96px photo cards) stay 1-up below 1024: 3-up at 768 leaves ~46px for the title (overflow) */
+@media (min-width: 768px) { .mini-grid--city { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .mini-grid--city { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); } .mini-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .section-sub { margin-top: var(--space-12); }
 
 /* Light chips */
