@@ -1,0 +1,10 @@
+{
+  "boards": {
+    "ios-01-inicio.dc.html": {"x": 0, "y": 0, "w": 390, "h": 7760, "page": "ios", "title": "iOS · 01 · Inicio · web móvil · Safari", "is_interactive": true},
+    "ios-01b-menu.dc.html": {"x": 470, "y": 0, "w": 390, "h": 844, "page": "ios", "title": "iOS · 01b · Menú · web móvil · Safari", "is_interactive": true}
+  },
+  "order": ["ios-01-inicio.dc.html", "ios-01b-menu.dc.html"],
+  "notes": {
+    "ios-row-1": {"x": 0, "y": -300, "text": "iOS · web móvil · Safari · 390", "kind": "title1", "maxW": 1840, "page": "ios"}
+  }
+}

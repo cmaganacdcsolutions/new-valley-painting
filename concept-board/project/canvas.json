@@ -1,0 +1,671 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-03T00:00:00Z"
+ },
+ "title": "New Valley Painting · Concept Board",
+ "launch": {
+  "view": "canvas",
+  "page": "portada"
+ },
+ "pages": [
+  {
+   "id": "portada",
+   "name": "Portada"
+  },
+  {
+   "id": "introduccion",
+   "name": "Introducción"
+  },
+  {
+   "id": "marca",
+   "name": "Manual de marca"
+  },
+  {
+   "id": "especificaciones",
+   "name": "Especificaciones"
+  },
+  {
+   "id": "muestreo",
+   "name": "Muestreo"
+  },
+  {
+   "id": "prototipo",
+   "name": "Prototipo"
+  },
+  {
+   "id": "web",
+   "name": "Web"
+  },
+  {
+   "id": "ios",
+   "name": "iOS"
+  },
+  {
+   "id": "android",
+   "name": "Android"
+  },
+  {
+   "id": "editables",
+   "name": "Pantallas editables"
+  },
+  {
+   "id": "responsive",
+   "name": "Responsive"
+  },
+  {
+   "id": "publicidad",
+   "name": "Publicidad"
+  }
+ ],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 2800,
+   "page": "portada",
+   "title": "Portada"
+  },
+  "intro-01-que-es.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "page": "introduccion",
+   "title": "intro-01 · Qué es este Concept Board"
+  },
+  "intro-02-como-leerlo.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "page": "introduccion",
+   "title": "intro-02 · Cómo leerlo"
+  },
+  "intro-03-lenguaje.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 1100,
+   "page": "introduccion",
+   "title": "intro-03 · Glosario"
+  },
+  "marca-01-logo.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 1260,
+   "page": "marca",
+   "title": "marca-01 · Logo"
+  },
+  "spec-01-tokens.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 3800,
+   "page": "especificaciones",
+   "title": "spec-01 · Tabla de tokens"
+  },
+  "spec-02-iconos.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1560,
+   "page": "especificaciones",
+   "title": "spec-02 · Librería de iconos"
+  },
+  "android-01-inicio.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 412,
+   "h": 7760,
+   "page": "android",
+   "title": "Android · 01 · Inicio · web móvil · Chrome",
+   "is_interactive": true
+  },
+  "android-01b-menu.dc.html": {
+   "x": 492,
+   "y": 0,
+   "w": 412,
+   "h": 915,
+   "page": "android",
+   "title": "Android · 01b · Menú · web móvil · Chrome",
+   "is_interactive": true
+  },
+  "android-02-servicio.dc.html": {
+   "x": 984,
+   "y": 0,
+   "w": 412,
+   "h": 6960,
+   "page": "android",
+   "title": "Android · 02 · Service · Interior Painting · web móvil · Chrome"
+  },
+  "android-03-cotizacion.dc.html": {
+   "x": 1476,
+   "y": 0,
+   "w": 412,
+   "h": 3840,
+   "page": "android",
+   "title": "Android · 03 · Free Estimate · web móvil · Chrome",
+   "is_interactive": true
+  },
+  "desktop-01-inicio.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1366,
+   "h": 8000,
+   "page": "web",
+   "title": "Web · 01 · Inicio · 1366"
+  },
+  "desktop-01-inicio-1920.dc.html": {
+   "x": 1446,
+   "y": 0,
+   "w": 1920,
+   "h": 3340,
+   "page": "web",
+   "title": "Web · 01 · Inicio · 1920"
+  },
+  "desktop-03-cotizacion.dc.html": {
+   "x": 4892,
+   "y": 0,
+   "w": 1366,
+   "h": 2796,
+   "page": "web",
+   "title": "Web · 03 · Free Estimate · 1366",
+   "is_interactive": true
+  },
+  "desktop-02-servicio.dc.html": {
+   "x": 3446,
+   "y": 0,
+   "w": 1366,
+   "h": 4980,
+   "page": "web",
+   "title": "Web · 02 · Service · Interior Painting · 1366"
+  },
+  "desktop-04-ciudad.dc.html": {
+   "x": 6338,
+   "y": 0,
+   "w": 1366,
+   "h": 5980,
+   "page": "web",
+   "title": "Web · 04 · Service area · Raleigh · 1366",
+   "is_interactive": true
+  },
+  "ios-01-inicio.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 7760,
+   "page": "ios",
+   "title": "iOS · 01 · Inicio · web móvil · Safari",
+   "is_interactive": true
+  },
+  "ios-01b-menu.dc.html": {
+   "x": 470,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "page": "ios",
+   "title": "iOS · 01b · Menú · web móvil · Safari",
+   "is_interactive": true
+  },
+  "ios-02-servicio.dc.html": {
+   "x": 940,
+   "y": 0,
+   "w": 390,
+   "h": 6960,
+   "page": "ios",
+   "title": "iOS · 02 · Service · Interior Painting · web móvil · Safari"
+  },
+  "ios-03-cotizacion.dc.html": {
+   "x": 1410,
+   "y": 0,
+   "w": 390,
+   "h": 3840,
+   "page": "ios",
+   "title": "iOS · 03 · Free Estimate · web móvil · Safari"
+  },
+  "muestreo-01-cotizacion.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1100,
+   "h": 1146,
+   "page": "muestreo",
+   "title": "Muestreo 01 · Cotización gratuita"
+  },
+  "muestreo-02-llamada.dc.html": {
+   "x": 1180,
+   "y": 0,
+   "w": 1100,
+   "h": 818,
+   "page": "muestreo",
+   "title": "Muestreo 02 · Llamada directa"
+  },
+  "muestreo-03-servicio.dc.html": {
+   "x": 2360,
+   "y": 0,
+   "w": 1100,
+   "h": 1146,
+   "page": "muestreo",
+   "title": "Muestreo 03 · Servicio a cotización"
+  },
+  "proto-00-en-vivo.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 520,
+   "h": 200,
+   "page": "prototipo",
+   "title": "Prototipo · Ver en vivo",
+   "is_interactive": true
+  },
+  "proto-01-inicio.dc.html": {
+   "x": 0,
+   "y": 520,
+   "w": 1440,
+   "h": 1540,
+   "page": "prototipo",
+   "title": "Prototipo · 01 · Inicio (escritorio)",
+   "is_interactive": true
+  },
+  "proto-02-servicio.dc.html": {
+   "x": 1520,
+   "y": 520,
+   "w": 1440,
+   "h": 1460,
+   "page": "prototipo",
+   "title": "Prototipo · 02 · Servicio (escritorio)",
+   "is_interactive": true
+  },
+  "proto-03-cotizacion.dc.html": {
+   "x": 3040,
+   "y": 520,
+   "w": 1440,
+   "h": 1560,
+   "page": "prototipo",
+   "title": "Prototipo · 03 · Cotización (escritorio, todos los estados)",
+   "is_interactive": true
+  },
+  "proto-04-inicio-movil.dc.html": {
+   "x": 0,
+   "y": 2400,
+   "w": 390,
+   "h": 844,
+   "page": "prototipo",
+   "title": "Prototipo · 04 · Inicio (móvil 390)",
+   "is_interactive": true
+  },
+  "proto-05-cotizacion-movil.dc.html": {
+   "x": 470,
+   "y": 2400,
+   "w": 390,
+   "h": 844,
+   "page": "prototipo",
+   "title": "Prototipo · 05 · Cotización (móvil 390, todos los estados)",
+   "is_interactive": true
+  },
+  "edit-web-01-cotizacion-formulario.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1366,
+   "h": 1900,
+   "page": "editables",
+   "title": "Web · 01 · Cotización · Formulario (editable)",
+   "is_interactive": true
+  },
+  "edit-ios-01-cotizacion-formulario.dc.html": {
+   "x": 1446,
+   "y": 0,
+   "w": 390,
+   "h": 964,
+   "page": "editables",
+   "title": "iOS · 01 · Cotización · Formulario (editable)",
+   "is_interactive": true
+  },
+  "edit-android-01-cotizacion-formulario.dc.html": {
+   "x": 1916,
+   "y": 0,
+   "w": 412,
+   "h": 1035,
+   "page": "editables",
+   "title": "Android · 01 · Cotización · Formulario (editable)",
+   "is_interactive": true
+  },
+  "resp-01-matriz.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1300,
+   "page": "responsive",
+   "title": "Responsive · 01 · Matriz de dispositivos"
+  },
+  "resp-02-reglas.dc.html": {
+   "x": 2000,
+   "y": 0,
+   "w": 1920,
+   "h": 1500,
+   "page": "responsive",
+   "title": "Responsive · 02 · Reglas fluidas y anti-recorte"
+  },
+  "resp-07-seo.dc.html": {
+   "x": 4000,
+   "y": 0,
+   "w": 1920,
+   "h": 1500,
+   "page": "responsive",
+   "title": "Responsive · 07 · SEO: hoy vs nuevo sitio"
+  },
+  "resp-03-inicio-360.dc.html": {
+   "x": 0,
+   "y": 1920,
+   "w": 360,
+   "h": 9400,
+   "page": "responsive",
+   "title": "Responsive · 03 · Inicio · Android 360×800"
+  },
+  "resp-04-inicio-768.dc.html": {
+   "x": 440,
+   "y": 1920,
+   "w": 768,
+   "h": 7960,
+   "page": "responsive",
+   "title": "Responsive · 04 · Inicio · 768"
+  },
+  "resp-05-inicio-1366.dc.html": {
+   "x": 1288,
+   "y": 1920,
+   "w": 1366,
+   "h": 8000,
+   "page": "responsive",
+   "title": "Responsive · 05 · Inicio · 1366"
+  },
+  "resp-06-inicio-1920.dc.html": {
+   "x": 2734,
+   "y": 1920,
+   "w": 1920,
+   "h": 3340,
+   "page": "responsive",
+   "title": "Responsive · 06 · Inicio · 1920"
+  },
+  "ads-google-display-landscape.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1200,
+   "h": 628,
+   "page": "publicidad",
+   "title": "Publicidad · Google Display 1.91:1 · 1200×628"
+  },
+  "ads-google-display-cuadrado.dc.html": {
+   "x": 1280,
+   "y": 0,
+   "w": 1200,
+   "h": 1200,
+   "page": "publicidad",
+   "title": "Publicidad · Google Display 1:1 · 1200×1200"
+  },
+  "ads-google-search-preview.dc.html": {
+   "x": 2560,
+   "y": 0,
+   "w": 1200,
+   "h": 1000,
+   "page": "publicidad",
+   "title": "Publicidad · Google Search · vista previa"
+  },
+  "ads-logo-1x1.dc.html": {
+   "x": 3840,
+   "y": 0,
+   "w": 1200,
+   "h": 1200,
+   "page": "publicidad",
+   "title": "Publicidad · Logo 1:1 · 1200×1200"
+  },
+  "ads-logo-4x1.dc.html": {
+   "x": 5120,
+   "y": 0,
+   "w": 1200,
+   "h": 300,
+   "page": "publicidad",
+   "title": "Publicidad · Logo 4:1 · 1200×300"
+  },
+  "ads-meta-1x1.dc.html": {
+   "x": 0,
+   "y": 1620,
+   "w": 1080,
+   "h": 1080,
+   "page": "publicidad",
+   "title": "Publicidad · Meta 1:1 · 1080×1080"
+  },
+  "ads-meta-4x5.dc.html": {
+   "x": 1160,
+   "y": 1620,
+   "w": 1080,
+   "h": 1350,
+   "page": "publicidad",
+   "title": "Publicidad · Meta 4:5 · 1080×1350"
+  },
+  "ads-meta-9x16.dc.html": {
+   "x": 2320,
+   "y": 1620,
+   "w": 1080,
+   "h": 1920,
+   "page": "publicidad",
+   "title": "Publicidad · Meta 9:16 · 1080×1920"
+  },
+  "marca-02-color.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1744,
+   "page": "marca",
+   "title": "Manual de marca · 02 · Color"
+  },
+  "marca-03-tipografia.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 1392,
+   "page": "marca",
+   "title": "Manual de marca · 03 · Tipografía"
+  },
+  "marca-04-iconos-imagery-voz.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 1636,
+   "page": "marca",
+   "title": "Manual de marca · 04 · Iconos, imagery y voz"
+  },
+  "spec-03-componentes.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 2814,
+   "page": "especificaciones",
+   "title": "Especificaciones · 03 · Componentes"
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "intro-01-que-es.dc.html",
+  "intro-02-como-leerlo.dc.html",
+  "intro-03-lenguaje.dc.html",
+  "marca-01-logo.dc.html",
+  "spec-01-tokens.dc.html",
+  "spec-02-iconos.dc.html",
+  "android-01-inicio.dc.html",
+  "android-01b-menu.dc.html",
+  "android-02-servicio.dc.html",
+  "android-03-cotizacion.dc.html",
+  "desktop-01-inicio.dc.html",
+  "desktop-01-inicio-1920.dc.html",
+  "desktop-03-cotizacion.dc.html",
+  "desktop-02-servicio.dc.html",
+  "desktop-04-ciudad.dc.html",
+  "ios-01-inicio.dc.html",
+  "ios-01b-menu.dc.html",
+  "ios-02-servicio.dc.html",
+  "ios-03-cotizacion.dc.html",
+  "muestreo-01-cotizacion.dc.html",
+  "muestreo-02-llamada.dc.html",
+  "muestreo-03-servicio.dc.html",
+  "proto-00-en-vivo.dc.html",
+  "proto-01-inicio.dc.html",
+  "proto-02-servicio.dc.html",
+  "proto-03-cotizacion.dc.html",
+  "proto-04-inicio-movil.dc.html",
+  "proto-05-cotizacion-movil.dc.html",
+  "edit-web-01-cotizacion-formulario.dc.html",
+  "edit-ios-01-cotizacion-formulario.dc.html",
+  "edit-android-01-cotizacion-formulario.dc.html",
+  "resp-01-matriz.dc.html",
+  "resp-02-reglas.dc.html",
+  "resp-07-seo.dc.html",
+  "resp-03-inicio-360.dc.html",
+  "resp-04-inicio-768.dc.html",
+  "resp-05-inicio-1366.dc.html",
+  "resp-06-inicio-1920.dc.html",
+  "ads-google-display-landscape.dc.html",
+  "ads-google-display-cuadrado.dc.html",
+  "ads-google-search-preview.dc.html",
+  "ads-logo-1x1.dc.html",
+  "ads-logo-4x1.dc.html",
+  "ads-meta-1x1.dc.html",
+  "ads-meta-4x5.dc.html",
+  "ads-meta-9x16.dc.html",
+  "marca-02-color.dc.html",
+  "marca-03-tipografia.dc.html",
+  "marca-04-iconos-imagery-voz.dc.html",
+  "spec-03-componentes.dc.html"
+ ],
+ "notes": {
+  "n-portada": {
+   "x": 0,
+   "y": -300,
+   "text": "Portada · v0.1 · Borrador (pitch) · 03-nov-2026",
+   "kind": "title1",
+   "maxW": 1440,
+   "page": "portada"
+  },
+  "n-introduccion": {
+   "x": 0,
+   "y": -300,
+   "text": "Introducción · qué es, cómo leerlo, glosario",
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "introduccion"
+  },
+  "n-marca": {
+   "x": 0,
+   "y": -300,
+   "text": "Manual de marca · logo, color, tipografía, iconos, imagery y voz",
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "marca"
+  },
+  "n-especificaciones": {
+   "x": 0,
+   "y": -300,
+   "text": "Especificaciones · tokens (= tokens.json), iconos, componentes",
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "especificaciones"
+  },
+  "android-row-1": {
+   "x": 0,
+   "y": -300,
+   "text": "Android · web móvil · Chrome · 412",
+   "kind": "title1",
+   "maxW": 1840,
+   "page": "android"
+  },
+  "web-row-1": {
+   "x": 0,
+   "y": -300,
+   "text": "Web · Escritorio · 1366 / 1920",
+   "kind": "title1",
+   "maxW": 1840,
+   "page": "web"
+  },
+  "ios-row-1": {
+   "x": 0,
+   "y": -300,
+   "text": "iOS · web móvil · Safari · 390",
+   "kind": "title1",
+   "maxW": 1840,
+   "page": "ios"
+  },
+  "c-muestreo-row1": {
+   "x": 0,
+   "y": -240,
+   "text": "Muestreo · flujos clave (Web / iOS Safari / Android Chrome)",
+   "kind": "title1",
+   "maxW": 3600,
+   "page": "muestreo"
+  },
+  "c-proto-row1": {
+   "x": 0,
+   "y": -240,
+   "text": "Prototipo · versión en vivo",
+   "kind": "title1",
+   "maxW": 1200,
+   "page": "prototipo"
+  },
+  "c-proto-row2": {
+   "x": 0,
+   "y": 280,
+   "text": "Prototipo · escritorio 1440",
+   "kind": "title1",
+   "maxW": 4400,
+   "page": "prototipo"
+  },
+  "c-proto-row3": {
+   "x": 0,
+   "y": 2160,
+   "text": "Prototipo · móvil 390",
+   "kind": "title1",
+   "maxW": 1200,
+   "page": "prototipo"
+  },
+  "c-edit-row1": {
+   "x": 0,
+   "y": -240,
+   "text": "Pantallas editables · Cotización (Web / iOS Safari / Android Chrome)",
+   "kind": "title1",
+   "maxW": 2400,
+   "page": "editables"
+  },
+  "resp-row-1": {
+   "x": 0,
+   "y": -300,
+   "text": "Responsive · matriz, reglas y SEO",
+   "kind": "title1",
+   "maxW": 5920,
+   "page": "responsive"
+  },
+  "resp-row-2": {
+   "x": 0,
+   "y": 1620,
+   "text": "Responsive · Inicio a 360 / 768 / 1366 / 1920 (foto del cliente como provisional del hero hasta subir IMG-01)",
+   "kind": "title1",
+   "maxW": 4654,
+   "page": "responsive"
+  },
+  "ads-row-1": {
+   "x": 0,
+   "y": -300,
+   "text": "Google Ads",
+   "kind": "title1",
+   "maxW": 6320,
+   "page": "publicidad"
+  },
+  "ads-row-2": {
+   "x": 0,
+   "y": 1320,
+   "text": "Meta",
+   "kind": "title1",
+   "maxW": 3400,
+   "page": "publicidad"
+  }
+ }
+}

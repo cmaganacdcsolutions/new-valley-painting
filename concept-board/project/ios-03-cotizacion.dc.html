@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>iOS · 03 · Free Estimate · web móvil · Safari</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*,*::before,*::after{box-sizing:border-box}
+sc-for,sc-if{display:contents}
+a{color:#c2410c}a:hover{color:#9a3412}
+a:focus-visible,button:focus-visible{outline:3px solid #ea580c;outline-offset:3px}
+.nv-field::placeholder{color:#6b7280;opacity:1}
+.nv-field:hover{border-color:#374151}
+.nv-field:focus{border:2px solid #0b1a33;padding-left:15px;padding-right:15px}
+.nv-area:focus{padding-top:11px;padding-bottom:11px}
+.nv-field:focus-visible,.nv-radio:focus-visible{outline:3px solid #ea580c;outline-offset:3px}
+.nv-select:invalid{color:#6b7280}
+.nv-radio:checked{border-color:#ea580c;background:radial-gradient(circle,#ea580c 0 5px,#ffffff 5.5px)}
+.nv-call:active{background:#183156}
+</style>
+</helmet>
+<!-- ROOT · the only width value: 390 (Android copy: 412). Viewport height values: fold top 844 + action bar top 780 (Android: 915 / 851). -->
+<div data-spec='{"artboard":"ios-03-cotizacion","page":"/free-estimate/","spec":"§6.7 empty state + §6.1 dark hero (360 rules)","viewport":"390x844","range":"xs 320-479","gutter":"16px","form":"single column, gap 20px"}' style="position: relative; width: 390px; min-height: 3840px; display: flex; flex-direction: column; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #374151; background: #ffffff; overflow: hidden;">
+
+  <!-- fold marker (first viewport) -->
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 844px; border-top: 2px dashed #f97316; z-index: 95;"></div>
+  <div aria-hidden="true" style="position: absolute; right: 4px; top: 848px; z-index: 95; background: #0b1a33; color: #f97316; font: 700 11px/1 'Montserrat', Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 6px; border-radius: 4px;">{{device}} · Fold 844</div>
+
+  <!-- §4.3 action bar on /free-estimate/: right button reads "Start Form" and links to #estimate-form -->
+  <nav data-spec="§4.3 · free-estimate variant" aria-label="Quick actions" style="position: absolute; left: 0; right: 0; top: 780px; height: 64px; z-index: 90; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; background: #0b1a33; border-top: 1px solid #2a3d5c; box-shadow: 0 -6px 20px 0 rgba(11, 26, 51, 0.25);">
+    <a href="#" class="nv-call" aria-label="Call New Valley Painting at (919) 805-7952" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; min-width: 0; background: #10233f; border: 2px solid #2a3d5c; border-radius: 10px; color: #ffffff; font: 700 16px/1 'Montserrat', Arial, sans-serif; text-decoration: none; white-space: nowrap;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.phone}}"/></svg>Call Now</a>
+    <a href="#estimate-form" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; min-width: 0; background: #ea580c; border-radius: 10px; color: #0b1a33; font: 700 16px/1 'Montserrat', Arial, sans-serif; letter-spacing: 0.01em; text-decoration: none; white-space: nowrap;">Start Form<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  </nav>
+
+  <!-- §4.1 header 320-1023 -->
+  <header data-spec="§4.1 · 64px" style="position: relative; z-index: 80; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 16px; background: #0b1a33; border-bottom: 1px solid #2a3d5c;">
+    <a href="#" aria-label="New Valley Painting, home" style="display: flex;"><img src="/_blob/fc94c9cccc85f2e50008980dba7d4ae7" alt="New Valley Painting" style="height: 32px; width: auto; display: block;"></a>
+    <div style="display: flex; gap: 4px;">
+      <a href="#" aria-label="Call (919) 805-7952" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.phone}}"/></svg></a>
+      <button type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; padding: 0; cursor: pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+  <!-- §6.1 dark variant, short (Home hero recipe at xs, no CTA row, no checklist) -->
+  <section data-spec="§6.1 .page-hero--dark · short · xs" aria-labelledby="fe-h1" style="position: relative; isolation: isolate; overflow: hidden; background: #0b1a33; padding: 32px 16px 48px;">
+    <img src="/_blob/9226420d74e06266d617a98664714be8" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; z-index: -2;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #0b1a33b3 0%, #0b1a33eb 55%, #0b1a33 100%);"></div>
+    <nav aria-label="Breadcrumb">
+      <ol style="list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: 14px; font-weight: 500; line-height: 1.5;">
+        <li style="display: flex; align-items: center; gap: 6px;"><a href="#" style="color: #d1d5db; text-decoration: underline; text-underline-offset: 3px;">Home</a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li>
+        <li aria-current="page" style="color: #ffffff;">Free Estimate</li>
+      </ol>
+    </nav>
+    <h1 id="fe-h1" style="margin: 0 0 16px; font: 800 36px/1.05 'Montserrat', Arial, sans-serif; letter-spacing: -0.02em; color: #ffffff; text-wrap: balance;">Get Your Free Estimate</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #d1d5db; text-wrap: pretty;">Tell us about your project. It takes about a minute, and there's no obligation.</p>
+    <p style="margin: 16px 0 0; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; line-height: 1.45; color: #d1d5db;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>Free, no-obligation estimates · Fully insured</p>
+  </section>
+
+  <!-- §6.7 body at <1024: form card first, then the aside -->
+  <section data-spec="§6.7 · xs single column" style="background: #ffffff; padding: 32px 16px 56px;">
+
+    <!-- form card · empty state -->
+    <div id="estimate-form" data-spec="form card · bg #ffffff · border 1px #e5e7eb · radius 24 (radius.xl) · shadow.md · padding 24 (space.6)" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 24px; box-shadow: 0 8px 24px -6px rgba(11, 26, 51, 0.18); padding: 24px;">
+      <h2 style="margin: 0 0 20px; font: 700 20px/1.25 'Montserrat', Arial, sans-serif; color: #0b1a33;">Request your estimate</h2>
+      <form novalidate onSubmit="{{onSubmit}}" style="position: relative; display: flex; flex-direction: column; gap: 20px; margin: 0;">
+
+        <div>
+          <label for="f-name" style="display: block; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">Full name</label>
+          <input id="f-name" class="nv-field" type="text" name="name" autocomplete="name" required minlength="2" maxlength="80" value="{{form.name}}" onChange="{{on.name}}" style="display: block; width: 100%; height: 52px; margin: 0; padding: 0 16px; font: 400 16px/1.4 'Inter', Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px;">
+        </div>
+
+        <div>
+          <label for="f-phone" style="display: block; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">Phone</label>
+          <input id="f-phone" class="nv-field" type="tel" name="phone" autocomplete="tel" inputmode="tel" required placeholder="(919) 555-0123" value="{{form.phone}}" onChange="{{on.phone}}" style="display: block; width: 100%; height: 52px; margin: 0; padding: 0 16px; font: 400 16px/1.4 'Inter', Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px; font-variant-numeric: tabular-nums lining-nums;">
+        </div>
+
+        <div>
+          <label for="f-email" style="display: block; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">Email <span style="font-weight: 400; color: #4b5563;">(optional)</span></label>
+          <input id="f-email" class="nv-field" type="email" name="email" autocomplete="email" value="{{form.email}}" onChange="{{on.email}}" style="display: block; width: 100%; height: 52px; margin: 0; padding: 0 16px; font: 400 16px/1.4 'Inter', Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px;">
+        </div>
+
+        <div>
+          <label for="f-zip" style="display: block; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">ZIP code</label>
+          <input id="f-zip" class="nv-field" type="text" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" required placeholder="27601" value="{{form.zip}}" onChange="{{on.zip}}" style="display: block; width: 100%; height: 52px; margin: 0; padding: 0 16px; font: 400 16px/1.4 'Inter', Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px; font-variant-numeric: tabular-nums lining-nums;">
+        </div>
+
+        <div>
+          <label for="f-service" style="display: block; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">Service needed</label>
+          <div style="position: relative;">
+            <select id="f-service" class="nv-field nv-select" name="service" required value="{{form.service}}" onChange="{{on.service}}" style="display: block; width: 100%; height: 52px; margin: 0; padding: 0 44px 0 16px; font: 400 16px/1.4 'Inter', Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px; appearance: none; -webkit-appearance: none; text-overflow: ellipsis;">
+              <option value="" disabled>Select a service</option>
+              <option value="interior-painting">Interior Painting</option>
+              <option value="exterior-painting">Exterior Painting</option>
+              <option value="cabinet-painting">Cabinet Painting</option>
+              <option value="kitchen-remodeling">Kitchen Remodeling</option>
+              <option value="bathroom-remodeling">Bathroom Remodeling</option>
+              <option value="flooring-installation">Flooring Installation</option>
+              <option value="drywall-finishing">Drywall &amp; Finishing</option>
+              <option value="decks-outdoor-living">Decks &amp; Outdoor Living</option>
+              <option value="other">Other / not sure</option>
+            </select>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 16px; top: 16px; pointer-events: none;"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+
+        <div>
+          <label for="f-details" style="display: block; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">Project details <span style="font-weight: 400; color: #4b5563;">(optional)</span></label>
+          <textarea id="f-details" class="nv-field nv-area" name="details" rows="5" maxlength="1000" aria-describedby="f-details-count" value="{{form.details}}" onChange="{{on.details}}" style="display: block; width: 100%; min-height: 132px; margin: 0; padding: 12px 16px; font: 400 16px/1.5 'Inter', Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px; resize: vertical;"></textarea>
+          <p id="f-details-count" style="margin: 4px 0 0; text-align: right; font-size: 13px; font-weight: 500; line-height: 1.45; color: #4b5563; font-variant-numeric: tabular-nums lining-nums;">{{count}} / 1000</p>
+        </div>
+
+        <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;">
+          <legend style="padding: 0; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">Preferred contact</legend>
+          <div style="display: flex; flex-wrap: wrap; column-gap: 24px;">
+            <sc-for list="{{contacts}}" as="c" hint-placeholder-count="3">
+              <label style="display: inline-flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; font: 400 16px/1.4 'Inter', Arial, sans-serif; color: #111827;"><input class="nv-radio" type="radio" name="contact" value="{{c.id}}" checked="{{c.on}}" onChange="{{c.pick}}" style="flex: none; width: 24px; height: 24px; margin: 0; border: 2px solid #6b7280; border-radius: 50%; background: #ffffff; appearance: none; -webkit-appearance: none; cursor: pointer;">{{c.label}}</label>
+            </sc-for>
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="f-time" style="display: block; margin: 0 0 8px; font: 600 14px/1.4 'Inter', Arial, sans-serif; color: #111827;">Best time to reach you <span style="font-weight: 400; color: #4b5563;">(optional)</span></label>
+          <div style="position: relative;">
+            <select id="f-time" class="nv-field" name="time" value="{{form.time}}" onChange="{{on.time}}" style="display: block; width: 100%; height: 52px; margin: 0; padding: 0 44px 0 16px; font: 400 16px/1.4 'Inter', Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px; appearance: none; -webkit-appearance: none;">
+              <option value="Any time">Any time</option>
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+            </select>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 16px; top: 16px; pointer-events: none;"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+
+        <!-- honeypot: visually hidden, never focusable -->
+        <div aria-hidden="true" style="position: absolute; left: -10000px; top: 0; width: 1px; height: 1px; overflow: hidden;"><label for="f-company">Company</label><input id="f-company" type="text" name="company" tabindex="-1" autocomplete="off"></div>
+
+        <div style="margin-top: 4px;">
+          <button type="submit" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 56px; margin: 0; padding: 8px 20px; background: #ea580c; border: 0; border-radius: 10px; color: #0b1a33; font: 700 17px/1.2 'Montserrat', Arial, sans-serif; letter-spacing: 0.01em; text-align: center; cursor: pointer; box-shadow: 0 10px 24px -8px rgba(234, 88, 12, 0.55);">Send My Free Estimate Request<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <p style="margin: 16px 0 0; font-size: 13px; font-weight: 500; line-height: 1.45; color: #4b5563; text-wrap: pretty;">By submitting, you agree that New Valley Painting may contact you about your estimate by your preferred method. We never sell your information. See our <a href="#" style="color: #c2410c; font-weight: 600;">Privacy Policy</a>.</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- aside: Prefer to talk? -->
+    <aside aria-labelledby="fe-talk" style="margin-top: 40px;">
+      <h3 id="fe-talk" style="margin: 0 0 16px; font: 700 20px/1.25 'Montserrat', Arial, sans-serif; color: #0b1a33;">Prefer to talk?</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <a href="#" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 56px; padding: 0 20px; background: #ea580c; border-radius: 10px; color: #0b1a33; font: 700 17px/1 'Montserrat', Arial, sans-serif; text-decoration: none; white-space: nowrap; font-variant-numeric: tabular-nums lining-nums;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.phone}}"/></svg>Call (919) 805-7952</a>
+        <a href="#" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 56px; padding: 0 20px; background: transparent; border: 2px solid #0b1a33; border-radius: 10px; color: #0b1a33; font: 700 17px/1 'Montserrat', Arial, sans-serif; text-decoration: none; white-space: nowrap;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>Text or WhatsApp</a>
+      </div>
+      <a href="#" style="margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; max-width: 100%; font: 600 16px/1.4 'Inter', Arial, sans-serif; color: #c2410c; text-decoration: none; overflow-wrap: anywhere;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>nvpnting@gmail.com</a>
+      <ul style="list-style: none; margin: 16px 0 0; padding: 0;">
+        <sc-for list="{{trustRows}}" as="r" hint-placeholder-count="3">
+          <li style="{{r.row}}">
+            <span style="flex: 0 0 48px; width: 48px; height: 48px; border-radius: 10px; background: #fff7ed; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{r.d}}"/></svg></span>
+            <span style="min-width: 0; font: 700 16px/1.3 'Montserrat', Arial, sans-serif; color: #0b1a33;">{{r.t}}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </aside>
+  </section>
+  </main>
+
+  <!-- §5.12 footer (xs stack; padding-bottom clears the action bar) -->
+  <footer data-spec="§5.12 · xs" style="flex: 1; background: #0b1a33; border-top: 3px solid #ea580c; padding: 56px 16px 96px; color: #d1d5db;">
+    <img src="/_blob/fc94c9cccc85f2e50008980dba7d4ae7" alt="New Valley Painting" style="height: 44px; width: auto; display: block;">
+    <p style="margin: 16px 0 20px; font-style: italic; color: #d1d5db;">The brush of quality, the stroke of excellence.</p>
+    <a href="#estimate-form" style="display: inline-flex; align-items: center; height: 48px; padding: 0 24px; background: #ea580c; border-radius: 10px; color: #0b1a33; font: 700 16px/1 'Montserrat', Arial, sans-serif; text-decoration: none;">Get a Free Estimate</a>
+    <sc-for list="{{groups}}" as="g" hint-placeholder-count="4">
+      <div style="margin-top: 32px;">
+        <p style="margin: 0 0 4px; font: 700 13px/1.2 'Montserrat', Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #f97316;">{{g.h}}</p>
+        <sc-for list="{{g.links}}" as="l" hint-placeholder-count="5"><a href="#" style="display: block; padding: 10px 0; font-size: 15px; font-weight: 500; line-height: 1.6; color: #d1d5db; text-decoration: none; overflow-wrap: anywhere;">{{l}}</a></sc-for>
+      </div>
+    </sc-for>
+    <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #2a3d5c; display: flex; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #9ca3af;"><span>© 2026 New Valley Painting. All rights reserved.</span><a href="#" style="color: #d1d5db;">Privacy</a><span>Prototype by CDC Software Solutions</span></div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":3840}}'>
+class Component extends DCLogic {
+  getForm() {
+    var base = { name: "", phone: "", email: "", zip: "", service: "", details: "", contact: "call", time: "Any time" };
+    return (this.state && this.state.form) ? this.state.form : base;
+  }
+  setField(key, val) {
+    var next = Object.assign({}, this.getForm());
+    next[key] = val;
+    this.setState({ form: next });
+  }
+  renderVals() {
+    var self = this;
+    var f = this.getForm();
+    var mk = function (key) { return function (e) { self.setField(key, e.target.value); }; };
+    var row = "display: flex; align-items: center; gap: 16px; padding: 12px 0;";
+    var opts = [{ id: "call", label: "Call" }, { id: "text", label: "Text" }, { id: "email", label: "Email" }];
+    return {
+      device: "iOS · web móvil · Safari",
+      ic: {
+        phone: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+      },
+      form: f,
+      count: String(f.details.length),
+      on: { name: mk("name"), phone: mk("phone"), email: mk("email"), zip: mk("zip"), service: mk("service"), details: mk("details"), time: mk("time") },
+      contacts: opts.map(function (o) {
+        return { id: o.id, label: o.label, on: f.contact === o.id, pick: function () { self.setField("contact", o.id); } };
+      }),
+      onSubmit: function (e) { if (e && e.preventDefault) { e.preventDefault(); } },
+      trustRows: [
+        { d: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4", t: "Fully Insured", row: row },
+        { d: "M18 8a6 6 0 1 1-12 0a6 6 0 1 1 12 0zM15.477 12.89 17 22l-5-3-5 3 1.523-9.11", t: "2-Year Workmanship Warranty", row: row + " border-top: 1px solid #e5e7eb;" },
+        { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M13 7a4 4 0 1 1-8 0a4 4 0 1 1 8 0zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75", t: "Family Owned & Operated", row: row + " border-top: 1px solid #e5e7eb;" }
+      ],
+      groups: [
+        { h: "Services", links: ["Interior Painting", "Exterior Painting", "Cabinet Painting", "Kitchen Remodeling", "Bathroom Remodeling", "Flooring Installation", "Drywall & Finishing", "Decks & Outdoor Living"] },
+        { h: "Company", links: ["Projects", "About", "Reviews", "Service Areas", "Free Estimate"] },
+        { h: "Service Areas", links: ["Raleigh", "Durham", "Cary", "Chapel Hill", "Apex", "Wake Forest"] },
+        { h: "Contact", links: ["(919) 805-7952", "nvpnting@gmail.com", "WhatsApp", "Facebook"] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

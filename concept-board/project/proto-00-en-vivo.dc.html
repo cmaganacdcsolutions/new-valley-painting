@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ver prototipo en vivo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#c2410c}a:hover{color:#9a3412}
+a:focus-visible,button:focus-visible{outline:3px solid #ea580c;outline-offset:3px}
+.nvp-in::placeholder{color:#6b7280}
+.nvp-in:hover{border-color:#374151 !important}
+.nvp-in:focus{border:2px solid #0b1a33 !important;outline:3px solid #ea580c;outline-offset:3px}
+.nvp-in[aria-invalid="true"]{border:2px solid #b91c1c !important}
+.nvp-in:disabled{background:#f3f4f6 !important;color:#6b7280 !important;border-color:#d1d5db !important}
+.nvp-btn[aria-disabled="true"]{background:#d1d5db !important;border-color:#d1d5db !important;color:#4b5563 !important;box-shadow:none !important;cursor:not-allowed}
+.nvp-spin{animation:nvp-spin 800ms linear infinite}@keyframes nvp-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.nvp-spin{animation:none}}
+</style>
+</helmet>
+<div style="width: 520px; height: 200px; box-sizing: border-box; overflow: hidden; position: relative; font-family: 'Inter','Segoe UI',Roboto,Arial,sans-serif; color: #374151; background: #0b1a33">
+<a href="LIVE_URL_PENDING" style="display:flex;align-items:center;justify-content:space-between;gap:24px;box-sizing:border-box;width:100%;min-height:200px;padding:32px;background:#0b1a33;color:#ffffff;text-decoration:none;border-radius:24px"><span style="display:block"><span style="display:block;font:700 13px 'Montserrat','Segoe UI',Arial,sans-serif;letter-spacing:0.14em;text-transform:uppercase;color:#f97316">Prototipo</span><span style="display:block;margin-top:12px;font:800 28px/1.15 'Montserrat','Segoe UI',Arial,sans-serif;color:#ffffff">Ver prototipo en vivo</span><span style="display:block;margin-top:8px;font:400 15px/1.5 'Inter','Segoe UI',Roboto,Arial,sans-serif;color:#d1d5db">Abre el sitio desplegado en una pestaña nueva.</span></span><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="flex:none;color:#f97316;display:block"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":520,"height":200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -94,7 +94,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}
           <sc-if value="{{s.stock}}" hint-placeholder-val="{{ true }}"><div style="width:100%;aspect-ratio:4/3;background:#f3f4f6;border-bottom:1px dashed #d1d5db;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font-size:13px;font-weight:500;line-height:1.45;color:#4b5563">{{s.slot}}</div></sc-if>
           <div style="margin:-24px 0 0 20px;position:relative;width:48px;height:48px;border-radius:10px;background:#fff7ed;border:1px solid #ffedd5;box-shadow:0 0 0 4px #ffffff;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{s.d1}}"/><path d="{{s.d2}}"/><path d="{{s.d3}}"/></svg></div>
           <div style="padding:12px 20px 20px">
-            <h3 style="margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:Montserrat,sans-serif;font-weight:700;font-size:20px;line-height:1.3;color:#0b1a33">{{s.title}}<sc-if value="{{s.ph}}" hint-placeholder-val="{{ false }}"><span data-placeholder="true" style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:#fffbeb;border:1px solid #b45309;color:#b45309;font-family:Inter,sans-serif;font-size:13px;font-weight:500">[confirmar]</span></sc-if></h3>
+            <h3 style="margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:Montserrat,sans-serif;font-weight:700;font-size:20px;line-height:1.3;color:#0b1a33">{{s.title}}<sc-if value="{{s.ph}}" hint-placeholder-val="{{ false }}"><span data-placeholder="true" style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:#fffbeb;border:1px solid #b45309;color:#b45309;font-family:Inter,sans-serif;font-size:13px;font-weight:500">To confirm</span></sc-if></h3>
             <p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#4b5563;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{s.desc}}</p>
             <span style="margin-top:16px;display:inline-flex;align-items:center;gap:6px;min-height:44px;font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;color:#c2410c">Learn more<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </div>
@@ -123,7 +123,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}
           <div aria-hidden="true" style="position:absolute;top:50%;left:{{pos}};width:56px;height:56px;border-radius:50%;background:#ea580c;border:3px solid #ffffff;box-shadow:0 4px 14px 0 rgba(0,0,0,0.35);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18-6-6 6-6"/><path d="m15 6 6 6-6 6"/></svg></div>
           <input type="range" min="0" max="100" step="1" value="{{val}}" onChange="{{onSlide}}" aria-label="Compare before and after: drag to reveal" style="position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize">
         </div>
-        <figcaption style="margin-top:12px;font-size:13px;font-weight:500;line-height:1.45;color:#4b5563">Exterior brick painting · Raleigh-Durham area <span data-placeholder="true" style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:#fffbeb;border:1px solid #b45309;color:#b45309">[confirmar] location</span></figcaption>
+        <figcaption style="margin-top:12px;font-size:13px;font-weight:500;line-height:1.45;color:#4b5563">Exterior brick painting · Raleigh-Durham area <span data-placeholder="true" style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:#fffbeb;border:1px solid #b45309;color:#b45309">To confirm</span></figcaption>
       </figure>
       <div style="grid-column:9 / span 4;min-width:0">
         <h3 style="margin:0;font-family:Montserrat,sans-serif;font-weight:700;font-size:23px;line-height:1.25;letter-spacing:-0.005em;color:#0b1a33">Painted brick, crisp black trim</h3>
@@ -230,7 +230,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}
         <li style="min-width:0"><a href="#" class="nv-chip" style="display:flex;align-items:center;gap:10px;min-height:56px;padding:0 16px;background:#10233f;border:1px solid #2a3d5c;border-radius:10px;color:#ffffff;text-decoration:none;font-family:Montserrat,sans-serif;font-weight:600;font-size:16px;line-height:1.25"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>{{c}}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-left:auto"><path d="m9 18 6-6-6-6"/></svg></a></li>
       </sc-for>
     </ul>
-    <p data-placeholder="true" style="grid-column:6 / span 7;margin:12px 0 0;font-size:13px;font-weight:500;color:#9ca3af">Coverage [confirmar] with New Valley Painting.</p>
+    <p data-placeholder="true" style="grid-column:6 / span 7;margin:12px 0 0;font-size:13px;font-weight:500;color:#9ca3af"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;margin-right:8px;border-radius:999px;background:#10233f;border:1px solid #f97316;color:#f97316">To confirm</span>Coverage area to be confirmed by New Valley Painting.</p>
   </div>
 </section>
 
@@ -339,7 +339,7 @@ class Component extends DCLogic {
       ],
       steps: [
         { n:'1', t:'Request your free estimate', b:'Call, text or send the form and tell us about your project.', d1:P.clip[0], d2:P.clip[1], d3:P.clip[2] },
-        { n:'2', t:'Walkthrough & quote', b:'We visit, look at every surface and give you a clear, detailed quote. [confirmar]', d1:P.pin[0], d2:P.pin[1], d3:P.pin[2] },
+        { n:'2', t:'Walkthrough & quote', b:'We visit, look at every surface and give you a clear, detailed quote.', d1:P.pin[0], d2:P.pin[1], d3:P.pin[2] },
         { n:'3', t:'Prep & transform', b:'We protect your home, prep carefully and get to work.', d1:P.roller[0], d2:P.roller[1], d3:P.roller[2] },
         { n:'4', t:'Final walkthrough', b:'We review every detail with you, backed by our 2-year workmanship warranty.', d1:P.award[0], d2:P.award[1], d3:P.award[2] }
       ],
@@ -359,7 +359,7 @@ class Component extends DCLogic {
         { q:'Are you insured?', a:'Yes. New Valley Painting is fully insured, so your property is protected from job-site accidents.', open:false, color:'#0b1a33', v:'M12 5v14', bt:'none' },
         { q:'Do you offer a warranty?', a:'Yes. We back our work with a 2-year workmanship warranty.', open:false, color:'#0b1a33', v:'M12 5v14', bt:'none' },
         { q:'What services do you offer besides painting?', a:'Kitchen and bathroom remodeling, flooring installation, drywall repair and finishing, and decks and outdoor living spaces, plus interior, exterior and cabinet painting.', open:false, color:'#0b1a33', v:'M12 5v14', bt:'none' },
-        { q:'Which areas do you serve?', a:'Raleigh, Durham, Cary, Chapel Hill, Apex, Wake Forest and nearby communities in the Triangle. [confirmar]', open:false, color:'#0b1a33', v:'M12 5v14', bt:'none' },
+        { q:'Which areas do you serve?', a:'Raleigh, Durham, Cary, Chapel Hill, Apex, Wake Forest and nearby communities in the Triangle.', open:false, color:'#0b1a33', v:'M12 5v14', bt:'none' },
         { q:'How do I get started?', a:"Request your free estimate by phone, text or our online form. We'll schedule a walkthrough, give you a clear quote and plan your project around you.", open:false, color:'#0b1a33', v:'M12 5v14', bt:'none' }
       ],
       fgroups: [

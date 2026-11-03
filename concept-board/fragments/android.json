@@ -1,0 +1,7 @@
+{"boards":{
+"android-01-inicio.dc.html":{"x":0,"y":0,"w":412,"h":7760,"page":"android","title":"Android · 01 · Inicio · web móvil · Chrome","is_interactive":true},
+"android-01b-menu.dc.html":{"x":492,"y":0,"w":412,"h":915,"page":"android","title":"Android · 01b · Menú · web móvil · Chrome","is_interactive":true},
+"android-02-servicio.dc.html":{"x":984,"y":0,"w":412,"h":6960,"page":"android","title":"Android · 02 · Service · Interior Painting · web móvil · Chrome"},
+"android-03-cotizacion.dc.html":{"x":1476,"y":0,"w":412,"h":3840,"page":"android","title":"Android · 03 · Free Estimate · web móvil · Chrome","is_interactive":true}},
+"order":["android-01-inicio.dc.html","android-01b-menu.dc.html","android-02-servicio.dc.html","android-03-cotizacion.dc.html"],
+"notes":{"android-row-1":{"x":0,"y":-300,"text":"Android · web móvil · Chrome · 412","kind":"title1","maxW":1840,"page":"android"}}}

@@ -1,0 +1,87 @@
+{
+ "boards": {
+  "resp-01-matriz.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1300,
+   "page": "responsive",
+   "title": "Responsive · 01 · Matriz de dispositivos"
+  },
+  "resp-02-reglas.dc.html": {
+   "x": 2000,
+   "y": 0,
+   "w": 1920,
+   "h": 1500,
+   "page": "responsive",
+   "title": "Responsive · 02 · Reglas fluidas y anti-recorte"
+  },
+  "resp-07-seo.dc.html": {
+   "x": 4000,
+   "y": 0,
+   "w": 1920,
+   "h": 1500,
+   "page": "responsive",
+   "title": "Responsive · 07 · SEO: hoy vs nuevo sitio"
+  },
+  "resp-03-inicio-360.dc.html": {
+   "x": 0,
+   "y": 1920,
+   "w": 360,
+   "h": 9400,
+   "page": "responsive",
+   "title": "Responsive · 03 · Inicio · Android 360×800"
+  },
+  "resp-04-inicio-768.dc.html": {
+   "x": 440,
+   "y": 1920,
+   "w": 768,
+   "h": 7960,
+   "page": "responsive",
+   "title": "Responsive · 04 · Inicio · 768"
+  },
+  "resp-05-inicio-1366.dc.html": {
+   "x": 1288,
+   "y": 1920,
+   "w": 1366,
+   "h": 8000,
+   "page": "responsive",
+   "title": "Responsive · 05 · Inicio · 1366"
+  },
+  "resp-06-inicio-1920.dc.html": {
+   "x": 2734,
+   "y": 1920,
+   "w": 1920,
+   "h": 3340,
+   "page": "responsive",
+   "title": "Responsive · 06 · Inicio · 1920"
+  }
+ },
+ "order": [
+  "resp-01-matriz.dc.html",
+  "resp-02-reglas.dc.html",
+  "resp-07-seo.dc.html",
+  "resp-03-inicio-360.dc.html",
+  "resp-04-inicio-768.dc.html",
+  "resp-05-inicio-1366.dc.html",
+  "resp-06-inicio-1920.dc.html"
+ ],
+ "notes": {
+  "resp-row-1": {
+   "x": 0,
+   "y": -300,
+   "text": "Responsive · matriz, reglas y SEO",
+   "kind": "title1",
+   "maxW": 5920,
+   "page": "responsive"
+  },
+  "resp-row-2": {
+   "x": 0,
+   "y": 1620,
+   "text": "Responsive · Inicio a 360 / 768 / 1366 / 1920 (foto del cliente como provisional del hero hasta subir IMG-01)",
+   "kind": "title1",
+   "maxW": 4654,
+   "page": "responsive"
+  }
+ }
+}

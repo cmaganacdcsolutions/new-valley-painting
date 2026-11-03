@@ -169,6 +169,7 @@ Light: #c2410c, `text-decoration: underline; text-underline-offset: 3px; text-de
 - Body padding: → `space.5` (20px) top 12px; title → `h4` #0b1a33; desc → `small` #4b5563, margin-top `space.2`, clamped to 2 lines (`-webkit-line-clamp: 2`); arrow link "Learn more" (`aria-hidden` arrow) margin-top `space.4`, color #c2410c.
 - Hover (pointer devices only, `@media (hover:hover)`): card `translateY(→ distance.card-lift)`, shadow → `shadow.lg`, media `scale(→ scale.card-image-hover)` over → `duration.slow` → `easing.out-expo`, arrow nudge. Focus-visible: outline on the `<a>` with radius 16px. Active: `scale(0.99)`.
 - **Compact variant (<480px):** horizontal row with media 96×96 (1:1) on the left, radius → `radius.md` (10px), card padding → `space.3`, gap → `space.4`; icon chip hidden; desc hidden; title → `h4`; a trailing `chevron-right` 20px #c2410c.
+- **Compact variant at all widths (D-32):** the compact variant (96×96 photo) is also used at all widths for Related services (§6.2-7) and city "Our services" (§6.3-4); at 1366 those grids run 2 columns so titles never clip. The icon-chip mini card is not an approved variant.
 
 ### 3.6 Trust item (molecule)
 Icon 28px (stroke #ea580c, stroke-width 2) + label in Montserrat 700, 15px (→ `font-size.nav`), lh 1.3, #0b1a33 + optional sub-line → `caption` #4b5563. Not interactive.
@@ -190,7 +191,7 @@ bg #ffffff, border 1px solid #e5e7eb, radius → `radius.lg`, padding → `space
 Inline-flex, height 22px, padding 0 8px, radius → `radius.pill`, bg #fffbeb, border 1px solid #b45309, text #b45309, → typography `caption` (Inter 500, 13px), text "Placeholder". Used on sample reviews, stock project cards and the stats footnote. `data-placeholder="true"`.
 
 ### 3.11 Breadcrumb (molecule)
-`<nav aria-label="Breadcrumb"><ol>`; items → `small`; links #d1d5db on dark heroes (#4b5563 on light), separator `chevron-right` 14px #9ca3af `aria-hidden`; current item #ffffff (#0b1a33 on light) with `aria-current="page"`. Wraps onto 2 lines if needed (no truncation).
+`<nav aria-label="Breadcrumb"><ol>`; items → `small`; links #d1d5db on dark heroes (#4b5563 on light), separator `chevron-right` 14px #9ca3af `aria-hidden`; current item #ffffff (#0b1a33 on light) with `aria-current="page"`. Links are underlined at rest (`text-decoration: underline; text-underline-offset: 3px`), so they differ from the current item without relying on colour (WCAG 1.4.1, D-33); hover → #ffffff on dark (#0b1a33 on light). Every inner page hero carries it, including `/free-estimate/` ("Home › Free Estimate", H1 margin-top `space.3`, D-31). Wraps onto 2 lines if needed (no truncation).
 
 ### 3.12 Form controls: see §6.7.
 
@@ -240,7 +241,7 @@ Order: Header · **5.1 Hero** · **5.2 Trust strip** · **5.3 Services** · **5.
 **Structure:** reference variant **(b)** (full-bleed photo + navy gradient + kicker + checklist + Estimate CTA + Call button), with variant **(a)**'s keyword-led headline and variant (a)'s trust strip attached below it. Variant (a) (light overlay, kitchen photo, 2 CTAs) becomes the **inner-page hero** for the Services hub and every service page (§6.1).
 
 `<section class="hero" aria-labelledby="hero-title">`: `position: relative; isolation: isolate; overflow: hidden; bg #0b1a33`.
-- **Media layer:** `<picture>` absolute inset 0, `object-fit: cover`, image slot **IMG-01** (§8). Overlay `::after`: → `gradient.hero-mobile` below 768px, → `gradient.hero-desktop` at ≥768.
+- **Media layer:** `<picture>` absolute inset 0, `object-fit: cover`, image slot **IMG-01** (§8). Overlay `::after`: → `gradient.hero-mobile` below 768px, → `gradient.hero-tablet` at 768–1023 (D-22), → `gradient.hero-desktop` at ≥1024.
 - **Content (z 1), in source order:**
   1. Kicker (dark variant): **"More than painting · Raleigh-Durham, NC"**
   2. H1 `#hero-title` → typography `display`, #ffffff: **"Painting & <span class="brush">Remodeling</span> Services in Raleigh-Durham"**. `.brush` = `position: relative; white-space: nowrap`; its `::after` holds the brush-stroke SVG (§8.4), positioned `left: -2%; right: -2%; bottom: -0.12em; height: 0.32em; z-index: -1`. "Raleigh-Durham" may break after the hyphen at ≤360px; that is allowed.
@@ -252,8 +253,8 @@ Order: Header · **5.1 Hero** · **5.2 Trust strip** · **5.3 Services** · **5.
 | Width | Layout |
 |---|---|
 | 360 (320–767) | Padding-top `space.8`, padding-bottom `space.12`. Content full width. Vertical stack, gaps: kicker→H1 `space.3`, H1→lead `space.4`, lead→CTAs `space.6`, CTAs→micro `space.4`. CTAs `--block`, stacked, gap `space.3`. Image `object-position: 70% center`. Above the fold at 360×800 and 375×667 (with the 64px bar): kicker, H1, lead and both CTAs. |
-| 768 (768–1023) | Padding `space.16` / `space.20`. Content `max-width: 600px`. CTAs inline (`flex-wrap: wrap; gap: space.3`), not block. Checklist visible, 1 column. |
-| 1366 (1024–1535) | `min-height: min(720px, calc(100svh - var(--layout-header-h)))`, so at 1366×768 the hero is 688px and fully in view. Content vertically centered, `max-width: 640px`, padding-bottom `space.24` (room for the overlapping trust strip). Checklist 2 columns. |
+| 768 (768–1023) | Padding `space.16` / `space.20`. Content `max-width: 600px`. CTAs inline (`flex-wrap: wrap; gap: space.3`), not block. Checklist visible, 1 column. Overlay `gradient.hero-tablet` (≥75% navy under the 600px column; D-22); `gradient.hero-desktop` applies from 1024. |
+| 1366 (1024–1535) | `min-height: min(720px, calc(100svh - var(--layout-header-h)))`. H1 uses `font-size.display-laptop` (3.625rem, 58px) in this range instead of the fluid `display` (D-20). At 1366×768 the kicker, H1, lead, checklist and both CTAs are above the fold; microcopy and trust strip may sit below. Content vertically centered, `max-width: 640px`, padding-bottom `space.24` (room for the overlapping trust strip). Checklist 2 columns. |
 | 1920 (≥1536) | `min-height: 760px`. Container stays 1280 (content at left), image full-bleed (srcset up to 2560w). |
 
 Anti-clipping: the H1 wraps freely (balance); the CTA labels never wrap (`nowrap`) and stack to block below 768. At 320 the CTA is 288px wide, and "Call (919) 805-7952" at 17px plus the icon is ~230px, which fits.
@@ -324,7 +325,7 @@ bg → `gradient.dark-band`, padding → `layout.section-y-tight`. `<section ari
 
 ### 5.6 Process: "How it works"
 bg #ffffff. Centered head: kicker **"How it works"**, H2 **"From First Call to Final Walkthrough"**.
-4 steps `<ol>`; each step: number badge (40×40 circle, bg #0b1a33, Montserrat 800 16px #ffffff) · icon chip · H3 (→ `h4`) · body → `small` #4b5563:
+4 steps `<ol>`; at ≥1024 a 4-column grid with column gap `space.6` (24px, D-24). Each step: number badge (40×40 circle, bg #0b1a33, Montserrat 800 16px #ffffff) · icon chip · H3 (→ `h4`) · body → `small` #4b5563:
 1. clipboard-check · **Request your free estimate** · "Call, text or send the form and tell us about your project."
 2. map-pin · **Walkthrough & quote** · "We visit, look at every surface and give you a clear, detailed quote." `[confirmar]`
 3. paint-roller · **Prep & transform** · "We protect your home, prep carefully and get to work."
@@ -597,6 +598,19 @@ Icon sizes: `size.icon-xs` 14px · `icon-sm` 16px · `icon-md` 18px · `icon` 20
 - **D-17** Cabinet painting is included as a 9th route/8th card, flagged `[confirmar]`; the fallback layout is specified in §5.3.
 - **D-18** Free Estimate canonical URL is `/free-estimate/` (keyword in the URL, a single conversion endpoint).
 - **D-19** The before/after slider uses a native `<input type="range">` (keyboard and screen-reader support out of the box) over a CSS `clip-path` reveal.
+- **D-20** Hero H1 at 1024–1535 uses new token `font-size.display-laptop` (3.625rem, 58px), matching `desktop-01`/`resp-05`; at 1366×768 kicker → both CTAs stay above the fold (§5.1 amended).
+- **D-21** `resp-03-inicio-360` takes its values from spec §5 and `ios-01-inicio` (stat #ffffff + #f97316 suffix, stat icon 32px, FAQ plus #ea580c on #fff7ed, city chip Montserrat 600 16px); responsive sketches never introduce values of their own.
+- **D-22** New token `gradient.hero-tablet` for the hero overlay at 768–1023 (≥75% navy under the text column); `gradient.hero-desktop` from 1024 (§5.1).
+- **D-23** Mobile Home renders the Final CTA (§5.11) and the 1-column footer (§5.12); the mobile Home artboards point to them with a board note instead of redrawing them.
+- **D-24** Process grid column gap is `space.6` (24px) at ≥1024 (§5.6), as drawn in `desktop-01`.
+- **D-25** Footer city links read "Raleigh", "Durham"… without ", NC"; the state belongs in the city-page H1 and meta.
+- **D-30** Placeholder chip text is English site-wide: "Placeholder" (stock or sample content) or "To confirm" (facts pending from the client), with the English footnote sentences; `[confirmar]` stays only in the spec, board notes and `data-placeholder`.
+- **D-31** `/free-estimate/` keeps the dark breadcrumb "Home › Free Estimate" above the H1, like every inner page hero (§3.11, §6).
+- **D-32** The compact service card (96×96 photo) is also used at all widths for Related services and city "Our services" (§3.5 amended); the icon-chip mini card is not approved.
+- **D-33** Breadcrumb links are underlined at rest (offset 3px) so they never rely on colour alone (§3.11 amended).
+- **D-34** The light-hero CTA row wraps at 1366 (560px column < 568px of buttons); stacked buttons are faithful, no change.
+- **D-35** Section headings follow the board verbatim on service and city pages; real stock photos with the "Placeholder" chip replace the dashed IMG slots (D-12).
+- **D-36** `/free-estimate/` keeps the §5.11 Final CTA; its primary button links to `#estimate-form`, the phone button stays `tel:`.
 
 ## 13. QA hand-off: verify these first
 - **320/360:** hero H1 wrap ("Raleigh-Durham" hyphen break), CTA labels (nowrap, block), action bar labels (148px buttons), trust strip 2×2 labels, compact service cards, the review scroller bleed, footer email (`overflow-wrap: anywhere`), the drawer at 360×640 (internal scroll).

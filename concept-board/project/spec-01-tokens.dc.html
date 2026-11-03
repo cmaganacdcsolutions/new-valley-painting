@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>spec-01 · Tabla de tokens</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#c2410c}a:hover{color:#9a3412}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 3800px; box-sizing: border-box; display: flex; flex-direction: column; font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif; color: #374151; background: #ffffff">
+  <header style="display: flex; justify-content: space-between; align-items: center; gap: 24px; height: 72px; padding: 0 64px; background: #0b1a33; border-bottom: 1px solid #2a3d5c">
+    <img src="/_blob/fc94c9cccc85f2e50008980dba7d4ae7" alt="New Valley Painting" style="display: block; height: 32px; width: auto">
+    <span style="font: 600 13px/1.45 Inter, Arial, sans-serif; color: #d1d5db">Especificaciones · spec-01-tokens · Todas las plataformas: Web · web móvil Safari · web móvil Chrome</span>
+  </header>
+
+  <main style="flex: 1; padding: 48px 64px">
+    <p style="margin: 0; display: flex; align-items: center; gap: 12px; font: 700 13px/1.2 Montserrat, Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #c2410c"><span style="display: inline-block; width: 24px; height: 3px; border-radius: 4px; background: #ea580c"></span>Especificaciones · Tokens</p>
+    <h1 style="margin: 12px 0 0; font: 800 44px/1.15 Montserrat, Arial, sans-serif; letter-spacing: -0.01em; color: #0b1a33">Tabla de tokens = tokens.json v1.0.0</h1>
+    <p style="margin: 12px 0 0; max-width: 100ch; font: 400 16px/1.6 Inter, Arial, sans-serif; color: #4b5563">Esta tabla se genera a partir de una copia literal de design/tokens.json (los datos están en el script de este artboard): mismos nombres, mismos valores, mismo formato. Nombre de la variable CSS = la ruta con "-": color.navy.950 → --color-navy-950. Un valor entre llaves es un alias; a su derecha, en gris, su valor final. El arreglo <code>contrast</code> (28 pares AA) está en marca-02-color; <code>typography</code> son estilos compuestos de documentación (no se emiten como variables). Tokens por rango: <code>font-size.display-laptop</code> (58px) es el H1 del hero a 1024–1535 (D-20); <code>gradient.hero-tablet</code> es el overlay del hero a 768–1023 (D-22). Total de tokens: <strong style="font-weight: 600; color: #0b1a33">{{count}}</strong>.</p>
+
+    <div style="margin-top: 32px; columns: 3; column-gap: 40px; column-rule: 1px solid #e5e7eb">
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="40">
+        <sc-if value="{{r.h}}" hint-placeholder-val="{{ false }}">
+          <div style="break-inside: avoid; break-after: avoid; margin-top: 18px; padding: 6px 8px; background: #0b1a33; border-radius: 4px; font: 700 13px/1.45 Montserrat, Arial, sans-serif; letter-spacing: 0.02em; color: #f97316">{{r.n}}</div>
+        </sc-if>
+        <sc-if value="{{r.t}}" hint-placeholder-val="{{ true }}">
+          <div style="break-inside: avoid; display: grid; grid-template-columns: 170px 1fr; gap: 10px; padding: 4px 8px; border-bottom: 1px solid #e5e7eb; font: 400 12px/1.5 Consolas, 'SFMono-Regular', Menlo, monospace">
+            <span style="min-width: 0; overflow-wrap: anywhere; color: #111827">{{r.n}}</span>
+            <span style="min-width: 0; overflow-wrap: anywhere; color: #374151">{{r.v}} <span style="color: #6b7280">{{r.r}}</span></span>
+          </div>
+        </sc-if>
+      </sc-for>
+    </div>
+  </main>
+
+  <footer style="padding: 20px 64px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; gap: 24px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">
+    <span>New Valley Painting · Concept Board · v0.1 · Borrador (pitch) · 03-nov-2026</span>
+    <span>Reglas: lámina fija 1440×3800 · 3 columnas balanceadas · valores largos hacen wrap (overflow-wrap: anywhere), nunca se truncan</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3800}}'>
+class Component extends DCLogic {
+  tokens() {
+    return {
+      "color": {
+        "navy": { "950": "#0b1a33", "900": "#10233f", "800": "#183156", "700": "#2a3d5c" },
+        "orange": { "50": "#fff7ed", "100": "#ffedd5", "500": "#f97316", "600": "#ea580c", "700": "#c2410c", "800": "#9a3412" },
+        "gray": { "0": "#ffffff", "50": "#f9fafb", "100": "#f3f4f6", "200": "#e5e7eb", "300": "#d1d5db", "400": "#9ca3af", "500": "#6b7280", "600": "#4b5563", "700": "#374151", "800": "#1f2937", "900": "#111827" },
+        "legacy": { "blue-800": "#1e3a8a", "teal-700": "#11698c" },
+        "feedback": { "success-700": "#15803d", "success-50": "#f0fdf4", "error-700": "#b91c1c", "error-50": "#fef2f2", "warning-700": "#b45309", "warning-50": "#fffbeb", "info-700": "{color.legacy.teal-700}", "info-50": "#e8f3f7" },
+        "bg": { "page": "{color.gray.0}", "subtle": "{color.gray.50}", "muted": "{color.gray.100}", "dark": "{color.navy.950}", "dark-raised": "{color.navy.900}", "dark-hover": "{color.navy.800}", "accent": "{color.orange.600}", "accent-soft": "{color.orange.50}" },
+        "text": { "default": "{color.gray.900}", "strong": "{color.navy.950}", "body": "{color.gray.700}", "muted": "{color.gray.600}", "subtle": "{color.gray.500}", "on-dark": "{color.gray.0}", "on-dark-muted": "{color.gray.300}", "on-dark-subtle": "{color.gray.400}", "on-accent": "{color.navy.950}", "accent-on-light": "{color.orange.700}", "accent-on-dark": "{color.orange.500}", "link": "{color.orange.700}", "link-hover": "{color.orange.800}", "error": "{color.feedback.error-700}", "success": "{color.feedback.success-700}" },
+        "border": { "subtle": "{color.gray.200}", "default": "{color.gray.300}", "input": "{color.gray.500}", "input-hover": "{color.gray.700}", "input-focus": "{color.navy.950}", "on-dark": "{color.navy.700}", "accent": "{color.orange.600}", "error": "{color.feedback.error-700}" },
+        "icon": { "accent": "{color.orange.600}", "accent-on-light-text": "{color.orange.700}", "on-dark": "{color.orange.500}", "default": "{color.navy.950}", "muted": "{color.gray.500}" },
+        "focus": { "ring": "{color.orange.600}", "ring-on-accent": "{color.navy.950}" },
+        "star": "{color.orange.500}"
+      },
+      "font-family": {
+        "display": "'Montserrat Variable', 'Montserrat Fallback', 'Segoe UI', Arial, sans-serif",
+        "body": "'Inter Variable', 'Inter Fallback', 'Segoe UI', Roboto, Arial, sans-serif"
+      },
+      "font-fallback-metrics": {
+        "montserrat-fallback": { "src": "local('Arial')", "size-adjust": "113.95%", "ascent-override": "84.95%", "descent-override": "22.03%", "line-gap-override": "0%" },
+        "inter-fallback": { "src": "local('Arial')", "size-adjust": "107.40%", "ascent-override": "90.20%", "descent-override": "22.48%", "line-gap-override": "0%" }
+      },
+      "font-weight": { "regular": "400", "medium": "500", "semibold": "600", "bold": "700", "extrabold": "800" },
+      "font-size": {
+        "display": "clamp(2.25rem, 1.583rem + 2.963vw, 4.25rem)", "display-laptop": "3.625rem","h1": "clamp(2rem, 1.583rem + 1.852vw, 3.25rem)", "h2": "clamp(1.75rem, 1.417rem + 1.481vw, 2.75rem)", "h3": "clamp(1.25rem, 1.125rem + 0.556vw, 1.625rem)", "h4": "clamp(1.125rem, 1.083rem + 0.185vw, 1.25rem)", "stat": "clamp(1.875rem, 1.583rem + 1.296vw, 2.75rem)", "lead": "clamp(1.0625rem, 1rem + 0.278vw, 1.25rem)", "body": "clamp(1rem, 0.979rem + 0.093vw, 1.0625rem)",
+        "small": "0.875rem", "caption": "0.8125rem", "kicker": "0.8125rem", "btn": "1rem", "btn-sm": "0.9375rem", "btn-lg": "1.0625rem", "nav": "0.9375rem", "drawer-link": "1.125rem"
+      },
+      "line-height": { "display": "1.05", "h1": "1.1", "h2": "1.15", "h3": "1.25", "h4": "1.3", "stat": "1", "lead": "1.6", "body": "1.65", "small": "1.5", "caption": "1.45", "kicker": "1.2", "btn": "1" },
+      "letter-spacing": { "display": "-0.02em", "h1": "-0.015em", "h2": "-0.01em", "h3": "-0.005em", "h4": "0em", "stat": "-0.02em", "body": "0em", "kicker": "0.14em", "btn": "0.01em", "nav": "0.01em" },
+      "typography": {
+        "display": "display / extrabold 800 / font-size.display / line-height.display / letter-spacing.display / none",
+        "h1": "display / extrabold 800 / font-size.h1 / line-height.h1 / letter-spacing.h1 / none",
+        "h2": "display / extrabold 800 / font-size.h2 / line-height.h2 / letter-spacing.h2 / none",
+        "h3": "display / bold 700 / font-size.h3 / line-height.h3 / letter-spacing.h3 / none",
+        "h4": "display / bold 700 / font-size.h4 / line-height.h4 / letter-spacing.h4 / none",
+        "stat": "display / extrabold 800 / font-size.stat / line-height.stat / letter-spacing.stat / tabular-nums",
+        "lead": "body / regular 400 / font-size.lead / line-height.lead / 0 / none",
+        "body": "body / regular 400 / font-size.body / line-height.body / 0 / none",
+        "body-strong": "body / semibold 600 / font-size.body / line-height.body / 0 / none",
+        "small": "body / regular 400 / font-size.small / line-height.small / 0 / none",
+        "label": "body / semibold 600 / font-size.small / line-height.small / 0 / none",
+        "caption": "body / medium 500 / font-size.caption / line-height.caption / 0 / none",
+        "kicker": "display / bold 700 / font-size.kicker / line-height.kicker / letter-spacing.kicker / UPPERCASE",
+        "btn": "display / bold 700 / font-size.btn / line-height.btn / letter-spacing.btn / none",
+        "nav": "display / semibold 600 / font-size.nav / 1 / letter-spacing.nav / none"
+      },
+      "space": { "0": "0px", "1": "4px", "2": "8px", "3": "12px", "4": "16px", "5": "20px", "6": "24px", "8": "32px", "10": "40px", "12": "48px", "14": "56px", "16": "64px", "20": "80px", "24": "96px", "32": "128px" },
+      "layout": { "container-max": "1280px", "container-wide": "1440px", "container-narrow": "760px", "container-text": "68ch", "gutter": "clamp(1rem, 0.5rem + 2.222vw, 2.5rem)", "section-y": "clamp(3.5rem, 2.333rem + 5.185vw, 7rem)", "section-y-tight": "clamp(2.5rem, 1.917rem + 2.593vw, 4.25rem)", "header-h": "64px", "header-h-lg": "80px", "mobile-bar-h": "64px", "touch-min": "44px", "logo-h-xs": "32px", "logo-h": "36px", "logo-h-lg": "44px" },
+      "size": { "icon-xs": "14px", "icon-sm": "16px", "icon-md": "18px", "icon": "20px", "icon-lg": "24px", "icon-xl": "28px", "icon-2xl": "32px", "icon-3xl": "48px", "control-sm": "44px", "control-md": "48px", "control-lg": "56px", "input": "52px", "row-drawer": "52px", "row-faq": "56px", "chip": "22px", "chip-lg": "32px", "avatar": "40px", "step-badge": "40px", "faq-icon": "36px", "success-badge": "72px", "radio": "24px" },
+      "radius": { "none": "0px", "xs": "4px", "sm": "6px", "md": "10px", "lg": "16px", "xl": "24px", "pill": "999px", "round": "50%" },
+      "border-width": { "hairline": "1px", "strong": "2px", "accent": "3px" },
+      "shadow": { "none": "none", "xs": "0 1px 2px 0 rgba(11, 26, 51, 0.06)", "sm": "0 2px 6px -1px rgba(11, 26, 51, 0.10)", "md": "0 8px 24px -6px rgba(11, 26, 51, 0.18)", "lg": "0 20px 48px -12px rgba(11, 26, 51, 0.28)", "header": "0 4px 16px 0 rgba(0, 0, 0, 0.25)", "mobile-bar": "0 -6px 20px 0 rgba(11, 26, 51, 0.25)", "cta": "0 10px 24px -8px rgba(234, 88, 12, 0.55)", "cta-hover": "0 14px 30px -8px rgba(249, 115, 22, 0.65)", "handle": "0 4px 14px 0 rgba(0, 0, 0, 0.35)" },
+      "gradient": { "hero-desktop": "linear-gradient(90deg, #0b1a33f0 0%, #0b1a33d1 42%, #0b1a3340 100%)", "hero-tablet": "linear-gradient(90deg, #0b1a33f2 0%, #0b1a33e6 55%, #0b1a3399 100%)","hero-mobile": "linear-gradient(180deg, #0b1a33b3 0%, #0b1a33eb 55%, #0b1a33 100%)", "hero-light": "linear-gradient(90deg, #fffffff5 0%, #ffffffe0 45%, #ffffff00 100%)", "media-scrim": "linear-gradient(180deg, #0b1a3300 40%, #0b1a33cc 100%)", "dark-band": "linear-gradient(135deg, #0b1a33 0%, #10233f 60%, #1e3a8a 140%)" },
+      "opacity": { "disabled": "1", "image-hover-overlay": "0.12" },
+      "breakpoint": { "sm": "480px", "md": "768px", "lg": "1024px", "xl": "1280px", "2xl": "1536px" },
+      "z": { "base": "0", "raised": "1", "slider-handle": "5", "mobile-bar": "90", "header": "100", "dropdown": "110", "drawer-backdrop": "200", "drawer": "210", "toast": "300", "skip-link": "400" },
+      "duration": { "instant": "80ms", "fast": "150ms", "base": "240ms", "slow": "400ms", "slower": "640ms", "cinematic": "900ms", "hero-image": "1600ms", "count-up": "1600ms", "slider-peek": "1800ms", "form-submit-sim": "1200ms" },
+      "easing": { "standard": "cubic-bezier(0.2, 0, 0, 1)", "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)", "in": "cubic-bezier(0.4, 0, 1, 1)", "in-out": "cubic-bezier(0.65, 0, 0.35, 1)", "spring": "cubic-bezier(0.34, 1.56, 0.64, 1)" },
+      "distance": { "reveal-sm": "12px", "reveal-md": "24px", "reveal-lg": "40px", "hover-lift": "-2px", "card-lift": "-4px", "arrow-nudge": "4px" },
+      "scale": { "hero-image-from": "1.06", "card-image-hover": "1.05", "press": "0.98" },
+      "stagger": { "step": "80ms", "max-items": "6" }
+    };
+  }
+  resolve(T, v) {
+    let cur = v;
+    let guard = 0;
+    while (typeof cur === "string" && cur.charAt(0) === "{" && guard < 5) {
+      const parts = cur.slice(1, -1).split(".");
+      let o = T;
+      for (let i = 0; i < parts.length; i++) { o = o ? o[parts[i]] : undefined; }
+      cur = o;
+      guard++;
+    }
+    return typeof cur === "string" ? cur : "";
+  }
+  flat(T, obj, path, out) {
+    let headed = false;
+    const keys = Object.keys(obj);
+    for (let i = 0; i < keys.length; i++) {
+      const k = keys[i];
+      const v = obj[k];
+      if (k.charAt(0) === "_") continue;
+      if (typeof v === "string") {
+        if (!headed) { out.push({ h: true, t: false, n: path, v: "", r: "" }); headed = true; }
+        const isAlias = v.charAt(0) === "{";
+        out.push({ h: false, t: true, n: path + "." + k, v: v, r: isAlias ? "→ " + this.resolve(T, v) : "" });
+      } else if (v && typeof v === "object") {
+        this.flat(T, v, path + "." + k, out);
+      }
+    }
+  }
+  renderVals() {
+    const T = this.tokens();
+    const rows = [];
+    const top = Object.keys(T);
+    for (let i = 0; i < top.length; i++) {
+      const v = T[top[i]];
+      if (typeof v === "object") this.flat(T, v, top[i], rows);
+    }
+    let count = 0;
+    for (let j = 0; j < rows.length; j++) { if (rows[j].t) count++; }
+    return { rows: rows, count: count };
+  }
+}
+</script>
+</body>
+</html>

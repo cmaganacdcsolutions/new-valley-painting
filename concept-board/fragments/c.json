@@ -1,0 +1,165 @@
+{
+  "boards": {
+    "muestreo-01-cotizacion.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1100,
+      "h": 1146,
+      "page": "muestreo",
+      "title": "Muestreo 01 · Cotización gratuita"
+    },
+    "muestreo-02-llamada.dc.html": {
+      "x": 1180,
+      "y": 0,
+      "w": 1100,
+      "h": 818,
+      "page": "muestreo",
+      "title": "Muestreo 02 · Llamada directa"
+    },
+    "muestreo-03-servicio.dc.html": {
+      "x": 2360,
+      "y": 0,
+      "w": 1100,
+      "h": 1146,
+      "page": "muestreo",
+      "title": "Muestreo 03 · Servicio a cotización"
+    },
+    "proto-00-en-vivo.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 520,
+      "h": 200,
+      "page": "prototipo",
+      "title": "Prototipo · Ver en vivo",
+      "is_interactive": true
+    },
+    "proto-01-inicio.dc.html": {
+      "x": 0,
+      "y": 520,
+      "w": 1440,
+      "h": 1540,
+      "page": "prototipo",
+      "title": "Prototipo · 01 · Inicio (escritorio)",
+      "is_interactive": true
+    },
+    "proto-02-servicio.dc.html": {
+      "x": 1520,
+      "y": 520,
+      "w": 1440,
+      "h": 1460,
+      "page": "prototipo",
+      "title": "Prototipo · 02 · Servicio (escritorio)",
+      "is_interactive": true
+    },
+    "proto-03-cotizacion.dc.html": {
+      "x": 3040,
+      "y": 520,
+      "w": 1440,
+      "h": 1560,
+      "page": "prototipo",
+      "title": "Prototipo · 03 · Cotización (escritorio, todos los estados)",
+      "is_interactive": true
+    },
+    "proto-04-inicio-movil.dc.html": {
+      "x": 0,
+      "y": 2400,
+      "w": 390,
+      "h": 844,
+      "page": "prototipo",
+      "title": "Prototipo · 04 · Inicio (móvil 390)",
+      "is_interactive": true
+    },
+    "proto-05-cotizacion-movil.dc.html": {
+      "x": 470,
+      "y": 2400,
+      "w": 390,
+      "h": 844,
+      "page": "prototipo",
+      "title": "Prototipo · 05 · Cotización (móvil 390, todos los estados)",
+      "is_interactive": true
+    },
+    "edit-web-01-cotizacion-formulario.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1366,
+      "h": 1900,
+      "page": "editables",
+      "title": "Web · 01 · Cotización · Formulario (editable)",
+      "is_interactive": true
+    },
+    "edit-ios-01-cotizacion-formulario.dc.html": {
+      "x": 1446,
+      "y": 0,
+      "w": 390,
+      "h": 964,
+      "page": "editables",
+      "title": "iOS · 01 · Cotización · Formulario (editable)",
+      "is_interactive": true
+    },
+    "edit-android-01-cotizacion-formulario.dc.html": {
+      "x": 1916,
+      "y": 0,
+      "w": 412,
+      "h": 1035,
+      "page": "editables",
+      "title": "Android · 01 · Cotización · Formulario (editable)",
+      "is_interactive": true
+    }
+  },
+  "order": [
+    "muestreo-01-cotizacion.dc.html",
+    "muestreo-02-llamada.dc.html",
+    "muestreo-03-servicio.dc.html",
+    "proto-00-en-vivo.dc.html",
+    "proto-01-inicio.dc.html",
+    "proto-02-servicio.dc.html",
+    "proto-03-cotizacion.dc.html",
+    "proto-04-inicio-movil.dc.html",
+    "proto-05-cotizacion-movil.dc.html",
+    "edit-web-01-cotizacion-formulario.dc.html",
+    "edit-ios-01-cotizacion-formulario.dc.html",
+    "edit-android-01-cotizacion-formulario.dc.html"
+  ],
+  "notes": {
+    "c-muestreo-row1": {
+      "x": 0,
+      "y": -240,
+      "text": "Muestreo · flujos clave (Web / iOS Safari / Android Chrome)",
+      "kind": "title1",
+      "maxW": 3600,
+      "page": "muestreo"
+    },
+    "c-proto-row1": {
+      "x": 0,
+      "y": -240,
+      "text": "Prototipo · versión en vivo",
+      "kind": "title1",
+      "maxW": 1200,
+      "page": "prototipo"
+    },
+    "c-proto-row2": {
+      "x": 0,
+      "y": 280,
+      "text": "Prototipo · escritorio 1440",
+      "kind": "title1",
+      "maxW": 4400,
+      "page": "prototipo"
+    },
+    "c-proto-row3": {
+      "x": 0,
+      "y": 2160,
+      "text": "Prototipo · móvil 390",
+      "kind": "title1",
+      "maxW": 1200,
+      "page": "prototipo"
+    },
+    "c-edit-row1": {
+      "x": 0,
+      "y": -240,
+      "text": "Pantallas editables · Cotización (Web / iOS Safari / Android Chrome)",
+      "kind": "title1",
+      "maxW": 2400,
+      "page": "editables"
+    }
+  }
+}

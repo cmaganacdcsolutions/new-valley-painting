@@ -72,3 +72,18 @@ class Component extends DCLogic {
 | assets/current-site/image1-1920.jpg (foto del cliente) | /_blob/94f64b9a85884fcad2b8471f3bc16cbd |
 
 ¿Necesitas otra imagen (stock)? Déjala en `concept-board/to-upload/` y lístala en tu HANDOFF: el Foreman la sube y te devuelve la URL. Mientras tanto usa un placeholder rotulado.
+
+### Stock (Unsplash, placeholders) — subidos 03-nov
+| Slot | URL en el canvas |
+|---|---|
+| IMG-01 hero (living room) | /_blob/cc0c60483c89a1de0ce06fb6e3fa4716 |
+| IMG-04 painter | /_blob/1f18e468d6961b0f401cdcce2f642df6 |
+| IMG-05 kitchen hub | /_blob/30d85ecbff0bf2d66435b2a5f305bb75 |
+| IMG-10 interior | /_blob/9ddce7478bb5eedcb472cad2c325b7c8 |
+| IMG-11 cabinet | /_blob/32d6ee280c64a977bd8040869598ebef |
+| IMG-12 kitchen | /_blob/19028f9bc0ed6c333a58d6463b7742d3 |
+| IMG-13 bath | /_blob/381b7014a8f7a313c552c1084b83259d |
+| IMG-14 flooring | /_blob/c66d9cd0f259160cbbb251b7de8dbcf6 |
+| IMG-15 drywall | /_blob/8362d8d0153889ff95e1df65485b94f4 |
+| IMG-16 decks | /_blob/a0accfc0289fdeee5ea46091f6eeea8c |
+Before = image1 (tan brick, /_blob/94f64b9a85884fcad2b8471f3bc16cbd) · After = image0 (white brick, /_blob/9226420d74e06266d617a98664714be8).

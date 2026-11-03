@@ -1,0 +1,11 @@
+{
+  "boards": {
+    "ios-02-servicio.dc.html": { "x": 940, "y": 0, "w": 390, "h": 6960, "page": "ios", "title": "iOS · 02 · Service · Interior Painting · web móvil · Safari" },
+    "ios-03-cotizacion.dc.html": { "x": 1410, "y": 0, "w": 390, "h": 3840, "page": "ios", "title": "iOS · 03 · Free Estimate · web móvil · Safari" }
+  },
+  "order": [
+    "ios-02-servicio.dc.html",
+    "ios-03-cotizacion.dc.html"
+  ],
+  "notes": {}
+}

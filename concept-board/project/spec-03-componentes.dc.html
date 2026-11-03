@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Especificaciones · 03 · Componentes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#c2410c}a:hover{color:#9a3412}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ea580c;outline-offset:3px}
+input::placeholder{color:#6b7280}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2814px; box-sizing: border-box; display: flex; flex-direction: column; font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif; color: #374151; background: #ffffff">
+  <header style="display: flex; justify-content: space-between; align-items: center; gap: 24px; height: 72px; padding: 0 64px; background: #0b1a33; border-bottom: 1px solid #2a3d5c">
+    <img src="/_blob/fc94c9cccc85f2e50008980dba7d4ae7" alt="New Valley Painting" style="display: block; height: 32px; width: auto">
+    <span style="font: 600 13px/1.45 Inter, Arial, sans-serif; color: #d1d5db">Especificaciones · spec-03-componentes · Todas las plataformas: Web · web móvil Safari · web móvil Chrome</span>
+  </header>
+
+  <main style="flex: 1; padding: 48px 64px">
+    <p style="margin: 0; display: flex; align-items: center; gap: 12px; font: 700 13px/1.2 Montserrat, Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #c2410c"><span style="display: inline-block; width: 24px; height: 3px; border-radius: 4px; background: #ea580c"></span>Especificaciones · Átomos y moléculas</p>
+    <h1 style="margin: 12px 0 0; font: 800 44px/1.15 Montserrat, Arial, sans-serif; letter-spacing: -0.01em; color: #0b1a33">Especificaciones · 03 · Componentes</h1>
+    <p style="margin: 12px 0 0; font: 400 17px/1.6 Inter, Arial, sans-serif; color: #4b5563; white-space: nowrap">Cada valor con su token. Ningún estado depende solo del color: también cambian borde, icono, texto, forma o cursor.</p>
+
+    <!-- 1 · BOTONES -->
+    <h2 style="margin: 32px 0 0; font: 700 20px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Botones · .btn (4 variantes × 5 estados)</h2>
+    <p style="margin: 8px 0 0; height: 42px; font: 400 14px/1.5 Inter, Arial, sans-serif; color: #374151"><strong style="font-weight: 600; color: #111827">Base:</strong> alto mín. 48 (size.control-md) · padding 0 24 (space.6) · borde 2px (border-width.strong) · radio 10 (radius.md) · Montserrat 700 16/1, ls 0.01em (typography.btn) · gap 8 (space.2) · icono 20 (size.icon). Tamaños: --sm 44 / 15 px · --lg 56 / 17 px (font-size.btn-sm / btn-lg).</p>
+    <div style="margin-top: 16px; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden">
+      <div style="display: grid; grid-template-columns: 140px repeat(4, 1fr); height: 56px; background: #f9fafb">
+        <div style="padding: 10px 16px; font: 600 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">Estado / variante</div>
+        <div style="padding: 8px 16px; border-left: 1px solid #e5e7eb"><p style="margin: 0; font: 700 14px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">primary</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">sobre blanco o azul marino</p></div>
+        <div style="padding: 8px 16px; border-left: 1px solid #e5e7eb"><p style="margin: 0; font: 700 14px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">outline-light</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">sobre #0b1a33 (fondos oscuros)</p></div>
+        <div style="padding: 8px 16px; border-left: 1px solid #e5e7eb"><p style="margin: 0; font: 700 14px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">outline-dark</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">sobre blanco o #f9fafb</p></div>
+        <div style="padding: 8px 16px; border-left: 1px solid #e5e7eb"><p style="margin: 0; font: 700 14px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">dark</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">sobre la banda naranja #ea580c</p></div>
+      </div>
+
+      <!-- default -->
+      <div style="display: grid; grid-template-columns: 140px repeat(4, 1fr); height: 124px; border-top: 1px solid #e5e7eb">
+        <div style="padding: 14px 16px; background: #f9fafb"><p style="margin: 0; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Default</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">reposo</p></div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #ea580c; border-radius: 10px; background: #ea580c; box-shadow: 0 10px 24px -8px rgba(234, 88, 12, 0.55); font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer">Free Estimate<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">bg/borde #ea580c · color.bg.accent</span><span style="display: block">texto+icono #0b1a33 · shadow.cta</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #0b1a33; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #ffffff; border-radius: 10px; background: transparent; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #d1d5db; white-space: nowrap"><span style="display: block">borde #ffffff · fondo transparente</span><span style="display: block">texto #ffffff · icono #f97316</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #0b1a33; border-radius: 10px; background: transparent; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Text or WhatsApp</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">borde #0b1a33 · fondo transparente</span><span style="display: block">texto+icono #0b1a33 · navy.950</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ea580c; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #0b1a33; border-radius: 10px; background: #0b1a33; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #0b1a33; white-space: nowrap"><span style="display: block">bg/borde #0b1a33 · navy.950</span><span style="display: block">texto #ffffff · icono #f97316</span></p>
+        </div>
+      </div>
+
+      <!-- hover -->
+      <div style="display: grid; grid-template-columns: 140px repeat(4, 1fr); height: 124px; border-top: 1px solid #e5e7eb">
+        <div style="padding: 14px 16px; background: #f9fafb"><p style="margin: 0; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Hover</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">(hover: hover)</p></div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #f97316; border-radius: 10px; background: #f97316; box-shadow: 0 14px 30px -8px rgba(249, 115, 22, 0.65); transform: translateY(-2px); font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer">Free Estimate<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: translateX(4px)"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">bg/borde #f97316 · orange.500</span><span style="display: block">lift -2px · shadow.cta-hover</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #0b1a33; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #ffffff; border-radius: 10px; background: #ffffff; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #d1d5db; white-space: nowrap"><span style="display: block">bg #ffffff · texto #0b1a33</span><span style="display: block">icono #c2410c · orange.700</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #0b1a33; border-radius: 10px; background: #0b1a33; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Text or WhatsApp</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">bg #0b1a33 · texto #ffffff</span><span style="display: block">icono #f97316 · orange.500</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ea580c; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #183156; border-radius: 10px; background: #183156; transform: translateY(-2px); font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #0b1a33; white-space: nowrap"><span style="display: block">bg/borde #183156 · navy.800</span><span style="display: block">lift -2px · distance.hover-lift</span></p>
+        </div>
+      </div>
+
+      <!-- active -->
+      <div style="display: grid; grid-template-columns: 140px repeat(4, 1fr); height: 124px; border-top: 1px solid #e5e7eb">
+        <div style="padding: 14px 16px; background: #f9fafb"><p style="margin: 0; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Active</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">presionado</p></div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #ea580c; border-radius: 10px; background: #ea580c; box-shadow: 0 1px 2px 0 rgba(11, 26, 51, 0.06); transform: scale(0.98); font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer">Free Estimate<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">bg #ea580c · scale(0.98) scale.press</span><span style="display: block">translateY(0) · shadow.xs</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #0b1a33; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #ffffff; border-radius: 10px; background: transparent; transform: scale(0.98); font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #d1d5db; white-space: nowrap"><span style="display: block">colores de default</span><span style="display: block">scale(0.98) · scale.press</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #0b1a33; border-radius: 10px; background: transparent; transform: scale(0.98); font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Text or WhatsApp</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">colores de default</span><span style="display: block">scale(0.98) · scale.press</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ea580c; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #0b1a33; border-radius: 10px; background: #0b1a33; transform: scale(0.98); font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #0b1a33; white-space: nowrap"><span style="display: block">bg #0b1a33 · scale(0.98)</span><span style="display: block">scale.press · duration.instant</span></p>
+        </div>
+      </div>
+
+      <!-- focus -->
+      <div style="display: grid; grid-template-columns: 140px repeat(4, 1fr); height: 124px; border-top: 1px solid #e5e7eb">
+        <div style="padding: 14px 16px; background: #f9fafb"><p style="margin: 0; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Focus</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">:focus-visible</p></div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #ea580c; border-radius: 10px; background: #ea580c; box-shadow: 0 10px 24px -8px rgba(234, 88, 12, 0.55); outline: 3px solid #ea580c; outline-offset: 3px; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer">Free Estimate<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">outline 3px #ea580c · focus.ring</span><span style="display: block">offset 3px · colores de default</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #0b1a33; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #ffffff; border-radius: 10px; background: transparent; outline: 3px solid #ea580c; outline-offset: 3px; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #d1d5db; white-space: nowrap"><span style="display: block">outline 3px #ea580c · offset 3px</span><span style="display: block">sobre #0b1a33 = 4.88:1</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #0b1a33; border-radius: 10px; background: transparent; outline: 3px solid #ea580c; outline-offset: 3px; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Text or WhatsApp</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">outline 3px #ea580c · offset 3px</span><span style="display: block">color.focus.ring</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ea580c; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #0b1a33; border-radius: 10px; background: #0b1a33; outline: 3px solid #0b1a33; outline-offset: 3px; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; white-space: nowrap; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #0b1a33; white-space: nowrap"><span style="display: block">outline 3px #0b1a33 · offset 3px</span><span style="display: block">focus.ring-on-accent</span></p>
+        </div>
+      </div>
+
+      <!-- disabled -->
+      <div style="display: grid; grid-template-columns: 140px repeat(4, 1fr); height: 124px; border-top: 1px solid #e5e7eb">
+        <div style="padding: 14px 16px; background: #f9fafb"><p style="margin: 0; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Disabled</p><p style="margin: 2px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">aria-disabled · not-allowed</p></div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" aria-disabled="true" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #d1d5db; border-radius: 10px; background: #d1d5db; box-shadow: none; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #4b5563; white-space: nowrap; cursor: not-allowed">Free Estimate<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">bg/borde #d1d5db · gray.300</span><span style="display: block">texto #4b5563 (5.08:1) · sin sombra</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #0b1a33; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" aria-disabled="true" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #9ca3af; border-radius: 10px; background: transparent; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #9ca3af; white-space: nowrap; cursor: not-allowed"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #d1d5db; white-space: nowrap"><span style="display: block">borde y texto #9ca3af · gray.400</span><span style="display: block">6.84:1 sobre #0b1a33</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ffffff; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-left: 1px solid #e5e7eb">
+          <button type="button" aria-disabled="true" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #d1d5db; border-radius: 10px; background: transparent; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #4b5563; white-space: nowrap; cursor: not-allowed"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Text or WhatsApp</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">borde #d1d5db · border.default</span><span style="display: block">texto+icono #4b5563 · gray.600</span></p>
+        </div>
+        <div style="min-width: 0; padding: 14px 16px; background: #ea580c; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+          <button type="button" aria-disabled="true" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 2px solid #d1d5db; border-radius: 10px; background: #d1d5db; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #4b5563; white-space: nowrap; cursor: not-allowed"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</button>
+          <p style="margin: 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #0b1a33; white-space: nowrap"><span style="display: block">igual a primary disabled</span><span style="display: block">bg #d1d5db · texto #4b5563</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · NAV, CONFIANZA, CIFRAS, CHIP -->
+    <h2 style="margin: 40px 0 0; font: 700 20px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Navegación, confianza, cifras y chip</h2>
+    <div style="margin-top: 16px; height: 320px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px">
+      <div style="min-width: 0">
+        <h3 style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Ítem de navegación</h3>
+        <nav aria-label="Ejemplo de navegación" style="margin-top: 10px; height: 80px; box-sizing: border-box; padding: 0 16px; background: #0b1a33; border-radius: 10px; display: flex; align-items: stretch; gap: 24px; overflow: hidden">
+          <a href="#" style="position: relative; display: inline-flex; align-items: center; padding: 0 4px; font: 600 15px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; text-decoration: none">Projects</a>
+          <a href="#" style="position: relative; display: inline-flex; align-items: center; padding: 0 4px; font: 600 15px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #f97316; text-decoration: none">About</a>
+          <a href="#" aria-current="page" style="position: relative; display: inline-flex; align-items: center; padding: 0 4px; font: 600 15px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; text-decoration: none">Reviews<span aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 2px 2px 0 0; background: #ea580c"></span></a>
+        </nav>
+        <div style="margin-top: 12px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">Montserrat 600 15/1, ls 0.01em (typography.nav) · alto 44 · padding 0 4</p>
+          <p style="margin: 0"><strong style="font-weight: 600; color: #111827">Projects</strong> = default: #ffffff · color.text.on-dark</p>
+          <p style="margin: 0"><strong style="font-weight: 600; color: #111827">About</strong> = hover: #f97316 · color.text.accent-on-dark</p>
+          <p style="margin: 0"><strong style="font-weight: 600; color: #111827">Reviews</strong> = activa: barra 3px #ea580c (border-width.accent) abajo + aria-current</p>
+        </div>
+      </div>
+
+      <div style="min-width: 0">
+        <h3 style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Trust item</h3>
+        <div style="margin-top: 10px; display: grid; gap: 12px">
+          <div style="display: flex; align-items: center; gap: 12px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span style="font: 700 15px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Fully Insured</span></div>
+          <div style="display: flex; align-items: center; gap: 12px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span style="font: 700 15px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">2-Year Warranty</span></div>
+          <div style="display: flex; align-items: center; gap: 12px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><span style="display: block; font: 700 15px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Family Owned &amp; Operated</span><span style="display: block; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">We are a local business</span></span></div>
+        </div>
+        <div style="margin-top: 12px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">Icono 28 (size.icon-xl) · trazo 2 · #ea580c (color.icon.accent)</p>
+          <p style="margin: 0">Etiqueta Montserrat 700 15/1.3 · #0b1a33 (color.text.strong)</p>
+          <p style="margin: 0">Sub-línea opcional: caption #4b5563 · gap 12 (space.3) · no interactivo</p>
+        </div>
+      </div>
+
+      <div style="min-width: 0">
+        <h3 style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Stat + nota al pie</h3>
+        <div style="margin-top: 10px; box-sizing: border-box; height: 178px; padding: 20px; background: #0b1a33; border-radius: 10px">
+          <div style="display: flex; align-items: center; gap: 16px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+            <div><p data-placeholder="true" style="margin: 0; font: 800 44px/1 Montserrat, Arial, sans-serif; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #ffffff">10<span style="color: #f97316">+</span></p><p style="margin: 0; font: 400 14px/1.5 Inter, Arial, sans-serif; color: #d1d5db">Years of Experience</p></div>
+          </div>
+          <p style="margin: 16px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #9ca3af"><span data-placeholder="true" style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; margin-right: 6px; border-radius: 999px; background: #10233f; border: 1px solid #f97316; font: 500 13px/1 Inter, Arial, sans-serif; color: #f97316; vertical-align: middle">Placeholder</span>Sample figures for this prototype, to be confirmed by New Valley Painting.</p>
+        </div>
+        <div style="margin-top: 12px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">Icono 32 #f97316 · número typography.stat #ffffff, sufijo #f97316 · etiqueta small #d1d5db</p>
+          <p style="margin: 0">Nota obligatoria mientras no se confirme (D-10): chip oscuro + caption #9ca3af</p>
+        </div>
+      </div>
+
+      <div style="min-width: 0">
+        <h3 style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">ph-chip · Placeholder / To confirm (D-30)</h3>
+        <div style="margin-top: 10px; box-sizing: border-box; height: 62px; padding: 0 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; display: flex; align-items: center; gap: 8px">
+          <span data-placeholder="true" style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: #fffbeb; border: 1px solid #b45309; font: 500 13px/1 Inter, Arial, sans-serif; color: #b45309">Placeholder</span>
+          <span data-placeholder="true" style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: #fffbeb; border: 1px solid #b45309; font: 500 13px/1 Inter, Arial, sans-serif; color: #b45309">To confirm</span>
+        </div>
+        <div style="margin-top: 8px; box-sizing: border-box; height: 62px; padding: 0 20px; background: #0b1a33; border-radius: 10px; display: flex; align-items: center">
+          <span data-placeholder="true" style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: #10233f; border: 1px solid #f97316; font: 500 13px/1 Inter, Arial, sans-serif; color: #f97316">Placeholder</span>
+        </div>
+        <div style="margin-top: 12px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">Alto 22 (size.chip) · padding 0 8 · radius.pill · caption 13/500</p>
+          <p style="margin: 0">Claro: bg #fffbeb (warning-50) · borde 1px y texto #b45309 (warning-700)</p>
+          <p style="margin: 0">Oscuro: bg #10233f · borde 1px y texto #f97316</p>
+          <p style="margin: 0">data-placeholder="true"; se quita al confirmar</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · TARJETAS -->
+    <h2 style="margin: 40px 0 0; font: 700 20px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Tarjetas: servicio, variante compacta y reseña</h2>
+    <div style="margin-top: 16px; height: 448px; display: grid; grid-template-columns: 296px 1fr 380px; gap: 32px">
+      <div style="min-width: 0">
+        <h3 style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Service card</h3>
+        <a href="#" style="margin-top: 8px; display: block; box-sizing: border-box; width: 296px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 2px 6px -1px rgba(11, 26, 51, 0.10); overflow: hidden; text-decoration: none; color: #374151">
+          <img src="/_blob/9ddce7478bb5eedcb472cad2c325b7c8" alt="" style="display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover">
+          <span style="position: relative; display: flex; align-items: center; justify-content: center; box-sizing: border-box; width: 48px; height: 48px; margin: -24px 0 0 20px; background: #fff7ed; border: 1px solid #ffedd5; border-radius: 10px; box-shadow: 0 0 0 4px #ffffff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="16" height="6" rx="2"/><path d="M10 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="8" y="16" width="4" height="6" rx="1"/></svg></span>
+          <span style="display: block; padding: 12px 20px 20px">
+            <span style="display: block; font: 700 20px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Interior Painting</span>
+            <span style="margin-top: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font: 400 14px/1.5 Inter, Arial, sans-serif; color: #4b5563">Walls, ceilings, trim and doors finished with careful prep and clean lines.</span>
+            <span style="margin-top: 16px; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font: 700 16px/1 Montserrat, Arial, sans-serif; color: #c2410c">Learn more<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </span>
+        </a>
+      </div>
+
+      <div style="min-width: 0">
+        <h3 style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Service card · especificación</h3>
+        <div style="margin-top: 8px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">Tarjeta: bg #ffffff · borde 1px #e5e7eb · radius.lg (16) · shadow.sm</p>
+          <p style="margin: 0">Un solo &lt;a&gt; envuelve la tarjeta; el título es el nombre accesible</p>
+          <p style="margin: 0">Media 4:3 · object-fit cover · radio 0 (la recorta la tarjeta)</p>
+          <p style="margin: 0">Icon chip 48 · bg #fff7ed · borde 1px #ffedd5 · anillo 4px #ffffff · −24 px</p>
+          <p style="margin: 0">Cuerpo: padding 12 20 20 · título h4 #0b1a33 · desc small #4b5563, 2 líneas</p>
+          <p style="margin: 0">"Learn more" #c2410c (color.text.link) + arrow-right 18 · alto mín. 44</p>
+          <p style="margin: 0">Hover: lift -4px (distance.card-lift) · shadow.lg · foto scale 1.05</p>
+          <p style="margin: 0">Focus: outline 3px #ea580c en el &lt;a&gt;, radio 16 · Active: scale(0.99)</p>
+        </div>
+        <h3 style="margin: 16px 0 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Variante compacta (&lt;480 px)</h3>
+        <a href="#" style="margin-top: 8px; display: flex; align-items: center; gap: 16px; box-sizing: border-box; width: 360px; padding: 12px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 2px 6px -1px rgba(11, 26, 51, 0.10); text-decoration: none">
+          <img src="/_blob/9ddce7478bb5eedcb472cad2c325b7c8" alt="" style="display: block; flex: none; width: 96px; height: 96px; border-radius: 10px; object-fit: cover">
+          <span style="flex: 1; min-width: 0; font: 700 18px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Interior Painting</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <div style="margin-top: 8px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">Media 96×96 (1:1) · radius.md · padding space.3 · gap space.4 · sin chip ni desc</p>
+        </div>
+      </div>
+
+      <div style="min-width: 0">
+        <h3 style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Review card</h3>
+        <article style="position: relative; margin-top: 8px; box-sizing: border-box; width: 380px; padding: 24px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 2px 6px -1px rgba(11, 26, 51, 0.10)">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffedd5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; top: 20px; right: 20px"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          <div style="display: flex; align-items: center; gap: 10px; height: 22px">
+            <span role="img" aria-label="Rated 5 out of 5" style="display: inline-flex; gap: 2px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f97316" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f97316" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f97316" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f97316" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f97316" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <span data-placeholder="true" style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: #fffbeb; border: 1px solid #b45309; font: 500 13px/1 Inter, Arial, sans-serif; color: #b45309">Placeholder</span>
+          </div>
+          <p style="margin: 16px 0 0; font: 400 16px/1.65 Inter, Arial, sans-serif; color: #374151">Sample review. A real client review, like Ellen Williams', goes here.</p>
+          <div style="margin-top: 20px; display: flex; align-items: center; gap: 12px">
+            <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 40px; height: 40px; border-radius: 50%; background: #0b1a33; font: 700 15px/1 Montserrat, Arial, sans-serif; color: #ffffff">EW</span>
+            <span><span style="display: block; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #0b1a33">Ellen Williams</span><span style="display: block; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">Service and city to be confirmed</span></span>
+          </div>
+        </article>
+        <div style="margin-top: 12px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">bg #ffffff · borde 1px #e5e7eb · radius.lg · padding space.6 · shadow.sm</p>
+          <p style="margin: 0">Estrellas 18, fill #f97316 (color.star), stroke none · role="img" "Rated 5 out of 5"</p>
+          <p style="margin: 0">Cita body #374151, texto completo · avatar 40 (size.avatar) bg #0b1a33, iniciales #ffffff</p>
+          <p style="margin: 0">Nombre label #0b1a33 · contexto caption #4b5563 · quote 32 trazo #ffedd5</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 · FORMULARIO -->
+    <h2 style="margin: 40px 0 0; font: 700 20px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Campos de formulario, radio y resumen de errores</h2>
+    <div style="margin-top: 16px; height: 204px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px">
+      <div style="min-width: 0">
+        <p style="margin: 0 0 6px; font: 700 13px/1.45 Montserrat, Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #4b5563">Default</p>
+        <label for="f-def" style="display: block; margin-bottom: 8px; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Phone</label>
+        <input id="f-def" type="tel" placeholder="(919) 555-0123" style="display: block; box-sizing: border-box; width: 100%; height: 52px; padding: 0 16px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #6b7280; border-radius: 10px">
+        <p style="margin: 10px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">Borde 1px #6b7280 · border.input</span><span style="display: block">Texto 16 #111827 · alto 52</span><span style="display: block">Placeholder #6b7280 · radius.md</span></p>
+      </div>
+      <div style="min-width: 0">
+        <p style="margin: 0 0 6px; font: 700 13px/1.45 Montserrat, Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #4b5563">Hover</p>
+        <label for="f-hov" style="display: block; margin-bottom: 8px; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Phone</label>
+        <input id="f-hov" type="tel" placeholder="(919) 555-0123" style="display: block; box-sizing: border-box; width: 100%; height: 52px; padding: 0 16px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #111827; background: #ffffff; border: 1px solid #374151; border-radius: 10px">
+        <p style="margin: 10px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">Borde 1px #374151</span><span style="display: block">border.input-hover</span><span style="display: block">resto igual a default</span></p>
+      </div>
+      <div style="min-width: 0">
+        <p style="margin: 0 0 6px; font: 700 13px/1.45 Montserrat, Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #4b5563">Focus</p>
+        <label for="f-foc" style="display: block; margin-bottom: 8px; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Phone</label>
+        <input id="f-foc" type="tel" placeholder="(919) 555-0123" style="display: block; box-sizing: border-box; width: 100%; height: 52px; padding: 0 15px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #111827; background: #ffffff; border: 2px solid #0b1a33; border-radius: 10px; outline: 3px solid #ea580c; outline-offset: 3px">
+        <p style="margin: 10px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">Borde 2px #0b1a33 · input-focus</span><span style="display: block">+ anillo 3px #ea580c, offset 3</span><span style="display: block">padding −1px (sin salto)</span></p>
+      </div>
+      <div style="min-width: 0">
+        <p style="margin: 0 0 6px; font: 700 13px/1.45 Montserrat, Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #4b5563">Error</p>
+        <label for="f-err" style="display: block; margin-bottom: 8px; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Phone</label>
+        <input id="f-err" type="tel" value="919 555" readonly aria-invalid="true" aria-describedby="f-err-msg" style="display: block; box-sizing: border-box; width: 100%; height: 52px; padding: 0 15px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #111827; background: #ffffff; border: 2px solid #b91c1c; border-radius: 10px">
+        <p id="f-err-msg" style="margin: 8px 0 0; display: flex; align-items: center; gap: 6px; font: 400 14px/1.5 Inter, Arial, sans-serif; color: #b91c1c; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>Enter a 10-digit phone number.</p>
+        <p style="margin: 10px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">Borde 2px #b91c1c · border.error</span><span style="display: block">mensaje small #b91c1c + icono</span><span style="display: block">aria-invalid + aria-describedby</span></p>
+      </div>
+      <div style="min-width: 0">
+        <p style="margin: 0 0 6px; font: 700 13px/1.45 Montserrat, Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #4b5563">Disabled</p>
+        <label for="f-dis" style="display: block; margin-bottom: 8px; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Phone</label>
+        <input id="f-dis" type="tel" value="(919) 555-0123" disabled style="display: block; box-sizing: border-box; width: 100%; height: 52px; padding: 0 16px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #6b7280; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 10px; cursor: not-allowed">
+        <p style="margin: 10px 0 0; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151; white-space: nowrap"><span style="display: block">bg #f3f4f6 · texto #6b7280</span><span style="display: block">borde 1px #d1d5db</span><span style="display: block">solo durante el envío</span></p>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; height: 160px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px">
+      <div style="min-width: 0">
+        <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0">
+          <legend style="padding: 0; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827">Preferred contact</legend>
+          <div style="margin-top: 8px; display: flex; gap: 20px">
+            <label style="position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #111827; cursor: pointer"><input type="radio" name="pc-demo" checked style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0"><span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 24px; height: 24px; border-radius: 50%; border: 2px solid #ea580c; background: #ffffff"><span style="width: 10px; height: 10px; border-radius: 50%; background: #ea580c"></span></span>Call</label>
+            <label style="position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #111827; cursor: pointer"><input type="radio" name="pc-demo" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0"><span aria-hidden="true" style="display: inline-block; box-sizing: border-box; width: 24px; height: 24px; border-radius: 50%; border: 2px solid #6b7280; background: #ffffff"></span>Text</label>
+            <label style="position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 400 16px/1.5 Inter, Arial, sans-serif; color: #111827; cursor: pointer"><input type="radio" name="pc-demo" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0"><span aria-hidden="true" style="display: inline-block; box-sizing: border-box; width: 24px; height: 24px; border-radius: 50%; border: 2px solid #6b7280; background: #ffffff"></span>Email</label>
+          </div>
+        </fieldset>
+        <div style="margin-top: 10px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">Círculo 24 (size.radio) · borde 2px #6b7280 · fila mín. 44</p>
+          <p style="margin: 0">Marcado: borde + punto 10 #ea580c · fieldset y legend</p>
+        </div>
+      </div>
+
+      <div style="min-width: 0">
+        <div style="box-sizing: border-box; padding: 16px; background: #fef2f2; border-left: 4px solid #b91c1c; border-radius: 10px">
+          <p style="margin: 0; display: flex; align-items: center; gap: 8px; font: 600 14px/1.5 Inter, Arial, sans-serif; color: #111827"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>Please fix 2 fields:</p>
+          <ul style="margin: 6px 0 0; padding: 0 0 0 24px; display: grid; gap: 4px; font: 400 14px/1.5 Inter, Arial, sans-serif">
+            <li><a href="#f-err" style="color: #c2410c; text-decoration: underline; text-underline-offset: 3px">Enter a 10-digit phone number.</a></li>
+            <li><a href="#f-def" style="color: #c2410c; text-decoration: underline; text-underline-offset: 3px">Enter a 5-digit ZIP code.</a></li>
+          </ul>
+        </div>
+        <div style="margin-top: 10px; display: grid; gap: 4px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+          <p style="margin: 0">bg #fef2f2 · borde izq. 4px #b91c1c · radius.md · space.4</p>
+          <p style="margin: 0">role="alert" · foco al resumen · enlaces a cada campo</p>
+        </div>
+      </div>
+
+      <div style="min-width: 0; display: grid; gap: 6px; align-content: start; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+        <p style="margin: 0; font: 700 16px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Reglas de campo</p>
+        <p style="margin: 0">Etiqueta label 14/600 #111827 · "(optional)" 400 #4b5563</p>
+        <p style="margin: 0">Ayuda caption #4b5563 · error small #b91c1c + alert-circle 16</p>
+        <p style="margin: 0">Valida al salir del campo y al enviar</p>
+        <p style="margin: 0">Input 16 px (evita zoom en iOS) · textarea mín. 132</p>
+      </div>
+    </div>
+
+    <!-- 5 · BARRA MÓVIL -->
+    <h2 style="margin: 40px 0 0; font: 700 20px/1.3 Montserrat, Arial, sans-serif; color: #0b1a33">Barra de acción fija en móvil · .action-bar (&lt;1024 px)</h2>
+    <div style="margin-top: 16px; height: 176px; display: grid; grid-template-columns: 390px 1fr; gap: 32px">
+      <div style="min-width: 0; box-sizing: border-box; width: 390px; height: 150px; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
+        <div style="height: 83px; background: #f9fafb; display: flex; align-items: center; justify-content: center; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">Contenido de la página (se desplaza debajo)</div>
+        <div style="box-sizing: border-box; height: 65px; padding: 8px; background: #0b1a33; border-top: 1px solid #2a3d5c; box-shadow: 0 -6px 20px 0 rgba(11, 26, 51, 0.25); display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+          <a href="tel:+19198057952" aria-label="Call New Valley Painting at (919) 805-7952" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; min-height: 48px; background: #10233f; border: 2px solid #2a3d5c; border-radius: 10px; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #ffffff; text-decoration: none; white-space: nowrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</a>
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; min-height: 48px; background: #ea580c; border: 2px solid #ea580c; border-radius: 10px; font: 700 16px/1 Montserrat, Arial, sans-serif; letter-spacing: 0.01em; color: #0b1a33; text-decoration: none; white-space: nowrap">Free Estimate<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b1a33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div style="min-width: 0; display: grid; gap: 4px; align-content: start; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #374151">
+        <p style="margin: 0">position: fixed; bottom 0 · z.mobile-bar (90) · grid 1fr 1fr · gap space.2 · padding 8 8 calc(8px + safe-area-inset-bottom)</p>
+        <p style="margin: 0">Barra: bg #0b1a33 · borde superior 1px #2a3d5c (border.on-dark) · shadow.mobile-bar · 64 px + área segura (layout.mobile-bar-h)</p>
+        <p style="margin: 0"><strong style="font-weight: 600; color: #111827">Call Now:</strong> bg #10233f · borde 2px #2a3d5c · radius.md · texto #ffffff Montserrat 700 16 · phone 20 #f97316 · presionado #183156</p>
+        <p style="margin: 0"><strong style="font-weight: 600; color: #111827">Free Estimate:</strong> btn primary (#ea580c, texto #0b1a33) + arrow-right 18 · en /free-estimate/ dice "Start Form" (#estimate-form)</p>
+        <p style="margin: 0">320 px: cada botón mide 148 px; por debajo de 340 px se oculta la flecha · oculta con el menú abierto y en ≥1024</p>
+        <p style="margin: 0">Entrada: translateY(100%→0) a los 400 ms, duration.slow + easing.out-expo · con reduced-motion aparece sin animación</p>
+      </div>
+    </div>
+  </main>
+
+  <footer style="padding: 20px 64px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; gap: 24px; font: 500 13px/1.45 Inter, Arial, sans-serif; color: #4b5563">
+    <span>New Valley Painting · Concept Board · v0.1 · Borrador (pitch) · 03-nov-2026</span>
+    <span>Reglas: lámina fija 1440×2814 · valores = tokens.json · estados con forma, no solo color</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2814}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

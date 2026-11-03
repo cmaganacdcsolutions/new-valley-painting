@@ -1,0 +1,26 @@
+{
+  "boards": {
+    "ads-google-display-landscape.dc.html": { "x": 0, "y": 0, "w": 1200, "h": 628, "page": "publicidad", "title": "Publicidad · Google Display 1.91:1 · 1200×628" },
+    "ads-google-display-cuadrado.dc.html": { "x": 1280, "y": 0, "w": 1200, "h": 1200, "page": "publicidad", "title": "Publicidad · Google Display 1:1 · 1200×1200" },
+    "ads-google-search-preview.dc.html": { "x": 2560, "y": 0, "w": 1200, "h": 1000, "page": "publicidad", "title": "Publicidad · Google Search · vista previa" },
+    "ads-logo-1x1.dc.html": { "x": 3840, "y": 0, "w": 1200, "h": 1200, "page": "publicidad", "title": "Publicidad · Logo 1:1 · 1200×1200" },
+    "ads-logo-4x1.dc.html": { "x": 5120, "y": 0, "w": 1200, "h": 300, "page": "publicidad", "title": "Publicidad · Logo 4:1 · 1200×300" },
+    "ads-meta-1x1.dc.html": { "x": 0, "y": 1620, "w": 1080, "h": 1080, "page": "publicidad", "title": "Publicidad · Meta 1:1 · 1080×1080" },
+    "ads-meta-4x5.dc.html": { "x": 1160, "y": 1620, "w": 1080, "h": 1350, "page": "publicidad", "title": "Publicidad · Meta 4:5 · 1080×1350" },
+    "ads-meta-9x16.dc.html": { "x": 2320, "y": 1620, "w": 1080, "h": 1920, "page": "publicidad", "title": "Publicidad · Meta 9:16 · 1080×1920" }
+  },
+  "order": [
+    "ads-google-display-landscape.dc.html",
+    "ads-google-display-cuadrado.dc.html",
+    "ads-google-search-preview.dc.html",
+    "ads-logo-1x1.dc.html",
+    "ads-logo-4x1.dc.html",
+    "ads-meta-1x1.dc.html",
+    "ads-meta-4x5.dc.html",
+    "ads-meta-9x16.dc.html"
+  ],
+  "notes": {
+    "ads-row-1": { "x": 0, "y": -300, "text": "Google Ads", "kind": "title1", "maxW": 6320, "page": "publicidad" },
+    "ads-row-2": { "x": 0, "y": 1320, "text": "Meta", "kind": "title1", "maxW": 3400, "page": "publicidad" }
+  }
+}
