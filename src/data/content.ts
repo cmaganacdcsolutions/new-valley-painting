@@ -2,6 +2,8 @@ import type { ImageMetadata } from 'astro';
 import type { IconName } from '../lib/icons';
 import imgAfter from '../assets/client/after.jpg';
 import imgBefore from '../assets/client/before.jpg';
+import img04 from '../assets/stock/img-04-painter.jpg';
+import img05 from '../assets/stock/img-05-kitchen-hub.jpg';
 import img10 from '../assets/stock/img-10-interior.jpg';
 import img11 from '../assets/stock/img-11-cabinet.jpg';
 import img12 from '../assets/stock/img-12-kitchen.jpg';
@@ -44,6 +46,30 @@ export const services: Service[] = [
     intro: "Make the most of North Carolina's outdoor seasons with a deck or outdoor space that's built, restored and finished to last.", included: ['Deck building', 'Repairs & board replacement', 'Cleaning & staining', 'Railings & steps', 'Outdoor living spaces'] },
 ];
 export const serviceBySlug = (s: string) => services.find((x) => x.slug === s)!;
+
+/** Per-service gallery: same-trade photos only, never the page's own hero. `null` = labeled placeholder slot (D-12). */
+export interface GalleryItem { image: ImageMetadata | null; alt: string }
+const g = (image: ImageMetadata | null, alt: string): GalleryItem => ({ image, alt });
+export const serviceGallery: Record<string, GalleryItem[]> = {
+  'interior-painting': [g(img14, 'Hallway with clean painted walls and trim'), g(img11, 'Painted trim and cabinetry in a bright room'), g(img12, 'Bright interior with freshly painted walls')],
+  'cabinet-painting': [g(img12, 'Kitchen with painted cabinets'), g(img05, 'Kitchen with cabinets and a light finish'), g(null, 'Cabinet painting photo placeholder')],
+  'kitchen-remodeling': [g(img05, 'Open kitchen with island'), g(img11, 'Kitchen cabinets with brass pulls'), g(null, 'Kitchen remodeling photo placeholder')],
+  'bathroom-remodeling': [g(null, 'Bathroom photo placeholder'), g(null, 'Bathroom photo placeholder'), g(null, 'Bathroom photo placeholder')],
+  'flooring-installation': [g(img10, 'Living room with light flooring'), g(null, 'Flooring photo placeholder'), g(null, 'Flooring photo placeholder')],
+  'drywall-finishing': [g(img04, 'Painter at work on a smooth finished wall'), g(null, 'Drywall photo placeholder'), g(null, 'Drywall photo placeholder')],
+  'decks-outdoor-living': [g(null, 'Deck photo placeholder'), g(null, 'Deck photo placeholder'), g(null, 'Deck photo placeholder')],
+  'exterior-painting': [],
+};
+export const serviceRelated: Record<string, string[]> = {
+  'interior-painting': ['exterior-painting', 'cabinet-painting', 'drywall-finishing'],
+  'exterior-painting': ['interior-painting', 'decks-outdoor-living', 'drywall-finishing'],
+  'cabinet-painting': ['kitchen-remodeling', 'interior-painting', 'drywall-finishing'],
+  'kitchen-remodeling': ['cabinet-painting', 'bathroom-remodeling', 'flooring-installation'],
+  'bathroom-remodeling': ['kitchen-remodeling', 'interior-painting', 'flooring-installation'],
+  'flooring-installation': ['interior-painting', 'kitchen-remodeling', 'bathroom-remodeling'],
+  'drywall-finishing': ['interior-painting', 'exterior-painting', 'cabinet-painting'],
+  'decks-outdoor-living': ['exterior-painting', 'interior-painting', 'flooring-installation'],
+};
 
 export interface City { slug: string; name: string; intro: string }
 export const cities: City[] = [

@@ -7,8 +7,11 @@ import { SITE } from '../lib/site';
 interface Props {
   variant: 'light' | 'dark'; h1: string; lead: string; crumbs: { name: string; href?: string }[];
   image?: ImageMetadata; alt?: string; kicker?: string; ctas?: boolean; short?: boolean;
+  underline?: string; trustLine?: string;
 }
-const { variant, h1, lead, crumbs, image, alt = '', kicker, ctas = true, short = false } = Astro.props;
+const { variant, h1, lead, crumbs, image, alt = '', kicker, ctas = true, short = false, underline, trustLine } = Astro.props;
+const ulAt = underline ? h1.indexOf(underline) : -1;
+const BRUSH = 'M4 16C60 8 120 6 180 9s90 5 116-1';
 const WIDTHS = [480, 768, 1024, 1366, 1920];
 const light = variant === 'light';
 const SIZES = light ? '(min-width:1024px) 58vw, 100vw' : '100vw';
@@ -19,12 +22,16 @@ const SIZES = light ? '(min-width:1024px) 58vw, 100vw' : '100vw';
       <Picture src={image} formats={['avif', 'webp']} widths={WIDTHS} sizes={SIZES} alt={alt} loading="eager" fetchpriority="high" decoding="async" />
     </div>
   )}
+  {short && !light && (
+    <svg class="page-hero__deco" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d={BRUSH} fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" /></svg>
+  )}
   <div class="container">
     <div class="page-hero__content">
       <Breadcrumb items={crumbs} dark={!light} />
       {kicker && <p class="kicker">{kicker}</p>}
-      <h1 id="page-title">{h1}</h1>
+      <h1 id="page-title">{ulAt >= 0 ? (<>{h1.slice(0, ulAt)}<span class="page-hero__ul">{underline}<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d={BRUSH} fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" /></svg></span>{h1.slice(ulAt + underline!.length)}</>) : h1}</h1>
       <p class="page-hero__lead">{lead}</p>
+      {trustLine && <p class="page-hero__trust"><Icon name="shield-check" size={16} />{trustLine}</p>}
       {ctas && (
         <div class="page-hero__ctas">
           <a class="btn btn--primary btn--lg" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>

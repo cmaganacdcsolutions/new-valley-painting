@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
+import FinalCta from '../../components/FinalCta.astro';
 import PageHero from '../../components/PageHero.astro';
 import { SITE, abs } from '../../lib/site';
 import { services } from '../../data/content';
@@ -32,15 +33,16 @@ const jsonLd = {
   ],
 };
 const asideRows = [
-  { icon: 'shield-check', t: 'Fully insured' },
-  { icon: 'award', t: '2-year workmanship warranty' },
-  { icon: 'users', t: 'Family owned & operated' },
+  { icon: 'shield-check', t: 'Fully Insured', sub: 'Protected from job-site accidents' },
+  { icon: 'award', t: '2-Year Workmanship Warranty', sub: 'On every project we complete' },
+  { icon: 'users', t: 'Family Owned & Operated', sub: 'Local to Raleigh-Durham' },
 ] as const;
 ---
 <Base title={title} description={description} path="/free-estimate/" jsonLd={jsonLd}>
   <PageHero
     variant="dark" short ctas={false}
     h1="Get Your Free Estimate"
+    underline="Free Estimate" trustLine="Free, no-obligation estimates · Fully insured"
     lead="Tell us about your project. It takes about a minute, and there's no obligation."
     crumbs={[{ name: 'Home', href: '/' }, { name: 'Free Estimate' }]}
   />
@@ -144,18 +146,20 @@ const asideRows = [
       </div>
 
       <aside class="estimate__aside" aria-labelledby="aside-title">
-        <div class="aside-card">
-          <h3 id="aside-title">Prefer to talk?</h3>
+        <div class="aside-talk">
+          <h2 id="aside-title">Prefer to talk?</h2>
           <a class="btn btn--primary btn--block" href={SITE.phoneHref}><Icon name="phone" size={20} /> Call <span class="phone-link">{SITE.phone}</span></a>
           <a class="btn btn--outline-dark btn--block" href={SITE.whatsapp} target="_blank" rel="noopener"><Icon name="message-circle" size={20} /> Text or WhatsApp<span class="sr-only"> (opens in a new tab)</span></a>
           <a class="mail-link" href={`mailto:${SITE.email}`}><Icon name="mail" size={20} />{SITE.email}</a>
-          <ul class="aside-rows">
-            {asideRows.map((r) => <li><Icon name={r.icon} size={24} />{r.t}</li>)}
-          </ul>
         </div>
+        <ul class="trust-card">
+          {asideRows.map((r) => <li><Icon name={r.icon} size={28} /><span><strong>{r.t}</strong><span class="trust-card__sub">{r.sub}</span></span></li>)}
+        </ul>
       </aside>
     </div>
   </section>
+
+  <FinalCta href="#estimate-form" />
 
   <script>
     import '../../scripts/estimate-form';

@@ -10,21 +10,23 @@ import FinalCta from '../../components/FinalCta.astro';
 import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
 import { abs } from '../../lib/site';
 import { breadcrumbList, faqPage, cityNode, providerRef, graph } from '../../lib/jsonld';
-import { services, cities, serviceFaqs, type Service } from '../../data/content';
+import { services, cities, serviceFaqs, serviceGallery, serviceRelated, serviceBySlug, type Service } from '../../data/content';
 import '../../styles/sections.css';
 import '../../styles/pages.css';
 
 export function getStaticPaths() {
-  return services.map((service, i) => ({ params: { slug: service.slug }, props: { service, index: i } }));
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
 }
-interface Props { service: Service; index: number }
-const { service: s, index } = Astro.props;
+interface Props { service: Service }
+const { service: s } = Astro.props;
 const path = `/services/${s.slug}/`;
 const faqs = serviceFaqs(s);
 const isExterior = s.slug === 'exterior-painting';
-const next = (n: number) => services[(index + n) % services.length];
-const gallery = [next(1), next(2), next(3)];
-const related = [next(1), next(2), next(3)];
+const gallery = serviceGallery[s.slug];
+const related = serviceRelated[s.slug].map(serviceBySlug);
+const lower = s.name.toLowerCase();
+// Board captions: Interior uses 'Color guidance' as the third (D02 L251-255)
+const captionIdx = s.slug === 'interior-painting' ? [0, 1, 3] : [0, 1, 2];
 const jsonLd = graph([
   {
     '@type': 'Service',
@@ -44,7 +46,7 @@ const jsonLd = graph([
   <PageHero
     variant="light"
     h1={s.h1}
-    lead={s.intro}
+    lead={`${s.short} Family owned, fully insured and backed by a 2-year workmanship warranty.`}
     image={s.image}
     alt={s.alt}
     crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: s.name }]}
@@ -74,7 +76,7 @@ const jsonLd = graph([
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="kicker">{isExterior ? 'Before & after' : 'Gallery'}</p>
-        <h2 id="gallery-title">{isExterior ? 'See the Transformation' : `${s.name} Inspiration`}</h2>
+        <h2 id="gallery-title">{isExterior ? 'See the Transformation' : `${s.name} Gallery`}</h2>
       </div>
       {isExterior ? (
         <figure class="ba__fig" data-reveal>
@@ -83,42 +85,56 @@ const jsonLd = graph([
         </figure>
       ) : (
         <ul class="gallery" data-reveal-group>
-          {gallery.map((g) => (
+          {gallery.map((it, n) => (
             <li>
-              <Image src={g.image} alt={g.alt} widths={[400, 640, 900]} sizes="(min-width:1024px) 380px, (min-width:768px) 33vw, 100vw" format="webp" quality={65} loading="lazy" decoding="async" />
-              <span class="ph-chip" data-placeholder="true">Placeholder</span>
+              <figure>
+                <div class="gallery__media">
+                  {it.image ? (
+                    <Image src={it.image} alt={it.alt} widths={[400, 640, 900]} sizes="(min-width:1024px) 380px, (min-width:768px) 33vw, 100vw" format="webp" quality={65} loading="lazy" decoding="async" />
+                  ) : (
+                    <span class="gallery__empty"><Icon name={s.icon} size={32} />Photo to come</span>
+                  )}
+                  <span class="ph-chip" data-placeholder="true">Placeholder</span>
+                </div>
+                <figcaption class="caption">{s.included[captionIdx[n]]} · sample photo</figcaption>
+              </figure>
             </li>
           ))}
         </ul>
+        <p class="caption gallery__note" data-placeholder="true"><span class="ph-chip" data-placeholder="true">To confirm</span> Stock photos for this prototype. To be replaced with New Valley Painting {lower} projects.</p>
       )}
     </div>
   </section>
 
   <Steps />
-  <Faq faqs={faqs} title={`${s.name}: Common Questions`} />
+  <Faq faqs={faqs} title={`${s.name} Questions`} tone="subtle" />
 
-  <section class="section section--subtle" aria-labelledby="related-title">
+  <section class="section" aria-labelledby="related-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="kicker">Related services</p>
-        <h2 id="related-title">More From New Valley Painting</h2>
+        <p class="kicker">Keep exploring</p>
+        <h2 id="related-title">Related Services</h2>
       </div>
       <ul class="mini-grid mini-grid--3" data-reveal-group>
         {related.map((r) => (
           <li>
             <a class="mini-card" href={`/services/${r.slug}/`}>
-              <span class="icon-chip"><Icon name={r.icon} size={24} /></span>
-              <span>{r.name}</span>
+              <Image class="mini-card__media" src={r.image} alt="" width={96} height={96} format="webp" quality={65} loading="lazy" decoding="async" />
+              <span class="mini-card__body">
+                <span class="mini-card__title">{r.name}</span>
+                {r.confirm && <span class="ph-chip" data-placeholder="true">To confirm</span>}
+              </span>
               <Icon name="chevron-right" size={20} class="mini-card__chev" />
             </a>
           </li>
         ))}
       </ul>
       <div class="section-sub" data-reveal>
-        <h3 class="h4" id="areas-chips-title">Areas we serve</h3>
+        <h3 class="h4" id="areas-chips-title">Areas We Serve</h3>
         <ul class="chips" aria-labelledby="areas-chips-title" style="margin-top:var(--space-4)">
           {cities.map((c) => <li><a class="chip" href={`/service-areas/${c.slug}/`}><Icon name="map-pin" size={18} />{c.name}</a></li>)}
         </ul>
+        <p class="caption section-sub__note" data-placeholder="true"><span class="ph-chip" data-placeholder="true">To confirm</span> Coverage area to be confirmed by New Valley Painting.</p>
       </div>
     </div>
   </section>

@@ -1,10 +1,10 @@
 ---
 import Icon from './Icon.astro';
 import type { Faq } from '../data/content';
-interface Props { faqs: Faq[]; id?: string; title?: string; kicker?: string }
-const { faqs, id = 'faq-title', title = 'Questions, Answered', kicker = 'FAQ' } = Astro.props;
+interface Props { faqs: Faq[]; id?: string; title?: string; kicker?: string; tone?: 'subtle' }
+const { faqs, id = 'faq-title', title = 'Questions, Answered', kicker = 'FAQ', tone } = Astro.props;
 ---
-<section class="section faq-section" aria-labelledby={id}>
+<section class:list={['section', 'faq-section', { 'section--subtle': tone === 'subtle' }]} aria-labelledby={id}>
   <div class="container container--narrow">
     <div class="section-head" data-reveal>
       <p class="kicker">{kicker}</p>
