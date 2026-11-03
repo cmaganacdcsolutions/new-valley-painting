@@ -1,0 +1,226 @@
+---
+import { Image } from 'astro:assets';
+import montserratLatin from '@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url';
+import Icon from '../components/Icon.astro';
+import { SITE, abs } from '../lib/site';
+import { services, cities } from '../data/content';
+import logoN from '../assets/logo-n.png';
+import '../styles/global.css';
+import '../styles/layout.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path used for canonical + og:url. Defaults to the current pathname. */
+  path?: string;
+  /** Extra noindex on top of the site-wide SITE.noindex flag. */
+  noindex?: boolean;
+  /** JSON-LD object (usually `{ '@context': ..., '@graph': [...] }`). */
+  jsonLd?: Record<string, unknown>;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+}
+const {
+  title, description, path = Astro.url.pathname, noindex = false, jsonLd,
+  ogImage = '/og/default.jpg', ogImageAlt = 'New Valley Painting: Painting & Remodeling in Raleigh-Durham', ogType = 'website',
+} = Astro.props;
+
+const canonical = abs(path);
+const robots = SITE.noindex || noindex ? 'noindex, nofollow' : 'index, follow';
+const pathname = Astro.url.pathname;
+const isEstimate = pathname.startsWith('/free-estimate');
+const is = (p: string) => pathname === p || pathname.startsWith(p);
+const current = (p: string) => (is(p) ? 'page' : undefined);
+
+const company = [
+  { href: '/projects/', label: 'Projects' },
+  { href: '/about/', label: 'About' },
+  { href: '/reviews/', label: 'Reviews' },
+  { href: '/service-areas/', label: 'Service Areas' },
+  { href: '/free-estimate/', label: 'Free Estimate' },
+];
+---
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={abs(ogImage)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0b1a33" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="font" type="font/woff2" href={montserratLatin} crossorigin />
+    <slot name="head" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header" data-header>
+      <div class="container site-header__inner">
+        <a class="logo-link" href="/" aria-label="New Valley Painting, home">
+          <Image src={logoN} height={88} alt="New Valley Painting" />
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <div class="dd" data-dd>
+            <button type="button" class={`site-nav__item${is('/services') ? ' is-current' : ''}`} aria-expanded="false" aria-controls="dd-services">
+              Services <Icon name="chevron-down" size={16} />
+            </button>
+            <div class="dd__panel" id="dd-services">
+              <ul>
+                {services.map((s) => <li><a class="dd__link" href={`/services/${s.slug}/`}>{s.name}</a></li>)}
+              </ul>
+              <div class="dd__divider"></div>
+              <a class="dd__link dd__all" href="/services/">All services &rarr;</a>
+            </div>
+          </div>
+          <div class="dd" data-dd>
+            <button type="button" class={`site-nav__item${is('/service-areas') ? ' is-current' : ''}`} aria-expanded="false" aria-controls="dd-areas">
+              Service Areas <Icon name="chevron-down" size={16} />
+            </button>
+            <div class="dd__panel" id="dd-areas">
+              <ul>
+                {cities.map((c) => <li><a class="dd__link" href={`/service-areas/${c.slug}/`}>{c.name}, NC</a></li>)}
+              </ul>
+              <div class="dd__divider"></div>
+              <a class="dd__link dd__all" href="/service-areas/">All service areas &rarr;</a>
+            </div>
+          </div>
+          <a class="site-nav__item" href="/projects/" aria-current={current('/projects')}>Projects</a>
+          <a class="site-nav__item" href="/about/" aria-current={current('/about')}>About</a>
+          <a class="site-nav__item" href="/reviews/" aria-current={current('/reviews')}>Reviews</a>
+        </nav>
+
+        <div class="site-header__right">
+          <a class="icon-btn icon-btn--phone site-header__phone-btn" href={SITE.phoneHref} aria-label={`Call ${SITE.phone}`}>
+            <Icon name="phone" size={24} />
+          </a>
+          <a class="site-header__phone-link phone-link" href={SITE.phoneHref}>
+            <Icon name="phone" size={18} />{SITE.phone}
+          </a>
+          <a class="btn btn--primary btn--sm site-header__cta" href="/free-estimate/">
+            <span class="short">Free Estimate</span><span class="long">Get a Free Estimate</span>
+            <Icon name="arrow-right" size={20} class="btn__arrow" />
+          </a>
+          <a class="icon-btn site-header__menu" id="menu-btn" href="#site-footer-nav" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+            <Icon name="menu" size={24} />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" data-drawer>
+      <div class="drawer__backdrop" data-drawer-close></div>
+      <div class="drawer__panel">
+        <div class="drawer__top">
+          <a class="logo-link" href="/" aria-label="New Valley Painting, home"><Image src={logoN} height={64} alt="New Valley Painting" /></a>
+          <button type="button" class="icon-btn" aria-label="Close menu" data-drawer-close data-drawer-first><Icon name="x" size={24} /></button>
+        </div>
+        <ul class="drawer__links">
+          <li><a href="/" aria-current={pathname === '/' ? 'page' : undefined}>Home</a></li>
+          <li>
+            <details>
+              <summary>Services <Icon name="chevron-down" size={20} /></summary>
+              <ul class="drawer__sub">
+                {services.map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}
+                <li><a href="/services/">All services</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Service Areas <Icon name="chevron-down" size={20} /></summary>
+              <ul class="drawer__sub">
+                {cities.map((c) => <li><a href={`/service-areas/${c.slug}/`}>{c.name}, NC</a></li>)}
+                <li><a href="/service-areas/">All service areas</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="/projects/" aria-current={current('/projects')}>Projects</a></li>
+          <li><a href="/about/" aria-current={current('/about')}>About</a></li>
+          <li><a href="/reviews/" aria-current={current('/reviews')}>Reviews</a></li>
+          <li><a href="/free-estimate/" aria-current={current('/free-estimate')}>Free Estimate</a></li>
+        </ul>
+        <div class="drawer__bottom">
+          <a class="btn btn--primary btn--lg btn--block" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+          <a class="btn btn--outline-light btn--lg btn--block" href={SITE.phoneHref}><Icon name="phone" size={20} /> Call <span class="phone-link">{SITE.phone}</span></a>
+          <div class="drawer__contact">
+            <a class="drawer__mail" href={`mailto:${SITE.email}`}><Icon name="mail" size={18} />{SITE.email}</a>
+            <a class="icon-btn drawer__fb" href={SITE.facebook} rel="noopener" aria-label="New Valley Painting on Facebook"><Icon name="facebook" size={24} /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="main"><slot /></main>
+
+    <footer class="site-footer" id="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div class="site-footer__brand">
+            <a class="logo-link" href="/" aria-label="New Valley Painting, home"><Image src={logoN} height={88} alt="New Valley Painting" /></a>
+            <p class="site-footer__tagline">{SITE.slogan}.</p>
+            <a class="btn btn--primary" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+          </div>
+          <nav aria-label="Services" id="site-footer-nav">
+            <h2 class="site-footer__heading">Services</h2>
+            <ul class="site-footer__list">
+              {services.map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}
+            </ul>
+          </nav>
+          <nav aria-label="Company">
+            <h2 class="site-footer__heading">Company</h2>
+            <ul class="site-footer__list">
+              {company.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+            </ul>
+          </nav>
+          <nav aria-label="Service areas">
+            <h2 class="site-footer__heading">Service Areas</h2>
+            <ul class="site-footer__list">
+              {cities.map((c) => <li><a href={`/service-areas/${c.slug}/`}>{c.name}, NC</a></li>)}
+            </ul>
+          </nav>
+          <div>
+            <h2 class="site-footer__heading">Contact</h2>
+            <ul class="site-footer__list">
+              <li><a class="phone-link" href={SITE.phoneHref}><Icon name="phone" size={18} />{SITE.phone}</a></li>
+              <li><a href={`mailto:${SITE.email}`}><Icon name="mail" size={18} />{SITE.email}</a></li>
+              <li><a href={SITE.whatsapp} rel="noopener"><Icon name="message-circle" size={18} />WhatsApp</a></li>
+              <li><a href={SITE.facebook} rel="noopener"><Icon name="facebook" size={18} />Facebook</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <span>&copy; 2026 New Valley Painting. All rights reserved.</span>
+          <a href="/privacy/">Privacy</a>
+          <span>Prototype by CDC Software Solutions</span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="action-bar" data-action-bar>
+      <a class="btn action-bar__call" href={SITE.phoneHref} aria-label={`Call New Valley Painting at ${SITE.phone}`}><Icon name="phone" size={20} />Call Now</a>
+      <a class="btn btn--primary" href={isEstimate ? '#estimate-form' : '/free-estimate/'}>{isEstimate ? 'Start Form' : 'Free Estimate'}<Icon name="arrow-right" size={18} class="btn__arrow" /></a>
+    </div>
+
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>

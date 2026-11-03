@@ -1,0 +1,327 @@
+---
+import { Image, Picture, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE, abs } from '../lib/site';
+import { services, cities, homeFaqs, trust, stats, steps, protection, reviews, imgs } from '../data/content';
+import heroImg from '../assets/stock/img-01-hero.jpg';
+import painterImg from '../assets/stock/img-04-painter.jpg';
+import '../styles/home.css';
+
+const HERO_WIDTHS = [480, 768, 1024, 1366, 1920, 2560];
+const heroPreload = await getImage({ src: heroImg, format: 'avif', widths: HERO_WIDTHS, sizes: '100vw' });
+
+const title = 'Painting & Remodeling in Raleigh-Durham, NC | New Valley Painting';
+const description = 'Family-owned painting and remodeling in Raleigh-Durham, NC. Interior and exterior painting, kitchens, baths, flooring and more. Fully insured, 2-year warranty. Free estimates.';
+
+const business = {
+  '@type': 'HousePainter',
+  '@id': `${SITE.url}/#business`,
+  name: SITE.name,
+  url: abs('/'),
+  logo: abs('/icon-512.png'),
+  image: abs('/og/default.jpg'),
+  telephone: SITE.phoneIntl,
+  email: SITE.email,
+  slogan: SITE.slogan,
+  sameAs: [SITE.facebook],
+  areaServed: cities.map((c) => ({ '@type': 'City', name: c.name, containedInPlace: { '@type': 'State', name: 'North Carolina' } })),
+  address: { '@type': 'PostalAddress', addressRegion: 'NC', addressCountry: 'US' },
+  knowsAbout: services.map((s) => s.name),
+};
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', '@id': `${SITE.url}/#website`, name: SITE.name, url: abs('/'), publisher: { '@id': `${SITE.url}/#business` } },
+    business,
+    {
+      '@type': 'FAQPage',
+      mainEntity: homeFaqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ],
+};
+
+const heroList = ['Interior & Exterior Painting', 'Kitchen & Bathroom Remodeling', 'Flooring Installation', 'Drywall & Finishing', 'Decks & Outdoor Living', 'And More'];
+const CARD_SIZES = '(min-width:1024px) 25vw, (min-width:480px) 50vw, 96px';
+---
+<Base title={title} description={description} jsonLd={jsonLd} path="/" ogType="website">
+  <link slot="head" rel="preload" as="image" imagesrcset={heroPreload.srcSet.attribute} imagesizes="100vw" type="image/avif" fetchpriority="high" />
+
+  <!-- 5.1 Hero -->
+  <section class="hero" aria-labelledby="hero-title" data-hero>
+    <div class="hero__media" data-hero-media>
+      <Picture
+        src={heroImg}
+        formats={['avif', 'webp']}
+        widths={HERO_WIDTHS}
+        sizes="100vw"
+        alt="Bright living room with freshly painted walls and white built-in shelves"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <p class="kicker" data-hero-item>More than painting · Raleigh-Durham, NC</p>
+        <h1 id="hero-title" data-hero-item>Painting &amp; <span class="brush">Remodeling<svg class="brush__svg" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false" data-brush><path d="M4 16C60 8 120 6 180 9s90 5 116-1" fill="none" stroke="#ea580c" stroke-width="10" stroke-linecap="round" /></svg></span> Services in Raleigh-Durham</h1>
+        <p class="hero__lead" data-hero-item>From fresh interior and exterior paint to complete kitchen and bath remodels, we deliver quality, value and attention to detail. Family owned, fully insured and backed by a 2-year workmanship warranty.</p>
+        <ul class="hero__list" data-hero-item>
+          {heroList.map((t) => <li><Icon name="check" size={20} strokeWidth={3} />{t}</li>)}
+        </ul>
+        <div class="hero__ctas" data-hero-item>
+          <a class="btn btn--primary btn--lg btn--block" href="/free-estimate/" data-sheen>Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+          <a class="btn btn--outline-light btn--lg btn--block" href={SITE.phoneHref}><Icon name="phone" size={20} /> Call <span class="phone-link">{SITE.phone}</span></a>
+        </div>
+        <p class="hero__micro" data-hero-item><Icon name="shield-check" size={16} />Free, no-obligation estimates · Fully insured</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.2 Trust strip -->
+  <section class="trust" aria-label="Why homeowners choose us">
+    <div class="container">
+      <ul class="trust__card" data-reveal>
+        {trust.map((t) => (
+          <li class="trust-item">
+            <Icon name={t.icon} size={28} class="trust-item__icon" />
+            <div>
+              <div class="trust-item__label">{t.label}</div>
+              <div class="trust-item__sub">{t.sub}</div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5.3 Services -->
+  <section class="section" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">What we do</p>
+        <h2 id="services-title">Painting &amp; Remodeling Services</h2>
+        <p class="section-head__lead">One trusted, family-owned team for the inside and outside of your home.</p>
+      </div>
+      <ul class="service-grid" data-reveal-group>
+        {services.map((s) => (
+          <li data-placeholder={s.confirm ? 'true' : undefined}>
+            <a class="service-card" href={`/services/${s.slug}/`}>
+              <div class="service-card__media">
+                <Image src={s.image} alt={s.alt} widths={[400, 800]} sizes={CARD_SIZES} format="webp" quality={65} loading="lazy" decoding="async" />
+              </div>
+              <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
+              <div class="service-card__body">
+                <h3 class="service-card__title">{s.name}</h3>
+                <p class="service-card__desc">{s.short}</p>
+                <span class="link-arrow service-card__more">Learn more <Icon name="arrow-right" size={18} /></span>
+              </div>
+              <Icon name="chevron-right" size={20} class="service-card__chev" />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="services__cta"><a class="btn btn--outline-dark" href="/services/">View all services</a></div>
+    </div>
+  </section>
+
+  <!-- 5.4 Before / after -->
+  <section class="section section--subtle" aria-labelledby="ba-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Before &amp; after</p>
+        <h2 id="ba-title">See the Transformation</h2>
+        <p class="section-head__lead">Same house, new curb appeal. Drag the slider to compare.</p>
+      </div>
+      <div class="ba">
+        <figure class="ba__fig" data-reveal>
+          <div class="ba-slider" data-ba-slider>
+            <Image src={imgs.after} alt="Two-story brick home after exterior painting: white brick with black window trim" widths={[480, 768, 1024, 1600]} sizes="(min-width:1024px) 62vw, 720px" format="webp" quality={65} loading="lazy" decoding="async" />
+            <div class="ba-slider__before">
+              <Image src={imgs.before} alt="The same brick home before painting, with original tan brick" widths={[480, 768, 1024, 1600]} sizes="(min-width:1024px) 62vw, 720px" format="webp" quality={65} loading="lazy" decoding="async" />
+            </div>
+            <span class="ba-slider__label ba-slider__label--before" aria-hidden="true">Before</span>
+            <span class="ba-slider__label ba-slider__label--after" aria-hidden="true">After</span>
+            <div class="ba-slider__line" aria-hidden="true"></div>
+            <div class="ba-slider__handle" aria-hidden="true"><Icon name="chevrons-left-right" size={24} /></div>
+            <input class="ba-slider__input" type="range" min="0" max="100" step="1" value="50" aria-label="Compare before and after: drag to reveal" aria-valuetext="50% before" />
+          </div>
+          <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area</figcaption>
+        </figure>
+        <div class="ba__copy" data-reveal>
+          <h3>Painted brick, crisp black trim</h3>
+          <p>A dated tan brick exterior turned bright white with black window trim and fresh white details. That's the kind of change a professional exterior paint job makes.</p>
+          <div class="ba__actions">
+            <a class="link-arrow" href="/projects/">View more projects <Icon name="arrow-right" size={18} /></a>
+            <a class="btn btn--primary" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5 Stats -->
+  <section class="stats section--tight" aria-label="New Valley Painting in numbers" data-stats data-placeholder="true">
+    <div class="container">
+      <ul class="stats__grid" data-reveal-group>
+        {stats.map((s) => (
+          <li class="stat">
+            <Icon name={s.icon} size={32} class="stat__icon" />
+            <span class="stat__n" data-count={s.n}>{s.n}<span class="stat__suffix">{s.suffix}</span></span>
+            <span class="stat__label">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="stats__note" data-placeholder="true"><span class="ph-chip ph-chip--dark" data-placeholder="true">Placeholder</span>Sample figures for this prototype, to be confirmed by New Valley Painting.</p>
+    </div>
+  </section>
+
+  <!-- 5.6 Process -->
+  <section class="section" aria-labelledby="process-title">
+    <div class="container">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="kicker">How it works</p>
+        <h2 id="process-title">From First Call to Final Walkthrough</h2>
+      </div>
+      <ol class="steps" data-reveal-group>
+        {steps.map((s, i) => (
+          <li class="step" data-placeholder={s.confirm ? 'true' : undefined}>
+            <span class="step__badge" aria-hidden="true">{i + 1}</span>
+            <div class="step__body">
+              <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
+              <h3 class="h4">{s.h}</h3>
+              <p>{s.p}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5.7 Protection -->
+  <section class="section section--subtle" aria-labelledby="protect-title">
+    <div class="container protect">
+      <div class="protect__img" data-reveal>
+        <Image src={painterImg} alt="Painter rolling fresh paint onto an interior wall" widths={[480, 768, 1080]} sizes="(min-width:1024px) 50vw, 100vw" format="webp" quality={65} loading="lazy" decoding="async" />
+        <div class="protect__badge">
+          <Icon name="award" size={28} />
+          <div><strong>2-Year</strong><span>Workmanship Warranty</span></div>
+        </div>
+      </div>
+      <div class="protect__copy">
+        <div class="section-head" data-reveal>
+          <p class="kicker">Peace of mind</p>
+          <h2 id="protect-title">Protected From Start to Finish</h2>
+        </div>
+        <div class="protect__rows" data-reveal-group>
+          {protection.map((p) => (
+            <div class="protect__row">
+              <span class="icon-chip"><Icon name={p.icon} size={24} /></span>
+              <div>
+                <h3 class="h4">{p.h}</h3>
+                <p>{p.p}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="protect__cta"><a class="btn btn--primary" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.8 Reviews -->
+  <section class="section" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="kicker">Reviews</p>
+        <h2 id="reviews-title">What Homeowners Say</h2>
+        <div class="rating-row" data-placeholder="true">
+          <span class="rating-row__stars" role="img" aria-label="Rated 5 out of 5">{[0, 1, 2, 3, 4].map(() => <Icon name="star-filled" size={20} />)}</span>
+          <span>5.0 average rating</span>
+          <span class="ph-chip" data-placeholder="true">Placeholder</span>
+        </div>
+      </div>
+      <ul class="reviews__scroller" role="region" aria-label="Reviews, scroll horizontally" tabindex="0" data-reveal-group>
+        {reviews.map((r) => (
+          <li>
+            <figure class="review-card" data-placeholder="true">
+              <Icon name="quote" size={32} class="review-card__quote-icon" />
+              <span class="review-card__stars" role="img" aria-label="Rated 5 out of 5">{[0, 1, 2, 3, 4].map(() => <Icon name="star-filled" size={18} />)}</span>
+              <blockquote class="review-card__quote">{r.text}</blockquote>
+              <figcaption class="review-card__foot">
+                <span class="review-card__avatar" aria-hidden="true">{r.initials}</span>
+                <span>
+                  <span class="review-card__name">{r.name} <span class="ph-chip" data-placeholder="true">Placeholder</span></span>
+                  <span class="review-card__ctx">{r.ctx}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <div class="reviews__more"><a class="link-arrow" href="/reviews/">Read all reviews <Icon name="arrow-right" size={18} /></a></div>
+    </div>
+  </section>
+
+  <!-- 5.9 Service areas -->
+  <section class="section section--dark is-dark" aria-labelledby="areas-title">
+    <div class="container areas">
+      <div class="areas__copy" data-reveal>
+        <div class="section-head">
+          <p class="kicker">Service areas</p>
+          <h2 id="areas-title">Proudly Serving the Triangle</h2>
+        </div>
+        <p>We paint and remodel homes across Raleigh-Durham and nearby towns. Don't see yours? Call us, and we'll let you know if we can help.</p>
+        <p><a class="link phone-link" href={SITE.phoneHref}>{SITE.phone}</a></p>
+      </div>
+      <ul class="city-grid" data-reveal-group data-placeholder="true">
+        {cities.map((c) => (
+          <li>
+            <a class="city-chip" href={`/service-areas/${c.slug}/`}>
+              <Icon name="map-pin" size={20} /><span>{c.name}</span><Icon name="chevron-right" size={16} class="city-chip__chev" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5.10 FAQ -->
+  <section class="section faq-section" aria-labelledby="faq-title">
+    <div class="container container--narrow">
+      <div class="section-head" data-reveal>
+        <p class="kicker">FAQ</p>
+        <h2 id="faq-title">Questions, Answered</h2>
+      </div>
+      <div class="faq" data-reveal>
+        {homeFaqs.map((f) => (
+          <details>
+            <summary>
+              <span>{f.q}</span>
+              <span class="faq__icon" aria-hidden="true"><Icon name="plus" size={24} class="plus" /><Icon name="minus" size={24} class="minus" /></span>
+            </summary>
+            <p class="faq__answer">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.11 Final CTA -->
+  <section class="cta-band on-accent" aria-labelledby="cta-title" data-cta>
+    <div class="cta-band__strokes" aria-hidden="true">
+      <svg viewBox="0 0 300 24" preserveAspectRatio="none" focusable="false"><path d="M4 16C60 8 120 6 180 9s90 5 116-1" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" /></svg>
+      <svg viewBox="0 0 300 24" preserveAspectRatio="none" focusable="false"><path d="M4 16C60 8 120 6 180 9s90 5 116-1" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" /></svg>
+    </div>
+    <div class="container">
+      <div class="cta-band__inner" data-reveal>
+        <h2 id="cta-title">Ready for a Beautifully Painted Home?</h2>
+        <p class="lead">Contact New Valley Painting today to schedule your consultation and start the journey toward a beautifully painted home.</p>
+        <div class="cta-band__btns">
+          <a class="btn btn--dark btn--lg" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+          <a class="btn btn--outline-dark btn--lg" href={SITE.phoneHref}><Icon name="phone" size={20} /> Call <span class="phone-link">{SITE.phone}</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

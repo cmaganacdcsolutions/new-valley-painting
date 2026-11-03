@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../lib/site';
+---
+<Base title="Page not found | New Valley Painting" description="The page you are looking for could not be found." noindex>
+  <section class="section">
+    <div class="container container--narrow" style="text-align:center">
+      <p class="kicker" style="justify-content:center">404</p>
+      <h1 style="margin-top:var(--space-3)">We couldn't find that page</h1>
+      <p class="lead" style="margin-top:var(--space-4)">The page may have moved. Head back home or call us at <a class="link phone-link" href={SITE.phoneHref}>{SITE.phone}</a>.</p>
+      <p style="margin-top:var(--space-8)"><a class="btn btn--primary btn--lg" href="/">Back to home <Icon name="arrow-right" size={20} class="btn__arrow" /></a></p>
+    </div>
+  </section>
+</Base>
