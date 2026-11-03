@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import PageHero from '../../components/PageHero.astro';
@@ -7,7 +8,7 @@ import Faq from '../../components/Faq.astro';
 import FinalCta from '../../components/FinalCta.astro';
 import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
 import ReviewCards from '../../components/ReviewCards.astro';
-import { abs } from '../../lib/site';
+import { abs, SITE } from '../../lib/site';
 import { breadcrumbList, faqPage, cityNode, providerRef, graph } from '../../lib/jsonld';
 import { services, cities, cityFaqs, type City } from '../../data/content';
 import heroImg from '../../assets/stock/img-01-hero.jpg';
@@ -44,7 +45,7 @@ const jsonLd = graph([
     variant="dark"
     kicker={`Serving ${c.name} & nearby`}
     h1={`Painters & Remodelers in ${c.name}, NC`}
-    lead="Interior and exterior painting, kitchen and bathroom remodeling, flooring and more, from one family-owned, fully insured team."
+    lead={`Painting and remodeling for ${c.name} homes, inside and out. Family owned, fully insured and backed by a 2-year workmanship warranty.`}
     image={heroImg}
     alt="Bright living room with freshly painted walls and white built-in shelves"
     crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: c.name }]}
@@ -52,11 +53,15 @@ const jsonLd = graph([
   <TrustStrip />
 
   <section class="section" aria-labelledby="intro-title">
-    <div class="container container--narrow">
-      <div class="intro__text" data-reveal>
+    <div class="container city-intro">
+      <div class="city-intro__head" data-reveal>
+        <p class="kicker">{c.name}, NC</p>
         <h2 id="intro-title">Painting &amp; Remodeling in {c.name}</h2>
-        <p data-placeholder="true">{c.intro}</p>
+      </div>
+      <div class="city-intro__body" data-reveal>
+        <p class="city-intro__lead">{c.intro}</p>
         <p>We're family owned and fully insured, and every project is backed by our 2-year workmanship warranty.</p>
+        <a class="link-arrow city-intro__call" href={SITE.phoneHref}>Call {SITE.phone} <Icon name="arrow-right" size={18} /></a>
       </div>
     </div>
   </section>
@@ -66,13 +71,17 @@ const jsonLd = graph([
       <div class="section-head" data-reveal>
         <p class="kicker">What we do</p>
         <h2 id="services-title">Our Services in {c.name}</h2>
+        <p class="section-head__lead">One trusted, family-owned team for the inside and outside of your home.</p>
       </div>
       <ul class="mini-grid mini-grid--city" data-reveal-group>
         {services.map((s) => (
-          <li data-placeholder={s.confirm ? 'true' : undefined}>
+          <li>
             <a class="mini-card" href={`/services/${s.slug}/`}>
-              <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
-              <span>{s.name}</span>
+              <Image class="mini-card__media" src={s.image} alt="" width={96} height={96} format="webp" quality={65} loading="lazy" decoding="async" />
+              <span class="mini-card__body">
+                <span class="mini-card__title">{s.name}</span>
+                {s.confirm && <span class="ph-chip" data-placeholder="true">To confirm</span>}
+              </span>
               <Icon name="chevron-right" size={20} class="mini-card__chev" />
             </a>
           </li>
@@ -88,10 +97,20 @@ const jsonLd = graph([
         <h2 id="ba-title">See the Transformation</h2>
         <p class="section-head__lead">Same house, new curb appeal. Drag the slider to compare.</p>
       </div>
-      <figure class="ba__fig" data-reveal>
-        <BeforeAfterSlider />
-        <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area</figcaption>
-      </figure>
+      <div class="ba">
+        <figure class="ba__fig" data-reveal>
+          <BeforeAfterSlider />
+          <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area <span class="ph-chip" data-placeholder="true">To confirm</span></figcaption>
+        </figure>
+        <div class="ba__copy" data-reveal>
+          <h3>Painted brick, crisp black trim</h3>
+          <p>A dated tan brick exterior turned bright white with black window trim and fresh white details. That's the kind of change a professional exterior paint job makes.</p>
+          <div class="ba__actions">
+            <a class="link-arrow" href="/projects/">View more projects <Icon name="arrow-right" size={18} /></a>
+            <a class="btn btn--primary" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -105,17 +124,21 @@ const jsonLd = graph([
     </div>
   </section>
 
-  <Faq faqs={faqs} />
+  <Faq faqs={faqs} title={`Questions from ${c.name} Homeowners`} />
 
-  <section class="section" aria-labelledby="nearby-title">
-    <div class="container">
-      <div class="section-head" data-reveal>
+  <section class="section section--dark nearby" aria-labelledby="nearby-title">
+    <div class="container nearby__grid">
+      <div class="nearby__head" data-reveal>
         <p class="kicker">Nearby areas</p>
-        <h2 id="nearby-title">We Also Serve</h2>
+        <h2 id="nearby-title">Also Serving Towns Near {c.name}</h2>
+        <p>Don't see your town? Call us, and we'll let you know if we can help. <a class="nearby__phone" href={SITE.phoneHref}>{SITE.phone}</a></p>
       </div>
-      <ul class="chips" data-reveal>
-        {others.map((o) => <li><a class="chip" href={`/service-areas/${o.slug}/`}><Icon name="map-pin" size={18} />{o.name}</a></li>)}
-      </ul>
+      <div class="nearby__list" data-reveal>
+        <ul class="nearby__chips">
+          {others.map((o) => <li><a class="nearby__chip" href={`/service-areas/${o.slug}/`}><Icon name="map-pin" size={20} class="nearby__pin" /><span>{o.name}</span><Icon name="chevron-right" size={16} class="nearby__chev" /></a></li>)}
+        </ul>
+        <p class="nearby__note" data-placeholder="true"><span class="ph-chip ph-chip--dark" data-placeholder="true">To confirm</span>Coverage area to be confirmed by New Valley Painting.</p>
+      </div>
     </div>
   </section>
 
