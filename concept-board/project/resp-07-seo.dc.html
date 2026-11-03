@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Responsive · SEO: hoy vs nuevo sitio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+sc-for,sc-if{display:contents}
+a{color:#c2410c}a:hover{color:#9a3412}
+</style>
+</helmet>
+<div style="width: 1920px; height: 1500px; box-sizing: border-box; padding: 72px 80px; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.5; color: #374151; background: #f9fafb; overflow: hidden;">
+  <p style="margin: 0 0 12px; font: 700 13px/1.2 'Montserrat', Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #c2410c;">SEO · el argumento del pitch</p>
+  <h1 style="margin: 0 0 12px; font: 800 52px/1.1 'Montserrat', Arial, sans-serif; letter-spacing: -0.015em; color: #0b1a33;">Hoy Google ve una sola página. El nuevo sitio le da 22.</h1>
+  <p style="margin: 0 0 40px; max-width: 1200px; font-size: 20px; line-height: 1.6; color: #4b5563;">Fuente: auditoría del sitio actual (newvalleypainting.us, 2026-11-02) y arquitectura del nuevo sitio (design-spec §1 y §10). Sitio en inglés para el mercado de NC.</p>
+
+  <div style="display: grid; grid-template-columns: 560px minmax(0, 1fr); gap: 48px;">
+    <!-- today -->
+    <section style="background: #ffffff; border: 1px solid #e5e7eb; border-top: 3px solid #b91c1c; border-radius: 16px; padding: 32px; box-shadow: 0 2px 6px -1px rgba(11, 26, 51, 0.10);">
+      <h2 style="margin: 0 0 4px; font: 800 28px/1.15 'Montserrat', Arial, sans-serif; color: #0b1a33;">Hoy</h2>
+      <p style="margin: 0 0 20px; font-size: 14px; color: #4b5563;">Vue SPA con rutas hash, render del lado del cliente</p>
+      <div style="padding: 16px; border: 1px solid #e5e7eb; border-radius: 10px; margin-bottom: 24px; background: #f9fafb;">
+        <p style="margin: 0; font-size: 13px; color: #4b5563;">newvalleypainting.us › #/home</p>
+        <p style="margin: 4px 0; font-size: 20px; line-height: 1.3; color: #1e3a8a;">NewValley</p>
+        <p style="margin: 0; font-size: 14px; color: #b91c1c; font-style: italic;">(sin meta description: Google improvisa el texto)</p>
+      </div>
+      <sc-for list="{{today}}" as="p" hint-placeholder-count="7">
+        <div style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #e5e7eb;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Problema" style="flex: none; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          <span style="min-width: 0;"><span style="display: block; font-weight: 600; color: #111827;">{{p.t}}</span><span style="display: block; font-size: 14px; color: #4b5563;">{{p.b}}</span></span>
+        </div>
+      </sc-for>
+    </section>
+
+    <!-- new -->
+    <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-content: start;">
+      <div style="grid-column: 1 / -1; background: #0b1a33; border-radius: 16px; padding: 28px 32px; color: #d1d5db;">
+        <h2 style="margin: 0 0 16px; font: 800 28px/1.15 'Montserrat', Arial, sans-serif; color: #ffffff;">Nuevo sitio: Astro estático, HTML completo en cada URL</h2>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+          <sc-for list="{{urls}}" as="u" hint-placeholder-count="4">
+            <div style="background: #10233f; border: 1px solid #2a3d5c; border-radius: 10px; padding: 16px;">
+              <p style="margin: 0 0 4px; font: 800 30px/1 'Montserrat', Arial, sans-serif; color: #f97316;">{{u.n}}</p>
+              <p style="margin: 0 0 8px; font-weight: 600; color: #ffffff;">{{u.t}}</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.45; color: #d1d5db; font-family: Consolas, 'Courier New', monospace; overflow-wrap: anywhere;">{{u.b}}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px;">
+        <h3 style="margin: 0 0 12px; font: 700 20px/1.3 'Montserrat', Arial, sans-serif; color: #0b1a33;">Title + meta por página (≤60 / ≤155)</h3>
+        <div style="padding: 16px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f9fafb;">
+          <p style="margin: 0; font-size: 13px; color: #4b5563;">newvalleypainting.us › services › exterior-painting</p>
+          <p style="margin: 4px 0; font-size: 19px; line-height: 1.3; color: #1e3a8a;">Exterior Painting in Raleigh, NC | New Valley Painting</p>
+          <p style="margin: 0; font-size: 14px; color: #374151;">Exterior house painting for siding, brick, trim and doors in Raleigh-Durham. Fully insured, 2-year workmanship warranty. Free estimate.</p>
+        </div>
+        <p style="margin: 12px 0 0; font-size: 14px; color: #4b5563;">Además: canonical absoluto, Open Graph + imagen 1200×630 por servicio, un solo H1, breadcrumbs visibles = JSON-LD.</p>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px;">
+        <h3 style="margin: 0 0 12px; font: 700 20px/1.3 'Montserrat', Arial, sans-serif; color: #0b1a33;">Datos estructurados (JSON-LD)</h3>
+        <pre style="margin: 0; padding: 16px; background: #0b1a33; border-radius: 10px; color: #d1d5db; font: 13px/1.5 Consolas, 'Courier New', monospace; white-space: pre-wrap;">{ "@type": "HousePainter",
+  "name": "New Valley Painting",
+  "telephone": "+1-919-805-7952",
+  "areaServed": [6 × City, NC],
+  "knowsAbout": [8 servicios],
+  "sameAs": [Facebook] }
++ WebSite · FAQPage · Service
++ BreadcrumbList · ContactPage</pre>
+        <p style="margin: 12px 0 0; font-size: 14px; color: #4b5563;">Sin reseñas ni rating en JSON-LD hasta tener reseñas reales (D-15).</p>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px;">
+        <h3 style="margin: 0 0 12px; font: 700 20px/1.3 'Montserrat', Arial, sans-serif; color: #0b1a33;">Páginas por ciudad</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <sc-for list="{{cities}}" as="c" hint-placeholder-count="6"><span style="padding: 6px 12px; border-radius: 999px; background: #fff7ed; border: 1px solid #ffedd5; color: #c2410c; font-size: 14px; font-weight: 600; font-family: Consolas, 'Courier New', monospace;">{{c}}</span></sc-for>
+        </div>
+        <p style="margin: 12px 0 0; font-size: 14px; color: #4b5563;">Cada ciudad con intro propia (no duplicada) y enlaces a los 8 servicios. Cobertura [confirmar].</p>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px;">
+        <h3 style="margin: 0 0 12px; font: 700 20px/1.3 'Montserrat', Arial, sans-serif; color: #0b1a33;">Core Web Vitals (móvil, Lighthouse)</h3>
+        <sc-for list="{{cwv}}" as="w" hint-placeholder-count="6">
+          <div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid #e5e7eb; font-size: 15px;"><span style="font-weight: 600; color: #111827;">{{w.k}}</span><span style="color: #15803d; font-weight: 600; text-align: right;">{{w.v}}</span></div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  <p style="margin: 32px 0 0; font-size: 14px; color: #4b5563;">El deploy del pitch sale con <code>noindex</code> (D-14) para no competir con el sitio actual; Lighthouse SEO se mide con el flag apagado. Dominio de producción [confirmar].</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      today: [
+        { t: "Rutas hash (/#/home)", b: "Google indexa una sola URL. No hay páginas por servicio ni por ciudad." },
+        { t: "<title>NewValley</title>", b: "Sin palabras clave, sin ciudad, sin servicio." },
+        { t: "Sin meta description, canonical ni Open Graph", b: "Resultados y enlaces compartidos sin control." },
+        { t: "Sin datos estructurados (JSON-LD)", b: "Google no sabe que es un negocio local de pintura." },
+        { t: "robots.txt y sitemap.xml dan 404", b: "Nada guía el rastreo." },
+        { t: "Contenido renderizado por JavaScript", b: "El HTML inicial llega vacío." },
+        { t: "Fotos de 3.7 a 5.4 MB", b: "LCP lento en móvil, donde está la mayoría de las búsquedas locales." }
+      ],
+      urls: [
+        { n: "22", t: "URLs reales", b: "/ · /services/<slug>/ · /service-areas/<city>-nc/ · /projects/ · /free-estimate/" },
+        { n: "8", t: "Páginas de servicio", b: "/services/interior-painting/ … /services/decks-outdoor-living/" },
+        { n: "6", t: "Páginas de ciudad", b: "/service-areas/raleigh-nc/ … /service-areas/wake-forest-nc/" },
+        { n: "2", t: "sitemap + robots", b: "/sitemap-index.xml · /robots.txt (Allow + Sitemap)" }
+      ],
+      cities: ["raleigh-nc", "durham-nc", "cary-nc", "chapel-hill-nc", "apex-nc", "wake-forest-nc"],
+      cwv: [
+        { k: "LCP", v: "< 2.5 s (meta < 1.8 s)" },
+        { k: "CLS", v: "< 0.1 (meta 0)" },
+        { k: "INP", v: "< 200 ms" },
+        { k: "Lighthouse SEO", v: "≥ 95" },
+        { k: "Peso de la Home a 360 px", v: "≤ 600 KB · JS ≤ 8 KB gz" },
+        { k: "Imágenes", v: "AVIF/WebP · hero ≤ 120 KB" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

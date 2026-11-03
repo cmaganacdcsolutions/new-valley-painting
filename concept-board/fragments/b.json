@@ -1,0 +1,11 @@
+{
+  "boards": {
+    "desktop-01-inicio.dc.html": { "x": 0, "y": 0, "w": 1366, "h": 8000, "page": "web", "title": "Web · 01 · Inicio · 1366" }
+  },
+  "order": [
+    "desktop-01-inicio.dc.html"
+  ],
+  "notes": {
+    "web-row-1": { "x": 0, "y": -300, "text": "Web · Escritorio · 1366 / 1920", "kind": "title1", "maxW": 1840, "page": "web" }
+  }
+}

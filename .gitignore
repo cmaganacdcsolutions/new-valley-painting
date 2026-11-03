@@ -1,0 +1,9 @@
+.df/
+node_modules/
+dist/
+.astro/
+.vercel/
+.env*
+!.env.example
+assets/current-site/*.webp
+.DS_Store

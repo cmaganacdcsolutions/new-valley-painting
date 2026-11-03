@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Responsive · 01 · Matriz de dispositivos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+sc-for,sc-if{display:contents}
+</style>
+</helmet>
+<div style="width: 1920px; height: 1300px; box-sizing: border-box; padding: 72px 80px; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; font-size: 15px; line-height: 1.5; color: #374151; background: #ffffff; overflow: hidden;">
+  <p style="margin: 0 0 12px; font: 700 13px/1.2 'Montserrat', Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #c2410c;">Responsive · 01</p>
+  <h1 style="margin: 0 0 8px; font: 800 52px/1.1 'Montserrat', Arial, sans-serif; letter-spacing: -0.015em; color: #0b1a33;">Matriz de dispositivos</h1>
+  <p style="margin: 0 0 32px; font-size: 20px; line-height: 1.6; color: #4b5563;">Un solo sitio fluido de 320 a 2560 px. Rangos (min-width): xs 320–479 · sm 480–767 · md 768–1023 · lg 1024–1279 · xl 1280–1535 · 2xl 1536+. Contenedor máx. 1280 px centrado.</p>
+
+  <!-- width ruler, scale 1:2 -->
+  <div style="position: relative; height: 40px; margin-bottom: 8px; display: flex; border-radius: 6px; overflow: hidden; width: 800px; font: 700 12px/40px 'Montserrat', Arial, sans-serif; color: #0b1a33; text-align: center;">
+    <span style="width: 80px; background: #ffedd5;">xs</span><span style="width: 144px; background: #fff7ed;">sm</span><span style="width: 128px; background: #ffedd5;">md</span><span style="width: 128px; background: #fff7ed;">lg</span><span style="width: 128px; background: #ffedd5;">xl</span><span style="flex: 1; background: #fff7ed;">2xl →</span>
+  </div>
+  <p style="margin: 0 0 24px; font-size: 13px; color: #4b5563;">Regla a escala 1:2, desde 160 px (320) hasta 1920.</p>
+
+  <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+    <thead>
+      <tr style="background: #0b1a33; color: #ffffff; font: 700 13px/1.2 'Montserrat', Arial, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; text-align: left;">
+        <th style="width: 150px; padding: 14px 16px;">Ancho</th>
+        <th style="width: 230px; padding: 14px 16px;">Dispositivo · rango</th>
+        <th style="width: 360px; padding: 14px 16px;">Header · hero</th>
+        <th style="padding: 14px 16px;">Qué cambia en las secciones</th>
+        <th style="width: 200px; padding: 14px 16px;">Artboard</th>
+      </tr>
+    </thead>
+    <tbody>
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="9">
+        <tr style="border-bottom: 1px solid #e5e7eb; vertical-align: top;">
+          <td style="padding: 14px 16px; font: 800 22px/1.1 'Montserrat', Arial, sans-serif; color: #0b1a33; font-variant-numeric: tabular-nums;">{{r.w}}</td>
+          <td style="padding: 14px 16px;"><span style="display: block; font-weight: 600; color: #111827;">{{r.dev}}</span><span style="display: block; font-size: 13px; color: #4b5563;">{{r.range}}</span></td>
+          <td style="padding: 14px 16px;">{{r.head}}</td>
+          <td style="padding: 14px 16px;">{{r.sec}}</td>
+          <td style="padding: 14px 16px; font-size: 13px; font-weight: 600; color: #c2410c;">{{r.art}}</td>
+        </tr>
+      </sc-for>
+    </tbody>
+  </table>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      rows: [
+        { w: "320", dev: "Mínimo (SE 1ª gen., zoom)", range: "xs 320–479", head: "Header 64: logo 32 + teléfono + menú (44×44). Hero apilado, CTAs en bloque.", sec: "Servicios 1 col. compacta · confianza 2×2 · reseñas en carrusel 85% · ciudades 2 col. · barra de acción fija (flecha oculta < 340).", art: "Reglas en resp-02" },
+        { w: "360", dev: "Android base (Galaxy A)", range: "xs 320–479", head: "Igual que 320. Sobre el pliegue a 360×800: kicker, H1, lead y los 2 CTAs.", sec: "Checklist del hero oculto (D-07). Pasos en línea de tiempo vertical. Footer en 1 columna.", art: "resp-03-inicio-360" },
+        { w: "390", dev: "iPhone base", range: "xs 320–479", head: "Logo 32 (< 400). Mismo layout, más aire lateral.", sec: "Igual que 360. Ver iOS para Safari y safe areas.", art: "Página iOS" },
+        { w: "412", dev: "Pixel / Galaxy S", range: "xs 320–479", head: "Logo 36 (≥ 400).", sec: "Igual que 360. A los 480 (sm): servicios 2 col. y botones del CTA final en línea.", art: "Página Android" },
+        { w: "768", dev: "iPad vertical", range: "md 768–1023", head: "Header 64. Hero con degradado lateral, contenido máx. 600, CTAs en línea, checklist 1 col.", sec: "Confianza 4 col. con subtítulo · servicios 2 col. · cifras 4 col. · pasos 2×2 · reseñas 46% · ciudades 3 col. · barra de acción visible.", art: "resp-04-inicio-768" },
+        { w: "1024", dev: "iPad horizontal", range: "lg 1024–1279", head: "Header 80: nav + teléfono solo icono + «Free Estimate». Logo 44.", sec: "Barra de acción oculta · servicios 4 col. · antes/después 8+4 col. · protección 2 col. · reseñas en grilla de 3.", art: "Fluido (reglas)" },
+        { w: "1366×768", dev: "Laptop Windows", range: "xl 1280–1535", head: "Teléfono con número + «Get a Free Estimate». Hero 688 px de alto: cabe entero.", sec: "Checklist 2 col. · confianza en filas (icono izq.) solapando el hero −64 · cifras con icono a la izq.", art: "resp-05-inicio-1366" },
+        { w: "1440", dev: "MacBook / laptop", range: "xl 1280–1535", head: "Contenedor 1280 + gutter 40.", sec: "Igual que 1366; tipografía fluida llega a su máximo.", art: "Fluido (reglas)" },
+        { w: "1920", dev: "Escritorio FHD", range: "2xl 1536+", head: "Hero mín. 760, imagen a sangre (srcset hasta 2560w).", sec: "Contenedor sigue en 1280 centrado; fondos de sección a sangre. 2560: igual, más margen.", art: "resp-06-inicio-1920" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
