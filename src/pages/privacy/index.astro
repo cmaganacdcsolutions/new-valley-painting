@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE, abs } from '../../lib/site';
+import { breadcrumbList, graph } from '../../lib/jsonld';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+import '../../styles/extra-pages.css';
+
+const title = 'Privacy Policy | New Valley Painting';
+const description = 'How New Valley Painting handles the information you share when you request an estimate.';
+const jsonLd = graph([
+  { '@type': 'WebPage', '@id': `${abs('/privacy/')}#webpage`, url: abs('/privacy/'), name: 'Privacy Policy', description },
+  breadcrumbList([{ name: 'Home', path: '/' }, { name: 'Privacy', path: '/privacy/' }]),
+]);
+---
+<Base title={title} description={description} path="/privacy/" jsonLd={jsonLd}>
+  <PageHero variant="light" h1="Privacy Policy" lead="How we handle the information you share when you request an estimate." crumbs={[{ name: 'Home', href: '/' }, { name: 'Privacy' }]} ctas={false} short />
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <p><span class="ph-chip" data-placeholder="true">[confirmar]</span> Draft for the prototype. New Valley Painting must review and approve this text before launch.</p>
+        <h2>What we collect</h2>
+        <p>When you send the estimate form we receive your name, phone number, email, the service you need, your city and the message you write. If you call or text us, we see your phone number.</p>
+        <h2>How we use it</h2>
+        <p>We use your information only to answer your request, schedule a visit and send your quote. We never sell your information.</p>
+        <h2>Who sees it</h2>
+        <p>Only the New Valley Painting team, plus the service providers that deliver the form and our email. We do not share it for advertising.</p>
+        <h2>Your choices</h2>
+        <p>You can ask us to correct or delete your information at any time. Write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call <a href={SITE.phoneHref}>{SITE.phone}</a>.</p>
+      </div>
+    </div>
+  </section>
+</Base>

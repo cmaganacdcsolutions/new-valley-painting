@@ -40,7 +40,7 @@ const jsonLd = graph([
   faqPage(faqs),
 ]);
 ---
-<Base title={s.title} description={s.metaDesc} path={path} jsonLd={jsonLd}>
+<Base title={s.title} description={s.metaDesc} path={path} jsonLd={jsonLd} ogImage={`/og/${s.slug}.jpg`} ogImageAlt={`New Valley Painting: ${s.name}`}>
   <PageHero
     variant="light"
     h1={s.h1}

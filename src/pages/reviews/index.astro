@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE, abs } from '../../lib/site';
+import { breadcrumbList, graph } from '../../lib/jsonld';
+import { reviews } from '../../data/content';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+import '../../styles/extra-pages.css';
+
+const title = 'Reviews | New Valley Painting, Raleigh-Durham Painters';
+const description = "Read what Raleigh-Durham homeowners say about New Valley Painting's painting and remodeling work, then request your free estimate.";
+// D-15: no Review/AggregateRating markup until real reviews are confirmed.
+const jsonLd = graph([
+  { '@type': 'WebPage', '@id': `${abs('/reviews/')}#webpage`, url: abs('/reviews/'), name: 'Customer Reviews', description },
+  breadcrumbList([{ name: 'Home', path: '/' }, { name: 'Reviews', path: '/reviews/' }]),
+]);
+---
+<Base title={title} description={description} path="/reviews/" jsonLd={jsonLd}>
+  <PageHero variant="light" h1="Customer Reviews" lead="Here is what homeowners across the Triangle say about working with New Valley Painting." crumbs={[{ name: 'Home', href: '/' }, { name: 'Reviews' }]} />
+  <section class="section" aria-labelledby="reviews-title">
+    <div class="container">
+      <h2 id="reviews-title" class="sr-only">Reviews</h2>
+      <div class="rating-card" data-placeholder="true">
+        <span class="rating-card__n">5.0</span>
+        <span class="rating-card__stars" role="img" aria-label="Rated 5 out of 5">{[0, 1, 2, 3, 4].map(() => <Icon name="star-filled" size={24} />)}</span>
+        <p>Based on [N] reviews <span class="ph-chip" data-placeholder="true">Placeholder</span></p>
+      </div>
+      <ul class="reviews-grid">
+        {reviews.map((r) => (
+          <li>
+            <figure class="review-card" data-placeholder="true">
+              <Icon name="quote" size={32} class="review-card__quote-icon" />
+              <span class="review-card__stars" role="img" aria-label="Rated 5 out of 5">{[0, 1, 2, 3, 4].map(() => <Icon name="star-filled" size={18} />)}</span>
+              <blockquote class="review-card__quote">{r.text}</blockquote>
+              <figcaption class="review-card__foot">
+                <span class="review-card__avatar" aria-hidden="true">{r.initials}</span>
+                <span>
+                  <span class="review-card__name">{r.name} <span class="ph-chip" data-placeholder="true">Placeholder</span></span>
+                  <span class="review-card__ctx">{r.ctx}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <div class="reviews-cta">
+        <a class="btn btn--outline-dark btn--lg" href={SITE.facebook} target="_blank" rel="noopener"><Icon name="facebook" size={20} /> Review us on Facebook <span class="sr-only">(opens in a new tab)</span></a>
+      </div>
+    </div>
+  </section>
+  <FinalCta />
+</Base>

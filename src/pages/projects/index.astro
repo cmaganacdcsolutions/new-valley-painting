@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import Icon from '../../components/Icon.astro';
+import { abs } from '../../lib/site';
+import { breadcrumbList, graph } from '../../lib/jsonld';
+import { services, imgs } from '../../data/content';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+import '../../styles/extra-pages.css';
+
+const title = 'Painting & Remodeling Projects, Before & After | New Valley';
+const description = 'See before-and-after painting and remodeling projects by New Valley Painting in Raleigh-Durham, NC. Real homes, real transformations.';
+const painting = new Set(['interior-painting', 'cabinet-painting', 'exterior-painting']);
+const cards = services.map((s) => ({
+  image: s.image, alt: s.alt, placeholder: s.placeholder, cat: painting.has(s.slug) ? 'painting' : 'remodeling',
+  caption: s.placeholder ? `${s.name} · sample photo` : 'Exterior brick painting · Raleigh-Durham area',
+  h: s.placeholder ? s.name : 'Brick exterior repaint',
+}));
+const jsonLd = graph([
+  { '@type': 'CollectionPage', '@id': `${abs('/projects/')}#webpage`, url: abs('/projects/'), name: 'Our Projects: Before & After', description },
+  breadcrumbList([{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects/' }]),
+  { '@type': 'ImageObject', contentUrl: abs(imgs.after.src), name: 'Brick exterior repaint, after', caption: 'Exterior brick painting, Raleigh-Durham area' },
+  { '@type': 'ImageObject', contentUrl: abs(imgs.before.src), name: 'Brick exterior repaint, before', caption: 'Exterior brick before painting' },
+]);
+const filters = [['all', 'All'], ['painting', 'Painting'], ['remodeling', 'Remodeling']];
+---
+<Base title={title} description={description} path="/projects/" jsonLd={jsonLd}>
+  <PageHero variant="light" h1="Our Projects: Before & After" lead="Real homes, real transformations. See the kind of change careful prep and a quality finish can make." crumbs={[{ name: 'Home', href: '/' }, { name: 'Projects' }]} />
+  <section class="section" aria-labelledby="featured-title">
+    <div class="container">
+      <div class="projects-featured">
+        <div class="section-head" data-reveal>
+          <p class="kicker">Featured project</p>
+          <h2 id="featured-title">Painted brick, crisp black trim</h2>
+          <p class="section-head__lead">Drag the slider to compare the before and after.</p>
+        </div>
+        <figure class="ba__fig">
+          <BeforeAfterSlider />
+          <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area</figcaption>
+        </figure>
+      </div>
+      <div class="section-head" data-reveal>
+        <p class="kicker">Gallery</p>
+        <h2>More Work</h2>
+      </div>
+      <div class="filter-chips" role="group" aria-label="Filter projects" data-filter-group>
+        {filters.map(([key, label], i) => (
+          <button type="button" class="filter-chip" data-filter={key} aria-pressed={i === 0 ? 'true' : 'false'}><Icon name="check" size={16} />{label}</button>
+        ))}
+      </div>
+      <ul class="projects-grid">
+        {cards.map((c) => (
+          <li class="project-card" data-cat={c.cat}>
+            <div class="project-card__img">
+              <Image src={c.image} alt={c.alt} widths={[480, 768, 1024]} sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" format="webp" quality={60} loading="lazy" decoding="async" />
+              {c.placeholder && <span class="ph-chip" data-placeholder="true">Placeholder</span>}
+            </div>
+            <h3 class="h4">{c.h}</h3>
+            <p>{c.caption}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <FinalCta />
+</Base>
+<script>
+  const group = document.querySelector<HTMLElement>('[data-filter-group]');
+  const items = document.querySelectorAll<HTMLElement>('.project-card');
+  group?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button[data-filter]');
+    if (!btn) return;
+    const f = btn.dataset.filter;
+    group.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    items.forEach((li) => { li.hidden = f !== 'all' && li.dataset.cat !== f; });
+  });
+</script>

@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import Icon from '../../components/Icon.astro';
+import { abs } from '../../lib/site';
+import { breadcrumbList, graph } from '../../lib/jsonld';
+import { stats, protection } from '../../data/content';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+import '../../styles/home.css';
+import '../../styles/extra-pages.css';
+
+const title = 'About New Valley Painting | Family-Owned, Raleigh-Durham';
+const description = 'New Valley Painting is a family-owned and operated painting and remodeling company serving Raleigh-Durham, NC. Fully insured.';
+const jsonLd = graph([
+  { '@type': 'AboutPage', '@id': `${abs('/about/')}#webpage`, url: abs('/about/'), name: 'About New Valley Painting', description, mainEntity: { '@id': abs('/#business') } },
+  breadcrumbList([{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }]),
+]);
+---
+<Base title={title} description={description} path="/about/" jsonLd={jsonLd}>
+  <PageHero variant="light" h1="About New Valley Painting" lead="We're a local business proud to serve our community, and being family owned lets us give special attention to every project." crumbs={[{ name: 'Home', href: '/' }, { name: 'About' }]} />
+  <section class="section" aria-labelledby="story-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Our story</p>
+        <h2 id="story-title">A Local, Family-Owned Team</h2>
+      </div>
+      <div class="story">
+        <p><span class="ph-chip" data-placeholder="true">[confirmar]</span> [Founding story, owner name and photo pending from the client.]</p>
+        <p>New Valley Painting is family owned and operated, fully insured, and backs its work with a 2-year workmanship warranty.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section section--subtle" aria-labelledby="values-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">What we stand for</p>
+        <h2 id="values-title">Our Values</h2>
+      </div>
+      <div class="protect__rows" data-reveal-group>
+        {protection.map((p) => (
+          <div class="protect__row">
+            <span class="icon-chip"><Icon name={p.icon} size={24} /></span>
+            <div><h3 class="h4">{p.h}</h3><p>{p.p}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="tagline-band" aria-label="Our motto">
+    <div class="container">
+      <h2>The brush of quality, the stroke of <span class="tagline-band__em">excellence.<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C60 8 120 6 180 9s90 5 116-1" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" /></svg></span></h2>
+    </div>
+  </section>
+  <section class="stats section--tight" aria-label="New Valley Painting in numbers" data-placeholder="true">
+    <div class="container">
+      <ul class="stats__grid">
+        {stats.map((s) => (
+          <li class="stat">
+            <Icon name={s.icon} size={32} class="stat__icon" />
+            <span class="stat__n">{s.n}<span class="stat__suffix">{s.suffix}</span></span>
+            <span class="stat__label">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="stats__note" data-placeholder="true"><span class="ph-chip ph-chip--dark" data-placeholder="true">Placeholder</span>Sample figures for this prototype, to be confirmed by New Valley Painting.</p>
+    </div>
+  </section>
+  <FinalCta />
+</Base>
