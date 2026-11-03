@@ -1,3 +1,7 @@
-assets/
-concept-board/
-.df/
+/assets/
+/concept-board/
+/.df/
+/docs/
+/dist/
+/.astro/
+.env*

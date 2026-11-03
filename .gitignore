@@ -7,3 +7,7 @@ dist/
 !.env.example
 assets/current-site/*.webp
 .DS_Store
+
+# commercial docs (pricing) - never in this public repo
+assets/propossal/
+concept-board/validate.log
