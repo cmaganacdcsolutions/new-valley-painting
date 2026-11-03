@@ -109,6 +109,7 @@
   --font-weight-extrabold: 800;
 
   --font-size-display: clamp(2.25rem, 1.583rem + 2.963vw, 4.25rem);
+  --font-size-display-laptop: 3.625rem; /* 58px, 1024-1535 (D-20) */
   --font-size-h1: clamp(2rem, 1.583rem + 1.852vw, 3.25rem);
   --font-size-h2: clamp(1.75rem, 1.417rem + 1.481vw, 2.75rem);
   --font-size-h3: clamp(1.25rem, 1.125rem + 0.556vw, 1.625rem);
@@ -234,6 +235,7 @@
 
   /* gradient */
   --gradient-hero-desktop: linear-gradient(90deg, #0b1a33f0 0%, #0b1a33d1 42%, #0b1a3340 100%);
+  --gradient-hero-tablet: linear-gradient(90deg, #0b1a33f2 0%, #0b1a33e6 55%, #0b1a3399 100%);
   --gradient-hero-mobile: linear-gradient(180deg, #0b1a33b3 0%, #0b1a33eb 55%, #0b1a33 100%);
   --gradient-hero-light: linear-gradient(90deg, #fffffff5 0%, #ffffffe0 45%, #ffffff00 100%);
   --gradient-media-scrim: linear-gradient(180deg, #0b1a3300 40%, #0b1a33cc 100%);

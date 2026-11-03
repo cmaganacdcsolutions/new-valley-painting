@@ -111,7 +111,7 @@ const heroList = ['Interior & Exterior Painting', 'Kitchen & Bathroom Remodeling
       <div class="ba">
         <figure class="ba__fig" data-reveal>
           <BeforeAfterSlider />
-          <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area</figcaption>
+          <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area <span class="ph-chip" data-placeholder="true">To confirm</span></figcaption>
         </figure>
         <div class="ba__copy" data-reveal>
           <h3>Painted brick, crisp black trim</h3>
@@ -199,9 +199,10 @@ const heroList = ['Interior & Exterior Painting', 'Kitchen & Bathroom Remodeling
           <p class="kicker">Service areas</p>
           <h2 id="areas-title">Proudly Serving the Triangle</h2>
         </div>
-        <p>We paint and remodel homes across Raleigh-Durham and nearby towns. Don't see yours? Call us, and we'll let you know if we can help.</p>
-        <p><a class="link phone-link" href={SITE.phoneHref}>{SITE.phone}</a></p>
+        <p>We paint and remodel homes across Raleigh-Durham and nearby towns. Don't see yours? Call us, and we'll let you know if we can help. <a class="link phone-link" href={SITE.phoneHref}>{SITE.phone}</a></p>
+        
       </div>
+      <div class="areas__cities">
       <ul class="city-grid" data-reveal-group data-placeholder="true">
         {cities.map((c) => (
           <li>
@@ -211,6 +212,8 @@ const heroList = ['Interior & Exterior Painting', 'Kitchen & Bathroom Remodeling
           </li>
         ))}
       </ul>
+      <p class="areas__note"><span class="ph-chip ph-chip--dark" data-placeholder="true">To confirm</span> Coverage area to be confirmed by New Valley Painting.</p>
+      </div>
     </div>
   </section>
 

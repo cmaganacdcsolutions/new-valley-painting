@@ -16,6 +16,7 @@ import { steps } from '../data/content';
             <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
             <h3 class="h4">{s.h}</h3>
             <p>{s.p}</p>
+            {s.confirm && <span class="ph-chip" data-placeholder="true">To confirm</span>}
           </div>
         </li>
       ))}

@@ -27,6 +27,7 @@
 .protect__badge span { font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-gray-300); }
 .protect__rows { display: grid; gap: var(--space-6); margin-top: var(--space-8); }
 .protect__row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-4); border-top: 1px solid var(--color-gray-200); padding-top: var(--space-6); }
+.protect__row:first-of-type { border-top: 0; padding-top: 0; }
 .protect__row p { margin-top: var(--space-2); color: var(--color-gray-700); }
 .protect__cta { margin-top: var(--space-8); }
 .protect .section-head { margin-bottom: 0; }
@@ -38,6 +39,7 @@
 
 /* 5.9 Areas */
 .areas { display: grid; gap: var(--space-8); }
+.areas__note { margin-top: var(--space-3); font-size: 13px; line-height: 1.4; color: var(--color-gray-400); display: flex; align-items: center; gap: var(--space-2); }
 .areas__copy p { margin-top: var(--space-4); color: var(--color-gray-300); max-width: 50ch; }
 .areas .section-head { margin-bottom: 0; }
 .city-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
@@ -56,5 +58,5 @@
 @media (min-width: 1024px) {
   .areas { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-8); align-items: center; }
   .areas__copy { grid-column: 1 / span 5; }
-  .city-grid { grid-column: 6 / span 7; }
+  .areas__cities { grid-column: 6 / span 7; }
 }

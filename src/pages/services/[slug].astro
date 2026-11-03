@@ -65,7 +65,7 @@ const jsonLd = graph([
         <ul class="checklist">
           {s.included.map((t) => <li><Icon name="check" size={20} strokeWidth={3} />{t}</li>)}
         </ul>
-        <p class="included__note caption"><span class="ph-chip" data-placeholder="true">Confirm scope</span>{s.confirm ? 'Service scope pending client confirmation.' : 'Scope list pending client confirmation.'}</p>
+        <p class="included__note caption"><span class="ph-chip" data-placeholder="true">To confirm</span> {s.confirm ? 'Service scope to be confirmed by New Valley Painting.' : 'Scope list to be confirmed by New Valley Painting.'}</p>
       </div>
     </div>
   </section>

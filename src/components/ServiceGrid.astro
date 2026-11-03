@@ -13,7 +13,7 @@ const CARD_SIZES = '(min-width:1024px) 25vw, (min-width:480px) 50vw, 96px';
         </div>
         <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
         <div class="service-card__body">
-          <h3 class="service-card__title">{s.name}</h3>
+          <h3 class="service-card__title">{s.name}{s.confirm && <span class="ph-chip" data-placeholder="true">To confirm</span>}</h3>
           <p class="service-card__desc">{s.short}</p>
           <span class="link-arrow service-card__more">Learn more <Icon name="arrow-right" size={18} /></span>
         </div>
