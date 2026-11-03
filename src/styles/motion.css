@@ -1,0 +1,64 @@
+/* Motion layer (design-spec §9). CSS-first; every entrance state is gated by html.js so content is visible without JS.
+   Only transform/translate/opacity/clip-path animate. The hero image and H1 never wait on opacity for LCP. */
+
+@keyframes nvp-rise { from { opacity: 0; translate: 0 var(--distance-reveal-md); } }
+@keyframes nvp-rise-y { from { translate: 0 var(--distance-reveal-md); } }
+@keyframes nvp-settle { from { transform: scale(var(--scale-hero-image-from)); } }
+@keyframes nvp-draw { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
+@keyframes nvp-sheen { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+@keyframes nvp-bar { from { transform: scaleX(0); } }
+@keyframes nvp-ring { 0%, 100% { rotate: 0deg; } 30% { rotate: -12deg; } 65% { rotate: 12deg; } }
+
+/* 9.1 Hero entrance */
+html.js .hero__media img { animation: nvp-settle var(--duration-hero-image) var(--easing-out-expo) both; transform-origin: 70% center; }
+html.js .hero [data-hero-item] { animation: nvp-rise var(--duration-slower) var(--easing-out-expo) both; }
+html.js .hero h1[data-hero-item] { animation-name: nvp-rise-y; } /* H1 moves but is never transparent (LCP) */
+html.js .hero .kicker[data-hero-item] { animation-delay: 100ms; }
+html.js .hero h1[data-hero-item] { animation-delay: 180ms; }
+html.js .hero .hero__lead { animation-delay: 300ms; }
+html.js .hero .hero__list { animation-delay: 380ms; }
+html.js .hero .hero__ctas { animation-delay: 460ms; }
+html.js .hero .hero__micro { animation-delay: 540ms; }
+html.js .hero [data-brush] path { animation: nvp-draw var(--duration-cinematic) var(--easing-in-out) 650ms both; }
+.hero [data-sheen] { overflow: hidden; }
+html.js .hero [data-sheen]::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.35) 50%, transparent 65%);
+  transform: translateX(-120%); animation: nvp-sheen var(--duration-slower) linear 1400ms 1 both;
+}
+
+/* 9.2 Scroll reveals (JS adds .is-in; animation, not transition, so card hover transitions stay intact) */
+html.js [data-reveal]:not(.is-in),
+html.js [data-reveal-group]:not(.is-in) > * { opacity: 0; }
+html.js [data-reveal].is-in,
+html.js [data-reveal-group].is-in > * { animation: nvp-rise var(--duration-slower) var(--easing-out-expo) both; }
+html.js [data-reveal-group].is-in > * { animation-delay: calc(var(--i, 0) * var(--stagger-step)); }
+html.js [data-reveal]:not(.is-in) .kicker::before { transform: scaleX(0); }
+html.js [data-reveal].is-in .kicker::before { animation: nvp-bar var(--duration-slow) var(--easing-out-expo) 150ms both; }
+
+/* 9.5 Phone ring on hover (fine pointers only) */
+@media (hover: hover) and (pointer: fine) {
+  a[href^='tel:']:hover svg { animation: nvp-ring 300ms var(--easing-spring) 1; }
+}
+
+/* 9.4 Slider labels fade */
+.ba-slider__label { transition: opacity var(--duration-fast) linear; }
+
+/* 9.7 Page transitions: zero JS, ignored where unsupported */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: var(--duration-base); }
+}
+
+/* Reduced motion: no movement; everything at its final state */
+@media (prefers-reduced-motion: reduce) {
+  html.js .hero__media img, html.js .hero [data-hero-item], html.js .hero [data-brush] path,
+  html.js [data-reveal].is-in, html.js [data-reveal-group].is-in > *,
+  html.js [data-reveal].is-in .kicker::before, a[href^='tel:']:hover svg { animation: none; }
+  html.js .hero [data-sheen]::after { display: none; }
+  html.js [data-reveal]:not(.is-in), html.js [data-reveal-group]:not(.is-in) > * { opacity: 1; }
+  html.js [data-reveal]:not(.is-in) .kicker::before { transform: none; }
+  html .btn:hover, html .btn:active, html .service-card:hover, html .service-card:active { transform: none; }
+  html .btn:hover .btn__arrow, html .service-card:hover .link-arrow svg, html .service-card:hover .service-card__media img { transform: none; }
+}
+@media print { html.js [data-reveal], html.js [data-reveal-group] > * { opacity: 1 !important; } }

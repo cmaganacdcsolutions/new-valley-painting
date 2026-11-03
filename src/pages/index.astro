@@ -132,7 +132,7 @@ const heroList = ['Interior & Exterior Painting', 'Kitchen & Bathroom Remodeling
         {stats.map((s) => (
           <li class="stat">
             <Icon name={s.icon} size={32} class="stat__icon" />
-            <span class="stat__n" data-count={s.n}>{s.n}<span class="stat__suffix">{s.suffix}</span></span>
+            <span class="stat__n" data-count={s.n}><span class="sr-only">{s.n}{s.suffix}</span><span aria-hidden="true"><span data-count-vis>{s.n}</span><span class="stat__suffix">{s.suffix}</span></span></span>
             <span class="stat__label">{s.label}</span>
           </li>
         ))}
