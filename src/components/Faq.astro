@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import type { Faq } from '../data/content';
+interface Props { faqs: Faq[]; id?: string; title?: string; kicker?: string }
+const { faqs, id = 'faq-title', title = 'Questions, Answered', kicker = 'FAQ' } = Astro.props;
+---
+<section class="section faq-section" aria-labelledby={id}>
+  <div class="container container--narrow">
+    <div class="section-head" data-reveal>
+      <p class="kicker">{kicker}</p>
+      <h2 id={id}>{title}</h2>
+    </div>
+    <div class="faq" data-reveal>
+      {faqs.map((f) => (
+        <details>
+          <summary>
+            <span>{f.q}</span>
+            <span class="faq__icon" aria-hidden="true"><Icon name="plus" size={24} class="plus" /><Icon name="minus" size={24} class="minus" /></span>
+          </summary>
+          <p class="faq__answer">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

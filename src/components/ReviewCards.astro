@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import { reviews } from '../data/content';
+---
+<ul class="reviews__scroller" role="region" aria-label="Reviews, scroll horizontally" tabindex="0" data-reveal-group>
+  {reviews.map((r) => (
+    <li>
+      <figure class="review-card" data-placeholder="true">
+        <Icon name="quote" size={32} class="review-card__quote-icon" />
+        <span class="review-card__stars" role="img" aria-label="Rated 5 out of 5">{[0, 1, 2, 3, 4].map(() => <Icon name="star-filled" size={18} />)}</span>
+        <blockquote class="review-card__quote">{r.text}</blockquote>
+        <figcaption class="review-card__foot">
+          <span class="review-card__avatar" aria-hidden="true">{r.initials}</span>
+          <span>
+            <span class="review-card__name">{r.name} <span class="ph-chip" data-placeholder="true">Placeholder</span></span>
+            <span class="review-card__ctx">{r.ctx}</span>
+          </span>
+        </figcaption>
+      </figure>
+    </li>
+  ))}
+</ul>

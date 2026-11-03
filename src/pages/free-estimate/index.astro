@@ -1,0 +1,162 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE, abs } from '../../lib/site';
+import { services } from '../../data/content';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+
+const title = 'Free Estimate | New Valley Painting, Raleigh-Durham, NC';
+const description = 'Request a free, no-obligation estimate for painting or remodeling in Raleigh-Durham, NC. Tell us about your project in about a minute.';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ContactPage',
+      '@id': `${abs('/free-estimate/')}#webpage`,
+      url: abs('/free-estimate/'),
+      name: 'Free Estimate',
+      description,
+      isPartOf: { '@id': `${SITE.url}/#website` },
+      about: { '@id': `${SITE.url}/#business` },
+      mainEntity: { '@id': `${SITE.url}/#business` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
+        { '@type': 'ListItem', position: 2, name: 'Free Estimate', item: abs('/free-estimate/') },
+      ],
+    },
+  ],
+};
+const asideRows = [
+  { icon: 'shield-check', t: 'Fully insured' },
+  { icon: 'award', t: '2-year workmanship warranty' },
+  { icon: 'users', t: 'Family owned & operated' },
+] as const;
+---
+<Base title={title} description={description} path="/free-estimate/" jsonLd={jsonLd}>
+  <PageHero
+    variant="dark" short ctas={false}
+    h1="Get Your Free Estimate"
+    lead="Tell us about your project. It takes about a minute, and there's no obligation."
+    crumbs={[{ name: 'Home', href: '/' }, { name: 'Free Estimate' }]}
+  />
+
+  <section class="section estimate-section" aria-label="Request a free estimate">
+    <div class="container estimate">
+      <div class="estimate__form form-card" id="estimate-form">
+        <div data-form-wrap>
+          <h2>Request your estimate</h2>
+          <noscript><p class="small noscript-note">This form needs JavaScript. Please call <a class="link" href={SITE.phoneHref}>{SITE.phone}</a> instead.</p></noscript>
+          <form class="form" data-estimate-form novalidate autocomplete="on">
+            <div class="error-summary" role="alert" tabindex="-1" data-summary hidden>
+              <h3 data-summary-title></h3>
+              <ul data-summary-list></ul>
+            </div>
+
+            <div class="form__row form__row--2">
+              <div class="field">
+                <label for="f-name">Full name</label>
+                <input class="input" id="f-name" name="name" type="text" autocomplete="name" required aria-required="true" maxlength="80" />
+                <p class="field__error" id="f-name-err" hidden><Icon name="alert-circle" size={16} /><span></span></p>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone</label>
+                <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(919) 555-0123" required aria-required="true" />
+                <p class="field__error" id="f-phone-err" hidden><Icon name="alert-circle" size={16} /><span></span></p>
+              </div>
+            </div>
+
+            <div class="form__row form__row--2">
+              <div class="field">
+                <label for="f-email">Email <span class="opt">(optional)</span></label>
+                <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" />
+                <p class="field__error" id="f-email-err" hidden><Icon name="alert-circle" size={16} /><span></span></p>
+              </div>
+              <div class="field">
+                <label for="f-zip">ZIP code</label>
+                <input class="input" id="f-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="27601" required aria-required="true" />
+                <p class="field__error" id="f-zip-err" hidden><Icon name="alert-circle" size={16} /><span></span></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-service">Service needed</label>
+              <select class="select" id="f-service" name="service" required aria-required="true">
+                <option value="" disabled selected>Select a service</option>
+                {services.map((s) => <option value={s.slug}>{s.name}</option>)}
+                <option value="other">Other / not sure</option>
+              </select>
+              <p class="field__error" id="f-service-err" hidden><Icon name="alert-circle" size={16} /><span></span></p>
+            </div>
+
+            <div class="field">
+              <label for="f-details">Project details <span class="opt">(optional)</span></label>
+              <textarea class="textarea" id="f-details" name="details" rows="5" maxlength="1000" aria-describedby="f-details-count"></textarea>
+              <p class="counter" id="f-details-count" aria-live="off">0 / 1000</p>
+            </div>
+
+            <fieldset class="field">
+              <legend>Preferred contact</legend>
+              <div class="radios">
+                <label class="radio"><input type="radio" name="contact" value="call" checked /> Call</label>
+                <label class="radio"><input type="radio" name="contact" value="text" /> Text</label>
+                <label class="radio"><input type="radio" name="contact" value="email" /> Email</label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="f-time">Best time to reach you <span class="opt">(optional)</span></label>
+              <select class="select" id="f-time" name="time">
+                <option value="any" selected>Any time</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+            </div>
+
+            <div class="hp" aria-hidden="true">
+              <label for="f-company">Company</label>
+              <input id="f-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="form__submit">
+              <button class="btn btn--primary btn--lg btn--block" type="submit" data-submit data-sheen>
+                <Icon name="loader" size={20} class="spin" />
+                <span data-submit-label>Send My Free Estimate Request</span>
+                <Icon name="arrow-right" size={20} class="btn__arrow" />
+              </button>
+              <p class="consent form-note">By submitting, you agree that New Valley Painting may contact you about your estimate by your preferred method. We never sell your information. See our <a href="/privacy/">Privacy Policy</a>.</p>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-success" role="status" data-success hidden>
+          <span class="form-success__icon" aria-hidden="true"><Icon name="check-circle" size={48} /></span>
+          <h2 tabindex="-1" data-success-title></h2>
+          <p data-success-body></p>
+          <a class="btn btn--outline-dark" href="/">Back to home</a>
+        </div>
+      </div>
+
+      <aside class="estimate__aside" aria-labelledby="aside-title">
+        <div class="aside-card">
+          <h3 id="aside-title">Prefer to talk?</h3>
+          <a class="btn btn--primary btn--block" href={SITE.phoneHref}><Icon name="phone" size={20} /> Call <span class="phone-link">{SITE.phone}</span></a>
+          <a class="btn btn--outline-dark btn--block" href={SITE.whatsapp} target="_blank" rel="noopener"><Icon name="message-circle" size={20} /> Text or WhatsApp<span class="sr-only"> (opens in a new tab)</span></a>
+          <a class="mail-link" href={`mailto:${SITE.email}`}><Icon name="mail" size={20} />{SITE.email}</a>
+          <ul class="aside-rows">
+            {asideRows.map((r) => <li><Icon name={r.icon} size={24} />{r.t}</li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script>
+    import '../../scripts/estimate-form';
+  </script>
+</Base>

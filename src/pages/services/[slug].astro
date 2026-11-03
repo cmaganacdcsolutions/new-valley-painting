@@ -1,0 +1,127 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PageHero from '../../components/PageHero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Steps from '../../components/Steps.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import { abs } from '../../lib/site';
+import { breadcrumbList, faqPage, cityNode, providerRef, graph } from '../../lib/jsonld';
+import { services, cities, serviceFaqs, type Service } from '../../data/content';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+
+export function getStaticPaths() {
+  return services.map((service, i) => ({ params: { slug: service.slug }, props: { service, index: i } }));
+}
+interface Props { service: Service; index: number }
+const { service: s, index } = Astro.props;
+const path = `/services/${s.slug}/`;
+const faqs = serviceFaqs(s);
+const isExterior = s.slug === 'exterior-painting';
+const next = (n: number) => services[(index + n) % services.length];
+const gallery = [next(1), next(2), next(3)];
+const related = [next(1), next(2), next(3)];
+const jsonLd = graph([
+  {
+    '@type': 'Service',
+    '@id': `${abs(path)}#service`,
+    name: s.name,
+    serviceType: s.name,
+    description: s.metaDesc,
+    url: abs(path),
+    provider: providerRef,
+    areaServed: cities.map((c) => cityNode(c.name)),
+  },
+  breadcrumbList([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services/' }, { name: s.name, path }]),
+  faqPage(faqs),
+]);
+---
+<Base title={s.title} description={s.metaDesc} path={path} jsonLd={jsonLd}>
+  <PageHero
+    variant="light"
+    h1={s.h1}
+    lead={s.intro}
+    image={s.image}
+    alt={s.alt}
+    crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: s.name }]}
+  />
+  <TrustStrip />
+
+  <section class="section" aria-labelledby="intro-title">
+    <div class="container intro">
+      <div class="intro__text" data-reveal>
+        <p class="kicker">{s.name}</p>
+        <h2 id="intro-title">{s.name} Done Right</h2>
+        <p>{s.intro}</p>
+        <p>We're family owned and fully insured, and every project is backed by our 2-year workmanship warranty.</p>
+        <p><a class="btn btn--primary" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a></p>
+      </div>
+      <div class="included" data-reveal data-placeholder="true">
+        <h3>What's included</h3>
+        <ul class="checklist">
+          {s.included.map((t) => <li><Icon name="check" size={20} strokeWidth={3} />{t}</li>)}
+        </ul>
+        <p class="included__note caption"><span class="ph-chip" data-placeholder="true">Confirm scope</span>{s.confirm ? 'Service scope pending client confirmation.' : 'Scope list pending client confirmation.'}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--subtle" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">{isExterior ? 'Before & after' : 'Gallery'}</p>
+        <h2 id="gallery-title">{isExterior ? 'See the Transformation' : `${s.name} Inspiration`}</h2>
+      </div>
+      {isExterior ? (
+        <figure class="ba__fig" data-reveal>
+          <BeforeAfterSlider />
+          <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area</figcaption>
+        </figure>
+      ) : (
+        <ul class="gallery" data-reveal-group>
+          {gallery.map((g) => (
+            <li>
+              <Image src={g.image} alt={g.alt} widths={[400, 640, 900]} sizes="(min-width:1024px) 380px, (min-width:768px) 33vw, 100vw" format="webp" quality={65} loading="lazy" decoding="async" />
+              <span class="ph-chip" data-placeholder="true">Placeholder</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <Steps />
+  <Faq faqs={faqs} title={`${s.name}: Common Questions`} />
+
+  <section class="section section--subtle" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Related services</p>
+        <h2 id="related-title">More From New Valley Painting</h2>
+      </div>
+      <ul class="mini-grid mini-grid--3" data-reveal-group>
+        {related.map((r) => (
+          <li>
+            <a class="mini-card" href={`/services/${r.slug}/`}>
+              <span class="icon-chip"><Icon name={r.icon} size={24} /></span>
+              <span>{r.name}</span>
+              <Icon name="chevron-right" size={20} class="mini-card__chev" />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="section-sub" data-reveal>
+        <h3 class="h4" id="areas-chips-title">Areas we serve</h3>
+        <ul class="chips" aria-labelledby="areas-chips-title" style="margin-top:var(--space-4)">
+          {cities.map((c) => <li><a class="chip" href={`/service-areas/${c.slug}/`}><Icon name="map-pin" size={18} />{c.name}</a></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <FinalCta />
+</Base>

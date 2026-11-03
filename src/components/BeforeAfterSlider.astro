@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { imgs } from '../data/content';
+const W = [480, 768, 1024];
+const SIZES = '(min-width:1024px) 62vw, 720px';
+---
+<div class="ba-slider" data-ba-slider>
+  <Image src={imgs.after} alt="Two-story brick home after exterior painting: white brick with black window trim" widths={W} sizes={SIZES} format="webp" quality={55} loading="lazy" decoding="async" />
+  <div class="ba-slider__before">
+    <Image src={imgs.before} alt="The same brick home before painting, with original tan brick" widths={W} sizes={SIZES} format="webp" quality={55} loading="lazy" decoding="async" />
+  </div>
+  <span class="ba-slider__label ba-slider__label--before" aria-hidden="true">Before</span>
+  <span class="ba-slider__label ba-slider__label--after" aria-hidden="true">After</span>
+  <div class="ba-slider__line" aria-hidden="true"></div>
+  <div class="ba-slider__handle" aria-hidden="true"><Icon name="chevrons-left-right" size={24} /></div>
+  <input class="ba-slider__input" type="range" min="0" max="100" step="1" value="50" aria-label="Compare before and after: drag to reveal" aria-valuetext="50% before" />
+</div>

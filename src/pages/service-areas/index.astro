@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PageHero from '../../components/PageHero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { abs, SITE } from '../../lib/site';
+import { breadcrumbList, graph } from '../../lib/jsonld';
+import { cities } from '../../data/content';
+import heroImg from '../../assets/stock/img-01-hero.jpg';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+
+const title = 'Service Areas: Raleigh, Durham, Cary & More | New Valley Painting';
+const description = 'New Valley Painting serves Raleigh, Durham, Cary, Chapel Hill, Apex, Wake Forest and nearby Triangle communities. Free estimates.';
+const jsonLd = graph([
+  { '@type': 'CollectionPage', '@id': `${abs('/service-areas/')}#webpage`, url: abs('/service-areas/'), name: 'Service Areas', description },
+  breadcrumbList([{ name: 'Home', path: '/' }, { name: 'Service Areas', path: '/service-areas/' }]),
+  {
+    '@type': 'ItemList',
+    itemListElement: cities.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/service-areas/${c.slug}/`), name: `${c.name}, NC` })),
+  },
+]);
+---
+<Base title={title} description={description} path="/service-areas/" jsonLd={jsonLd}>
+  <PageHero
+    variant="dark"
+    kicker="Service areas"
+    h1="Proudly Serving the Triangle"
+    lead="We paint and remodel homes across Raleigh-Durham and nearby towns."
+    image={heroImg}
+    alt="Bright living room with freshly painted walls and white built-in shelves"
+    crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas' }]}
+  />
+  <TrustStrip />
+  <section class="section" aria-labelledby="cities-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Where we work</p>
+        <h2 id="cities-title">Cities We Serve</h2>
+        <p class="section-head__lead">Don't see yours? Call <a class="link phone-link" href={SITE.phoneHref}>{SITE.phone}</a> and we'll let you know if we can help.</p>
+      </div>
+      <ul class="city-cards" data-reveal-group data-placeholder="true">
+        {cities.map((c) => (
+          <li>
+            <a class="city-card" href={`/service-areas/${c.slug}/`}>
+              <span class="icon-chip"><Icon name="map-pin" size={24} /></span>
+              <h3>{c.name}, NC</h3>
+              <p>{c.intro}</p>
+              <span class="link-arrow">Painting &amp; remodeling in {c.name} <Icon name="arrow-right" size={18} /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <FinalCta />
+</Base>

@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+import { steps } from '../data/content';
+---
+<section class="section" aria-labelledby="process-title">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="kicker">How it works</p>
+      <h2 id="process-title">From First Call to Final Walkthrough</h2>
+    </div>
+    <ol class="steps" data-reveal-group>
+      {steps.map((s, i) => (
+        <li class="step" data-placeholder={s.confirm ? 'true' : undefined}>
+          <span class="step__badge" aria-hidden="true">{i + 1}</span>
+          <div class="step__body">
+            <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
+            <h3 class="h4">{s.h}</h3>
+            <p>{s.p}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

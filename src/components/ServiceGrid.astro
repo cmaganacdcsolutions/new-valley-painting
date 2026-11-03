@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { services } from '../data/content';
+const CARD_SIZES = '(min-width:1024px) 25vw, (min-width:480px) 50vw, 96px';
+---
+<ul class="service-grid" data-reveal-group>
+  {services.map((s) => (
+    <li data-placeholder={s.confirm ? 'true' : undefined}>
+      <a class="service-card" href={`/services/${s.slug}/`}>
+        <div class="service-card__media">
+          <Image src={s.image} alt={s.alt} widths={[400, 800]} sizes={CARD_SIZES} format="webp" quality={65} loading="lazy" decoding="async" />
+        </div>
+        <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
+        <div class="service-card__body">
+          <h3 class="service-card__title">{s.name}</h3>
+          <p class="service-card__desc">{s.short}</p>
+          <span class="link-arrow service-card__more">Learn more <Icon name="arrow-right" size={18} /></span>
+        </div>
+        <Icon name="chevron-right" size={20} class="service-card__chev" />
+      </a>
+    </li>
+  ))}
+</ul>

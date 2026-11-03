@@ -1,0 +1,123 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PageHero from '../../components/PageHero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import ReviewCards from '../../components/ReviewCards.astro';
+import { abs } from '../../lib/site';
+import { breadcrumbList, faqPage, cityNode, providerRef, graph } from '../../lib/jsonld';
+import { services, cities, cityFaqs, type City } from '../../data/content';
+import heroImg from '../../assets/stock/img-01-hero.jpg';
+import '../../styles/sections.css';
+import '../../styles/pages.css';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({ params: { city: city.slug }, props: { city } }));
+}
+interface Props { city: City }
+const { city: c } = Astro.props;
+const path = `/service-areas/${c.slug}/`;
+const faqs = cityFaqs(c);
+const others = cities.filter((x) => x.slug !== c.slug);
+const title = `Painters & Remodelers in ${c.name}, NC | New Valley Painting`;
+const description = `Family-owned painting and remodeling in ${c.name}, NC. Interior and exterior painting, kitchens, baths, flooring and more. Fully insured, 2-year warranty. Free estimates.`;
+const jsonLd = graph([
+  {
+    '@type': 'Service',
+    '@id': `${abs(path)}#service`,
+    name: `Painting & Remodeling in ${c.name}, NC`,
+    serviceType: 'Painting and remodeling',
+    description,
+    url: abs(path),
+    provider: providerRef,
+    areaServed: cityNode(c.name),
+  },
+  breadcrumbList([{ name: 'Home', path: '/' }, { name: 'Service Areas', path: '/service-areas/' }, { name: c.name, path }]),
+  faqPage(faqs),
+]);
+---
+<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+  <PageHero
+    variant="dark"
+    kicker={`Serving ${c.name} & nearby`}
+    h1={`Painters & Remodelers in ${c.name}, NC`}
+    lead="Interior and exterior painting, kitchen and bathroom remodeling, flooring and more, from one family-owned, fully insured team."
+    image={heroImg}
+    alt="Bright living room with freshly painted walls and white built-in shelves"
+    crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: c.name }]}
+  />
+  <TrustStrip />
+
+  <section class="section" aria-labelledby="intro-title">
+    <div class="container container--narrow">
+      <div class="intro__text" data-reveal>
+        <h2 id="intro-title">Painting &amp; Remodeling in {c.name}</h2>
+        <p data-placeholder="true">{c.intro}</p>
+        <p>We're family owned and fully insured, and every project is backed by our 2-year workmanship warranty.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--subtle" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">What we do</p>
+        <h2 id="services-title">Our Services in {c.name}</h2>
+      </div>
+      <ul class="mini-grid mini-grid--city" data-reveal-group>
+        {services.map((s) => (
+          <li data-placeholder={s.confirm ? 'true' : undefined}>
+            <a class="mini-card" href={`/services/${s.slug}/`}>
+              <span class="icon-chip"><Icon name={s.icon} size={24} /></span>
+              <span>{s.name}</span>
+              <Icon name="chevron-right" size={20} class="mini-card__chev" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ba-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Before &amp; after</p>
+        <h2 id="ba-title">See the Transformation</h2>
+        <p class="section-head__lead">Same house, new curb appeal. Drag the slider to compare.</p>
+      </div>
+      <figure class="ba__fig" data-reveal>
+        <BeforeAfterSlider />
+        <figcaption class="ba__caption" data-placeholder="true">Exterior brick painting · Raleigh-Durham area</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--subtle" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="kicker">Reviews</p>
+        <h2 id="reviews-title">What Homeowners Say</h2>
+      </div>
+      <ReviewCards />
+    </div>
+  </section>
+
+  <Faq faqs={faqs} />
+
+  <section class="section" aria-labelledby="nearby-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Nearby areas</p>
+        <h2 id="nearby-title">We Also Serve</h2>
+      </div>
+      <ul class="chips" data-reveal>
+        {others.map((o) => <li><a class="chip" href={`/service-areas/${o.slug}/`}><Icon name="map-pin" size={18} />{o.name}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <FinalCta />
+</Base>

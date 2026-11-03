@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { trust } from '../data/content';
+---
+<section class="trust" aria-label="Why homeowners choose us">
+  <div class="container">
+    <ul class="trust__card" data-reveal>
+      {trust.map((t) => (
+        <li class="trust-item">
+          <Icon name={t.icon} size={28} class="trust-item__icon" />
+          <div>
+            <div class="trust-item__label">{t.label}</div>
+            <div class="trust-item__sub">{t.sub}</div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

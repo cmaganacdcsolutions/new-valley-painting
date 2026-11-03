@@ -1,0 +1,36 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
+import Breadcrumb from './Breadcrumb.astro';
+import { SITE } from '../lib/site';
+interface Props {
+  variant: 'light' | 'dark'; h1: string; lead: string; crumbs: { name: string; href?: string }[];
+  image?: ImageMetadata; alt?: string; kicker?: string; ctas?: boolean; short?: boolean;
+}
+const { variant, h1, lead, crumbs, image, alt = '', kicker, ctas = true, short = false } = Astro.props;
+const WIDTHS = [480, 768, 1024, 1366, 1920];
+const light = variant === 'light';
+const SIZES = light ? '(min-width:1024px) 58vw, 100vw' : '100vw';
+---
+<section class:list={['page-hero', `page-hero--${variant}`, { 'page-hero--short': short, 'page-hero--noimg': !image }]} aria-labelledby="page-title">
+  {image && (
+    <div class="page-hero__media">
+      <Picture src={image} formats={['avif', 'webp']} widths={WIDTHS} sizes={SIZES} alt={alt} loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+  )}
+  <div class="container">
+    <div class="page-hero__content">
+      <Breadcrumb items={crumbs} dark={!light} />
+      {kicker && <p class="kicker">{kicker}</p>}
+      <h1 id="page-title">{h1}</h1>
+      <p class="page-hero__lead">{lead}</p>
+      {ctas && (
+        <div class="page-hero__ctas">
+          <a class="btn btn--primary btn--lg" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+          <a class:list={['btn', 'btn--lg', light ? 'btn--outline-dark' : 'btn--outline-light']} href={SITE.phoneHref}><Icon name="phone" size={20} /> Call <span class="phone-link">{SITE.phone}</span></a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

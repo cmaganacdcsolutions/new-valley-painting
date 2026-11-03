@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import { SITE } from '../lib/site';
+---
+<section class="cta-band on-accent" aria-labelledby="cta-title" data-cta>
+  <div class="cta-band__strokes" aria-hidden="true">
+    <svg viewBox="0 0 300 24" preserveAspectRatio="none" focusable="false"><path d="M4 16C60 8 120 6 180 9s90 5 116-1" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" /></svg>
+    <svg viewBox="0 0 300 24" preserveAspectRatio="none" focusable="false"><path d="M4 16C60 8 120 6 180 9s90 5 116-1" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" /></svg>
+  </div>
+  <div class="container">
+    <div class="cta-band__inner" data-reveal>
+      <h2 id="cta-title">Ready for a Beautifully Painted Home?</h2>
+      <p class="lead">Contact New Valley Painting today to schedule your consultation and start the journey toward a beautifully painted home.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--dark btn--lg" href="/free-estimate/">Get a Free Estimate <Icon name="arrow-right" size={20} class="btn__arrow" /></a>
+        <a class="btn btn--outline-dark btn--lg" href={SITE.phoneHref}><Icon name="phone" size={20} /> Call <span class="phone-link">{SITE.phone}</span></a>
+      </div>
+    </div>
+  </div>
+</section>
